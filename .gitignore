@@ -1,13 +1,22 @@
-*.bak
+# Library specific
+
 
 # DCData subfolders 
 Data/
 Maps/
 Raw/
+Doc/
+Prog/Temp/
 
 # SAS files
 *.sas7bdat
 *.sas7bcat
+*.log
+*.lst
+
+# Web
+*.html
+*.htm
 
 # MS Office
 *.doc
@@ -19,6 +28,7 @@ Raw/
 *.mdb
 *.mdbx
 *.pdf
+*.rtf
 
 # Raw files
 *.csv
@@ -30,6 +40,7 @@ Raw/
 *.jpeg
 *.bmp
 *.tiff
+*.png
 
 # ArcMap
 *.dbf
@@ -44,3 +55,9 @@ Raw/
 # Archives
 *.zip
 *.rar
+
+# Temporary
+*.bak
+
+# Other
+Thumbs.db
