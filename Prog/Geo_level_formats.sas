@@ -23,18 +23,21 @@
   07/15/11 PAT  Added PG Council Districts as a geographic level.
   07/07/12 PAT  Added new DC geos: Anc2012, Psa2012, Ward2012.
                 Added validation format for EOR.
+  02/14/17 JD	Updated to run on L:\ Drive.
+				Added new geo: Bridge Park.
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
+%DCData_lib( General );
 
 /** Macro Create_format - Start Definition **/
 
 %macro Create_format( name=, col=, desc= );
 
 %let start_row = 5;
-%let end_row = 26;
+%let end_row = 28;
 
 filename xlsFileA dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c5:r&end_row.c5" lrecl=1000 notab;
 filename xlsFileb dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c&col:r&end_row.c&col" lrecl=1000 notab;
