@@ -10,10 +10,11 @@
  Description:  Upload weighting files to Alpha and register metadata.
 
  Modifications:
+  02/14/17 JD	Updated to run on L:\ Drive.
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
-%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
+%include "L:\SAS\Inc\StdLocal.sas";
+*%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
 
 ** Define libraries **;
 
@@ -48,7 +49,13 @@ rsubmit;
 
 /** End Macro Definition **/
 
+%Upload_geo( data=wt_tr00_bpk )
+%Upload_geo( data=wt_tr10_bpk )
+%Upload_geo( data=wt_bg00_bpk )
+%Upload_geo( data=wt_bg10_bpk )
 
+
+/***** PREVIOUS UPLOADS **************************
 %Upload_geo( data=wt_bg00_anc02, revisions=%str(Use new %Calc_weights_from_blocks macro, add Popwt_prop.) )
 %Upload_geo( data=wt_bg00_city, revisions=%str(Use new %Calc_weights_from_blocks macro, add Popwt_prop.) )
 %Upload_geo( data=wt_bg00_cl00, revisions=%str(Use new %Calc_weights_from_blocks macro, add Popwt_prop.) )
@@ -69,8 +76,6 @@ rsubmit;
 %Upload_geo( data=wt_bg10_ward12 )
 %Upload_geo( data=wt_bg10_zip )
 
-
-/***** PREVIOUS UPLOADS **************************
 %Upload_geo( data=wt_bg10_vp12 )
 %Upload_geo( data=wt_bg00_vp12 )
 %Upload_geo( data=wt_tr00_vp12 )
