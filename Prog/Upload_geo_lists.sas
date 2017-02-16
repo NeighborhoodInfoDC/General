@@ -11,6 +11,7 @@
  metadata.
 
  Modifications:
+  02/16/17 JD	Updated to run on L:\ Drive.
 **************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
