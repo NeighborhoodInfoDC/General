@@ -13,11 +13,11 @@
  Modifications:
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
-%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
+%include "L:\SAS\Inc\StdLocal.sas";
+*%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
 
 ** Define libraries **;
-
+%DCData_lib( General );
 
 rsubmit;
 
@@ -51,8 +51,7 @@ rsubmit;
 
 
 ** Execute macro for each file to be uploaded. **;
-
-%Upload_geo( data=GeoBlk2000, revisions=%str(Add vars Geo2000, GeoBg2000, and City.) )
+%Upload_geo( data=Bridgepk )
 
 
 /**** PREVIOUSLY UPLOADED FILES ****
@@ -69,6 +68,7 @@ rsubmit;
 %Upload_geo( data=Geo2000 )
 %Upload_geo( data=GeoBlk2000, revisions=Corrected cjrTractBl. )
 %Upload_geo( data=Cluster2000, revisions=%str(Added NoMa to labels for cluster 25.) )
+%Upload_geo( data=GeoBlk2000, revisions=%str(Add vars Geo2000, GeoBg2000, and City.) )
 ****/
 
 run;
