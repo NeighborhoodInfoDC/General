@@ -31,3 +31,12 @@ options mprint symbolgen mlogic;
   block_pop_year = 2000
 )
 
+%Finalize_data_set( 
+  data=Wt_tr00_bpk,
+  out=Wt_tr00_bpk,
+  outlib=General,
+  label="Weighting file from 2000 tracts to Bridge Park Area",
+  sortby=bridgepk,
+  restrictions=None,
+  revisions=New File.
+  )

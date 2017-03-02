@@ -29,3 +29,12 @@
   block_pop_year = 2010
 )
 
+%Finalize_data_set( 
+  data=Wt_tr10_bpk,
+  out=Wt_tr10_bpk,
+  outlib=General,
+  label="Weighting file from 2010 tracts to Bridge Park Area",
+  sortby=bridgepk,
+  restrictions=None,
+  revisions=New File.
+  )

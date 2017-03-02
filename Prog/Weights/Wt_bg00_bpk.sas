@@ -29,3 +29,12 @@
   block_pop_year = 2000
 )
 
+%Finalize_data_set( 
+  data=Wt_bg00_bpk,
+  out=Wt_bg00_bpk,
+  outlib=General,
+  label="Weighting file from 2000 block groups to Bridge Park Area",
+  sortby=bridgepk,
+  restrictions=None,
+  revisions=New File.
+  )

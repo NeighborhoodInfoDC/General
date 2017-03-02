@@ -19,7 +19,7 @@
 
 ** Create data set **;
 
-data General.Bridgepk (label="List of Bridge Park Areas");
+data Bridgepk (label="List of Bridge Park Areas");
 
   input bridgepk $1. BParea_name & $25.;
 
@@ -35,6 +35,16 @@ datalines;
 ;
   
 run;
+
+%Finalize_data_set( 
+  data=Bridgepk,
+  out=Bridgepk,
+  outlib=General,
+  label="List of Bridge Park Areas",
+  sortby=bridgepk,
+  restrictions=None,
+  revisions=New File.
+  )
 
 proc sort data=General.Bridgepk;
   by bridgepk;
