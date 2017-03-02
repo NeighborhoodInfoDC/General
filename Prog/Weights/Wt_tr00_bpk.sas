@@ -23,6 +23,7 @@ options mprint symbolgen mlogic;
 %Calc_weights_from_blocks( 
   geo1 = Geo2000, 
   geo2 = bridgepk,
+  outlib = Work,
   out_ds = Wt_tr00_bpk,
   block_corr_ds = General.Block00_bpk, 
   block = GeoBlk2000,         
