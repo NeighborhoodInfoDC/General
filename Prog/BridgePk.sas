@@ -9,13 +9,14 @@
  
  Description:  Bridge Park area names data set and formats.
 
- Modifications:
+ Modifications: 03/07/17 RP Fixed code that was returning errors when 
+							batch sumbitting on L.
 **************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-%DCData_lib( General )
+%DCData_lib( General );
 
 ** Create data set **;
 
@@ -36,18 +37,10 @@ datalines;
   
 run;
 
-%Finalize_data_set( 
-  data=Bridgepk,
-  out=Bridgepk,
-  outlib=General,
-  label="List of Bridge Park Areas",
-  sortby=bridgepk,
-  restrictions=None,
-  revisions=New File.
-  )
 
-proc sort data=General.Bridgepk;
+proc sort data=Bridgepk;
   by bridgepk;
+run;
 
 ** Create formats **;
 
@@ -56,7 +49,7 @@ proc sort data=General.Bridgepk;
 %Data_to_format(
   FmtLib=General,
   FmtName=$bpka,
-  Data=General.Bridgepk,
+  Data=Bridgepk,
   Value=bridgepk,
   Label=BParea_name,
   OtherLabel=,
@@ -64,7 +57,7 @@ proc sort data=General.Bridgepk;
   MaxLen=.,
   MinLen=.,
   Print=Y
-  )
+  );
 
 ** $bpkv:  
 ** Validation format - returns Bridge Park number if valid, blank otherwise **;
@@ -72,7 +65,7 @@ proc sort data=General.Bridgepk;
 %Data_to_format(
   FmtLib=General,
   FmtName=$bpkv,
-  Data=General.Bridgpk,
+  Data=Bridgepk,
   Value=bridgepk,
   Label=bridgepk,
   OtherLabel='',
@@ -80,7 +73,7 @@ proc sort data=General.Bridgepk;
   MaxLen=.,
   MinLen=.,
   Print=Y
-  )
+  );
 
 
 proc catalog catalog=general.formats entrytype=formatc;
@@ -91,9 +84,24 @@ proc catalog catalog=general.formats entrytype=formatc;
 
 ** Add $bpka format to data set **;
 
-proc datasets library=General nolist memtype=(data);
+proc datasets library=Work nolist memtype=(data);
   modify bridgepk;
     format bridgepk $bpka.;
 quit;
 
+** Save final dataset to SAS1 **;
+
+%Finalize_data_set( 
+  data=Bridgepk,
+  out=Bridgepk,
+  outlib=General,
+  label="List of Bridge Park Areas",
+  sortby=bridgepk,
+  restrictions=None,
+  revisions=New File.
+  );
+
 %file_info( data=General.Bridgepk, printobs=0, stats= )
+
+
+/* End of Program */
