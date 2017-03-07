@@ -25,12 +25,15 @@
                 Added validation format for EOR.
   02/14/17 JD	Updated to run on L:\ Drive.
 				Added new geo: Bridge Park.
+  03/07/17 RP   Updated code to remove the DDE. Geographic Levels file must 
+				first be converted to a SAS dataset in StatTransfer. 
 **************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( General );
+libname doc 'L:\Libraries\General\Doc';
 
 /** Macro Create_format - Start Definition **/
 
@@ -39,7 +42,8 @@
 %let start_row = 5;
 %let end_row = 28;
 
-filename xlsFileA dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c5:r&end_row.c5" lrecl=1000 notab;
+/* Old DDE Code Commented Out */
+/*filename xlsFileA dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c5:r&end_row.c5" lrecl=1000 notab;
 filename xlsFileb dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c&col:r&end_row.c&col" lrecl=1000 notab;
 
 data FmtIn (compress=no);
@@ -56,7 +60,29 @@ data FmtIn (compress=no);
   
   if xValue not in ( "", "-" );
   
+run;*/
+
+/* Updated code for StatTransfer */
+
+data xlsFileA;
+	set doc.geolevels;
+	if &start_row. <= _n_ <= &end_row.;
+	keep c5;
+	rename c5 = VarName;
 run;
+
+data xlsFileb;
+	set doc.geolevels;
+	if &start_row. <= _n_ <= &end_row.;
+	keep c&col.;
+	rename c&col. = xValue;
+run;
+
+data FmtIn;
+	merge xlsFileA xlsFileb;
+	if xValue not in ( "", "-" );
+run;
+
 
 %Data_to_format(
   FmtLib=General,
@@ -126,6 +152,6 @@ run;
 
 proc catalog catalog=General.formats;
   contents;
-
 quit;
 
+/* End of Program */
