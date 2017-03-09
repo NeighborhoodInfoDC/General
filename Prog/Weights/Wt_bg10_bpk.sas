@@ -26,7 +26,7 @@
   block_corr_ds = General.Block10_bpk, 
   block = GeoBlk2010,         
   block_pop_ds = Census.Census_pl_2010_dc (where=(sumlev='750')),  
-  block_pop_var = pop100, 
+  block_pop_var = p0010001, 
   block_pop_year = 2010
 )
 
