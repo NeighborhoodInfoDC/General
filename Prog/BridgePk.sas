@@ -16,7 +16,6 @@
 %include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-%DCData_lib( General );
 
 ** Create data set **;
 
