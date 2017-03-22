@@ -16,6 +16,7 @@
                (0 population) to 1 / number of geography splits.
   07/21/12 PAT No longer remove obs. where popwt = 0 and popwt_prop = 0 
                (causes problems when using pieces as weights).
+  02/02/17 JD  Added library option.
 **************************************************************************/
 
 /** Macro Calc_weights_from_blocks - Start Definition **/
@@ -23,6 +24,7 @@
 %macro Calc_weights_from_blocks( 
   geo1=,           /** Source geography **/
   geo2=,           /** Target geography **/
+  outlib=,		   /** Library, default General **/
   out_ds=,         /** Output data set name **/
   block_corr_ds=,  /** Block-to-geo correspondence data set **/
   block=,          /** Block ID variable **/
@@ -33,7 +35,10 @@
 
   %local geo1suf geo1name geo1dlbl geo1vfmt 
          geo2suf geo2name geo2dlvl geo2vfmt geo2fmt;
-  
+
+  ** Set output library **;
+  %if %length( &outlib ) = 0 %then %let outlib = General;
+
   %** Check geo parameters **;
   
   %let geo1 = %upcase( &geo1 );
@@ -101,7 +106,7 @@
   ;
   quit;
 
-  data General.&out_ds
+  data &outlib..&out_ds
       (label="Weighting file, &geo1dlbl to &geo2dlbl"
        sortedby=&geo1 &geo2
        compress=no);
@@ -136,14 +141,14 @@
   
   run;
   
-  %File_info( data=General.&out_ds, printobs=1000 )
+  %File_info( data=&outlib..&out_ds, printobs=1000 )
 
   %exit_macro:
 
   ** Cleanup temporary files **;
   
-  proc datasets library=work memtype=(data) nolist nowarn;
-    delete _Block_pop &out_ds;
+  /*proc datasets library=work memtype=(data) nolist nowarn;
+    delete _Block_pop &out_ds*/;
   quit;
 
 %mend Calc_weights_from_blocks;
