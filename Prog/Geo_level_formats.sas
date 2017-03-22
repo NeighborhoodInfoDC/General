@@ -32,7 +32,6 @@
 %include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-%DCData_lib( General );
 libname doc 'L:\Libraries\General\Doc';
 
 /** Macro Create_format - Start Definition **/
@@ -40,27 +39,7 @@ libname doc 'L:\Libraries\General\Doc';
 %macro Create_format( name=, col=, desc= );
 
 %let start_row = 5;
-%let end_row = 28;
-
-/* Old DDE Code Commented Out */
-/*filename xlsFileA dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c5:r&end_row.c5" lrecl=1000 notab;
-filename xlsFileb dde "excel|&_dcdata_path\General\Doc\[Geographic levels.xlsx]Sheet1!r&start_row.c&col:r&end_row.c&col" lrecl=1000 notab;
-
-data FmtIn (compress=no);
-
-  length VarName $ 40 xValue $ 200;
-
-  infile xlsFileA missover dsd dlm='09'x;
-  
-  input VarName;
-  
-  infile xlsFileB missover dsd dlm='09'x;
-  
-  input xValue;
-  
-  if xValue not in ( "", "-" );
-  
-run;*/
+%let end_row = 29;
 
 /* Updated code for StatTransfer */
 
