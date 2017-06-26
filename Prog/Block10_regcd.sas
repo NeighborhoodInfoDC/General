@@ -23,7 +23,7 @@ libname Cen2010m "&_dcdata_path\General\Maps\Census 2010";
 
 *options obs=50;
 
-data General.Block10_regcd 
+data Work.Block10_regcd 
   (label="Census 2010 blocks (GeoBlk2010) to Regional council district (councildist) correspondence file");
 
   set Cen2010m.Block10_regcd;
@@ -64,22 +64,22 @@ run;
 ** Each block should be assigned to only one geographic unit **;
 
 %Dup_check(
-  data=General.Block10_regcd,
+  data=Work.Block10_regcd,
   by=GeoBlk2010,
   id=councildist
 )
 
-proc sort data=General.Block10_regcd nodupkey;
+proc sort data=Work.Block10_regcd nodupkey;
   by GeoBlk2010;
 
-%File_info( data=General.Block10_regcd, stats=, freqvars=councildist  )
+%File_info( data=Work.Block10_regcd, stats=, freqvars=councildist  )
 
 ** Create correspondence format **;
 
 %Data_to_format(
   FmtLib=General,
   FmtName=$bk1regcd,
-  Data=General.Block10_regcd,
+  Data=Work.Block10_regcd,
   Value=GeoBlk2010,
   Label=councildist,
   OtherLabel="",
@@ -88,3 +88,12 @@ proc sort data=General.Block10_regcd nodupkey;
   Contents=Y
   )
 
+%Finalize_data_set( 
+  data=Block10_regcd,
+  out=Block10_regcd,
+  outlib=General,
+  label="Census 2010 blocks (GeoBlk2010) to Regional council district (councildist) correspondence file",
+  sortby=GeoBlk2010,
+  restrictions=None,
+  revisions=New File.
+  )

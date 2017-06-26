@@ -22,7 +22,7 @@
 
 *options obs=50;
 
-data General.Block00_regcd 
+data Work.Block00_regcd 
   (label="Census 2000 blocks (GeoBlk2000) to Regional council district (councildist) correspondence file");
 
   set OCTO.Block00_regcd;
@@ -63,15 +63,15 @@ run;
 ** Each block should be assigned to only one geographic unit **;
 
 %Dup_check(
-  data=General.Block00_regcd,
+  data=Work.Block00_regcd,
   by=GeoBlk2000,
   id=councildist
 )
 
-proc sort data=General.Block00_regcd nodupkey;
+proc sort data=Work.Block00_regcd nodupkey;
   by GeoBlk2000;
 
-%File_info( data=General.Block00_regcd, stats=, freqvars=councildist  )
+%File_info( data=Work.Block00_regcd, stats=, freqvars=councildist  )
 
 /*
 ** Delete old formats **;
@@ -86,7 +86,7 @@ quit;
 %Data_to_format(
   FmtLib=General,
   FmtName=$bk0regcd,
-  Data=General.Block00_regcd,
+  Data=Work.Block00_regcd,
   Value=GeoBlk2000,
   Label=councildist,
   OtherLabel="",
@@ -95,3 +95,12 @@ quit;
   Contents=Y
   )
 
+%Finalize_data_set( 
+  data=Block00_regcd,
+  out=Block00_regcd,
+  outlib=General,
+  label="Census 2000 blocks (GeoBlk2000) to Regional council district (councildist) correspondence file",
+  sortby=GeoBlk2000,
+  restrictions=None,
+  revisions=New File.
+  )
