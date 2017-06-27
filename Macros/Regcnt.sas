@@ -23,7 +23,7 @@
 
   ** geoid code **;
   
-  length &outvar $ 2;
+  length &outvar $ 5;
   
   &outvar = upcase( left( &invar ) );
 
