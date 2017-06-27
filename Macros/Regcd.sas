@@ -23,7 +23,7 @@
 
   ** regcd code **;
   
-  length &outvar $ 2;
+  length &outvar $ 4;
   
   &outvar = upcase( left( &invar ) );
 
