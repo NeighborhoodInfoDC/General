@@ -10,13 +10,19 @@
   Description:  Create weighting file for converting 2010 block groups to
   Regional counties.
 
-  Modifications:
+  Modifications: JD, 7/5/17:	Added data step to combine Census data
+								from DC, MD, and VA.
 ************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( Census )
+
+data combined_census_pl_2010;  
+	set Census.Census_pl_2010_dc Census.Census_pl_2010_md Census.Census_pl_2010_va;  
+run;  
+
 
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2010, 
@@ -25,7 +31,7 @@
   out_ds = Wt_bg10_regcnt,
   block_corr_ds = General.Block10_regcnt, 
   block = GeoBlk2010,         
-  block_pop_ds = Census.Census_pl_2010_dc (where=(sumlev='750')),  
+  block_pop_ds = combined_census_pl_2010 (where=(sumlev='750')),  
   block_pop_var = p0010001, 
   block_pop_year = 2010
 )
