@@ -10,7 +10,8 @@
   Description:  Create weighting file for converting 2000 block groups to
   Regional Council Districts.
 
-  Modifications:
+  Modifications: JD, 7/5/17:	Changed block_pop_ds to 2000 census data
+							from DC, MD, and VA. 
 ************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -25,8 +26,8 @@
   out_ds = Wt_bg00_regcd,
   block_corr_ds = General.Block00_regcd, 
   block = GeoBlk2000,         
-  block_pop_ds = Census.Cen2000_sf1_dc_blks,  
-  block_pop_var = pop100, 
+  block_pop_ds = Census.cen2000_nhgis_blks_dc_md_va_wv,  
+  block_pop_var = FXS001, 
   block_pop_year = 2000
 )
 
