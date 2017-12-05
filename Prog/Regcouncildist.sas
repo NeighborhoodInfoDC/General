@@ -169,10 +169,10 @@ quit;
   data=Regcouncildist,
   out=Regcouncildist,
   outlib=General,
-  label="List of Regional Council District Areas",
+  label="List of Regional Council District Areas in the Washington DC Metro Area",
   sortby=councildist,
   restrictions=None,
-  revisions=New File.
+  revisions=Updated to fix Prince Georges geography and add the rest of the MSA. 
   );
 
 %file_info( data=General.Regcouncildist, printobs=0, stats= )
