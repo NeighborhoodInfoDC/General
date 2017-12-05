@@ -43,7 +43,7 @@ CA01 Calvert County, 1st District
 CA02 Calvert County, 2nd District
 CA03 Calvert County, 3rd District
 CH99 Charles County
-FR99 Frederick County
+FD99 Frederick County
 MT01 Montgomery County, District 1
 MT02 Montgomery County, District 2
 MT03 Montgomery County, District 3
