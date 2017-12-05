@@ -1,5 +1,5 @@
 /**************************************************************************
- Program:  BridgePk.sas
+ Program:  Cluster2017.sas
  Library:  General
  Project:  NeighborhoodInfo DC
  Author:   Yipeng Su
@@ -89,12 +89,9 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$clus17a
-,
-  Data=Cluster2017
-,
-  Value=Cluster2017
-,
+  FmtName=$clus17a,
+  Data=Cluster2017,
+  Value=Cluster2017,
   Label=cluster2017_name,
   OtherLabel=,
   DefaultLen=.,
@@ -103,8 +100,8 @@ run;
   Print=Y
   );
 
-** $bpkv:  
-** Validation format - returns Bridge Park number if valid, blank otherwise **;
+** $clus17v:  
+** Validation format - returns Cluster2017 number if valid, blank otherwise **;
 
 %Data_to_format(
   FmtLib=General,
@@ -127,7 +124,7 @@ proc catalog catalog=general.formats entrytype=formatc;
   contents;
   quit;
 
-** Add $bpka format to data set **;
+** Add $clus17a format to data set **;
 
 proc datasets library=Work nolist memtype=(data);
   modify cluster2017;
