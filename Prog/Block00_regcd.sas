@@ -92,7 +92,7 @@ quit;
   OtherLabel="",
   Desc="Block 2000 to Regional council district correspondence",
   Print=N,
-  Contents=Y,
+  Contents=Y
   )
 
 %Finalize_data_set( 
