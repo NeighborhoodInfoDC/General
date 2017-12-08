@@ -7,7 +7,7 @@
   Version:  SAS 9.4
   Environment:  Windows
   
-  Description:  Create Census 2000 block to neighborhood cluster
+  Description:  Create Census 2000 block to cluster 2017
   correspondence file.
 
   Adds correspondence format $bk0cl7f. to local General library.
@@ -94,7 +94,7 @@ quit;
   Value=GeoBlk2000,
   Label=cluster2017,
   OtherLabel="",
-  Desc="Block 2000 to neighborhood cluster correspondence",
+  Desc="Block 2000 to cluster 2017 correspondence",
   Print=N,
   Contents=Y
   )
