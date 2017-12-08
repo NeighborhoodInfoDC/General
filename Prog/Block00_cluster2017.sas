@@ -22,7 +22,7 @@
 
 *options obs=50;
 
-data block00_cluster2017
+data General.block00_cluster2017
   (label="Census 2000 blocks (GeoBlk2000) to cluster 2017 (cluster2017) correspondence file");
 
   set OCTO.Block00_cluster2017;
@@ -66,16 +66,15 @@ run;
 ** Each block should be assigned to only one geographic unit **;
 
 %Dup_check(
-  data=Block00_cluster2017,
+  data=General.Block00_cluster2017,
   by=GeoBlk2000,
   id=cluster2017
 )
 
-proc sort data=block00_cluster2017 nodupkey;
+proc sort data=General.Block00_cluster2017 nodupkey;
   by GeoBlk2000;
-run;
 
-%File_info( data=Block00_cluster2017, stats=, freqvars=cluster2017  )
+%File_info( data=General.Block00_cluster2017, stats=, freqvars=cluster2017  )
 
 /*
 ** Delete old formats **;
@@ -89,26 +88,14 @@ quit;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$bk0cl7f,
-  Data=Block00_cluster2017,
+  FmtName=$bk0cl7f.
+,
+  Data=General.Block00_cluster2017,
   Value=GeoBlk2000,
   Label=cluster2017,
   OtherLabel="",
   Desc="Block 2000 to cluster 2017 correspondence",
   Print=N,
   Contents=Y
-  );
-
-
-%Finalize_data_set(
-    data=block00_cluster2017,
-    out=block00_cluster2017,
-    outlib=general,
-    label="Census 2000 blocks (GeoBlk2000) to cluster 2017 (cluster2017) correspondence file",
-    sortby=GeoBlk2000,
-    /** Metadata parameters **/
-    revisions=New file.,
-    /** File info parameters **/
-    printobs=5,
-    freqvars=
   )
+

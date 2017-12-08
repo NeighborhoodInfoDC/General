@@ -13,7 +13,7 @@
   Modifications:
 ************************************************************************/
 
-%include "L:\SAS\Inc\StdLocal.sas";
+%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
 
 ** Define libraries **;
 %DCData_lib( Census )
@@ -29,4 +29,3 @@
   block_pop_year = 2010
 )
 
-** End of program **;
