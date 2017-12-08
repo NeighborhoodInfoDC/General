@@ -43,7 +43,7 @@ data General.block00_cluster2017
     GEO2000 = "Full census tract ID (2000): ssccctttttt";
 
   ** cluster2017 var **;
-clusterID=substr(name,8,2);
+  clusterID=substr(name,8,2);
   %octo_cluster2017( check=y )
   
   label 

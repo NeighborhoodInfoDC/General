@@ -40,7 +40,8 @@ data Block10_Cluster2017
     Geo2010 = 'Full census tract ID (2010): ssccctttttt';
 
   ** Cluster code **;
-  
+  clusterID=substr(name,8,2);
+  Gis_id = clusterID;
   %Octo_cluster2017()
   
   label 
@@ -71,8 +72,8 @@ run;
 
 proc sort data=Block10_Cluster2017 nodupkey;
   by GeoBlk2010;
+run;
 
-%File_info( data=Block10_Cluster2017, stats=, freqvars=Cluster2017 )
 
 ** Create correspondence format **;
 
@@ -89,3 +90,15 @@ proc sort data=Block10_Cluster2017 nodupkey;
   Contents=Y
   )
 
+%Finalize_data_set(
+    data=block10_cluster2017,
+    out=block10_cluster2017,
+    outlib=general,
+    label="Census 2000 blocks (GeoBlk2000) to cluster 2017 (cluster2017) correspondence file",
+    sortby=GeoBlk2000,
+    /** Metadata parameters **/
+    revisions=New file.,
+    /** File info parameters **/
+    printobs=5,
+    freqvars=
+  )
