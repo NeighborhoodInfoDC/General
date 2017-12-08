@@ -140,10 +140,10 @@ quit;
   label="List of DC Neighborhood Clusters (2017)",
   sortby=cluster2017,
   restrictions=None,
-  revisions=New File.
+  revisions=New File.,
+  printobs=5,
+  freqvars=
   );
-
-%file_info( data=General.cluster2017, printobs=5, stats= )
 
 
 /* End of Program */
