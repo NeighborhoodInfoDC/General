@@ -4,7 +4,7 @@
   Project:  DC Data Warehouse
   Author:   J. Dev
   Created:  06/20/17
-  Version:  SAS 9.2
+  Version:  SAS 9.4
   Environment:  Windows
   
   Description:  Create weighting file for converting 2000 tracts to
@@ -12,6 +12,7 @@
 
   Modifications: JD, 7/5/17:	Changed block_pop_ds to 2000 census data
 							from DC, MD, and VA. 
+				12/9/17 LH Corrected PG Districts and added others in MSA
 ************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -40,5 +41,6 @@ options mprint symbolgen mlogic;
   label="Weighting file from 2000 tracts to Regional Council Districts",
   sortby=councildist,
   restrictions=None,
-  revisions=New File.
+  revisions=Corrected PG Districts and added others in MSA.,
+  stats=
   )
