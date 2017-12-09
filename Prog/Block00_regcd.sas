@@ -102,5 +102,6 @@ quit;
   label="Census 2000 blocks (GeoBlk2000) to Regional council district (councildist) correspondence file",
   sortby=GeoBlk2000,
   restrictions=None,
-  revisions=Corrected PG Districts and added others in MSA.
+  revisions=Corrected PG Districts and added others in MSA.,
+  stats=
   )
