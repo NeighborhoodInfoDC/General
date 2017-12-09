@@ -95,5 +95,6 @@ proc sort data=Work.Block10_regcd nodupkey;
   label="Census 2010 blocks (GeoBlk2010) to Regional council district (councildist) correspondence file",
   sortby=GeoBlk2010,
   restrictions=None,
-  revisions=Corrected PG Districts and added others in MSA.
+  revisions=Corrected PG Districts and added others in MSA.,
+  stats=
   )
