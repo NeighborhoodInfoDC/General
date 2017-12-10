@@ -21,7 +21,10 @@
 %DCData_lib( Census )
 
 data combined_census_pl_2010;
-      set Census.Census_pl_2010_dc Census.Census_pl_2010_md Census.Census_pl_2010_va;
+      set Census.Census_pl_2010_dc
+      	  Census.Census_pl_2010_md 
+      	  Census.Census_pl_2010_va
+      	  Census.Census_pl_2010_wv;
 run;
 
 %Calc_weights_from_blocks( 
