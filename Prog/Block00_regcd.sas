@@ -4,7 +4,7 @@
   Project:  Regional Racial Equity
   Author:   J. Dev
   Created:  06/20/17
-  Version:  SAS 9.2
+  Version:  SAS 9.4
   Environment:  Windows
   
   Description:  Create Census 2000 block to Regional Council District area
@@ -12,7 +12,7 @@
 
   Adds correspondence format $bk0regcd. to local General library.
 
-  Modifications:
+  Modifications: 12/6/17 LH Corrected PG Districts and added others in MSA
 ************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -102,5 +102,6 @@ quit;
   label="Census 2000 blocks (GeoBlk2000) to Regional council district (councildist) correspondence file",
   sortby=GeoBlk2000,
   restrictions=None,
-  revisions=New File.
+  revisions=Corrected PG Districts and added others in MSA.,
+  stats=
   )

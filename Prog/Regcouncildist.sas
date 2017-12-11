@@ -10,7 +10,8 @@
  Description:  Regional council District area names data set and formats.
 
  Modifications: 12/5/17 LH Added districts for Calvert, Fauquier, Loudoun,
-						   Prince William, Spotsylvania, and placeholders for others in 2015 MSA
+			Prince William, Spotsylvania, and placeholders for others in 2015 MSA
+		12/9/17 LH Updated Fauquier codes
 **************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -70,8 +71,8 @@ FF06 Fairfax County, Mount Vernon District
 FF07 Fairfax County, Providence District
 FF08 Fairfax County, Springfield District
 FF09 Fairfax County, Sully District
-FQ01 Fauquier County, Center District
-FQ02 Fauquier County, Cedar Run District
+FQ02 Fauquier County, Center District
+FQ01 Fauquier County, Cedar Run District
 FQ03 Fauquier County, Lee District
 FQ04 Fauquier County, Marshall District
 FQ05 Fauquier County, Scott District
@@ -172,7 +173,8 @@ quit;
   label="List of Regional Council District Areas in the Washington DC Metro Area",
   sortby=councildist,
   restrictions=None,
-  revisions=Updated to fix Prince Georges geography and add the rest of the MSA. 
+  revisions=Updated Fauquier codes. ,
+  stats=
   );
 
 %file_info( data=General.Regcouncildist, printobs=0, stats= )

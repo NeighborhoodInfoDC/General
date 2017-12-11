@@ -4,7 +4,7 @@
   Project:  Regional Racial Equity
   Author:   J. Dev
   Created:  06/20/17
-  Version:  SAS 9.2
+  Version:  SAS 9.4
   Environment:  Windows
   
   Description:  Create Census 2010 block to Regional council districts
@@ -12,7 +12,7 @@
 
   Adds correspondence format $bk1regcd. to local General library.
 
-  Modifications:
+  Modifications: 12/7/17 LH Corrected PG Districts and added others in MSA.
 ************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -95,5 +95,6 @@ proc sort data=Work.Block10_regcd nodupkey;
   label="Census 2010 blocks (GeoBlk2010) to Regional council district (councildist) correspondence file",
   sortby=GeoBlk2010,
   restrictions=None,
-  revisions=New File.
+  revisions=Corrected PG Districts and added others in MSA.,
+  stats=
   )

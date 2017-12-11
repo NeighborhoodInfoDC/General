@@ -4,7 +4,7 @@
   Project:  DC Data Warehouse
   Author:   J. Dev
   Created:  06/20/17
-  Version:  SAS 9.2
+  Version:  SAS 9.4
   Environment:  Windows
   
   Description:  Create weighting file for converting 2010 block groups to
@@ -12,6 +12,7 @@
 
   Modifications: JD, 6/28/17:	Added data step to combine Census data
 							from DC, MD, and VA. 
+		12/9/17 LH Corrected PG Districts and added others in MSA					
 ************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -20,7 +21,10 @@
 %DCData_lib( Census )
 
 data combined_census_pl_2010;
-      set Census.Census_pl_2010_dc Census.Census_pl_2010_md Census.Census_pl_2010_va;
+      set Census.Census_pl_2010_dc 
+		  Census.Census_pl_2010_md 
+		  Census.Census_pl_2010_va 
+		  Census.Census_pl_2010_wv;
 run;
 
 %Calc_weights_from_blocks( 
@@ -42,5 +46,6 @@ run;
   label="Weighting file from 2010 block groups to Regional Council Districts",
   sortby=councildist,
   restrictions=None,
-  revisions=New File.
+  revisions=Corrected PG Districts and added others in MSA.,
+  stats=
   )
