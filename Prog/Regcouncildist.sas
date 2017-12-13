@@ -63,15 +63,15 @@ PG09 Prince George's, District 9
 AR00 Arlington County
 CL99 Clarke County
 CU99 Culpeper County
-FF01 Fairfax, Braddock District
-FF02 Fairfax, Hunter Mill District
-FF03 Fairfax, Dranesville District
-FF04 Fairfax, Lee District
-FF05 Fairfax, Mason District
-FF06 Fairfax, Mount Vernon District
-FF07 Fairfax, Providence District
-FF08 Fairfax, Springfield District
-FF09 Fairfax, Sully District
+FF01 Fairfax County, Braddock District
+FF02 Fairfax County, Hunter Mill District
+FF03 Fairfax County, Dranesville District
+FF04 Fairfax County, Lee District
+FF05 Fairfax County, Mason District
+FF06 Fairfax County, Mount Vernon District
+FF07 Fairfax County, Providence District
+FF08 Fairfax County, Springfield District
+FF09 Fairfax County, Sully District
 FQ02 Fauquier, Center District
 FQ01 Fauquier, Cedar Run District
 FQ03 Fauquier, Lee District
