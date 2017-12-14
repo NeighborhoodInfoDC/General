@@ -12,6 +12,7 @@
  Modifications: 12/5/17 LH Added districts for Calvert, Fauquier, Loudoun,
 			Prince William, Spotsylvania, and placeholders for others in 2015 MSA
 		12/9/17 LH Updated Fauquier codes
+		12/13/17 RP Shorted RCDarea_name to be less than 32 characters
 **************************************************************************/
 
 %include "L:\SAS\Inc\StdLocal.sas";
@@ -40,25 +41,25 @@ DC05 DC, Ward 5
 DC06 DC, Ward 6
 DC07 DC, Ward 7
 DC08 DC, Ward 8
-CA01 Calvert County, 1st District
-CA02 Calvert County, 2nd District
-CA03 Calvert County, 3rd District
+CA01 Calvert, 1st District
+CA02 Calvert, 2nd District
+CA03 Calvert, 3rd District
 CH99 Charles County
 FD99 Frederick County
-MT01 Montgomery County, District 1
-MT02 Montgomery County, District 2
-MT03 Montgomery County, District 3
-MT04 Montgomery County, District 4
-MT05 Montgomery County, District 5
-PG01 Prince George's County, District 1
-PG02 Prince George's County, District 2
-PG03 Prince George's County, District 3
-PG04 Prince George's County, District 4
-PG05 Prince George's County, District 5
-PG06 Prince George's County, District 6
-PG07 Prince George's County, District 7
-PG08 Prince George's County, District 8
-PG09 Prince George's County, District 9
+MT01 Montgomery, District 1
+MT02 Montgomery, District 2
+MT03 Montgomery, District 3
+MT04 Montgomery, District 4
+MT05 Montgomery, District 5
+PG01 Prince George's, District 1
+PG02 Prince George's, District 2
+PG03 Prince George's, District 3
+PG04 Prince George's, District 4
+PG05 Prince George's, District 5
+PG06 Prince George's, District 6
+PG07 Prince George's, District 7
+PG08 Prince George's, District 8
+PG09 Prince George's, District 9
 AR00 Arlington County
 CL99 Clarke County
 CU99 Culpeper County
@@ -71,34 +72,34 @@ FF06 Fairfax County, Mount Vernon District
 FF07 Fairfax County, Providence District
 FF08 Fairfax County, Springfield District
 FF09 Fairfax County, Sully District
-FQ02 Fauquier County, Center District
-FQ01 Fauquier County, Cedar Run District
-FQ03 Fauquier County, Lee District
-FQ04 Fauquier County, Marshall District
-FQ05 Fauquier County, Scott District
-LD01 Loudoun County, Dulles District
-LD02 Loudoun County, Algonkian District
-LD03 Loudoun County, Blue Ridge District
-LD04 Loudoun County, Catoctin District
-LD05 Loudoun County, Leesburg District
-LD06 Loudoun County, Broad Run District
-LD07 Loudoun County, Sterling District
-LD08 Loudoun County, Ashburn District
-PW05 Prince William County, Brentsville District
-PW10 Prince William County, Coles District
-PW20 Prince William County, Gainesville District
-PW27 Prince William County, Neabsco District
-PW30 Prince William County, Occoquan District
-PW15 Prince William County, Potomac District
-PW35 Prince William County, Woodbridge District
+FQ02 Fauquier, Center District
+FQ01 Fauquier, Cedar Run District
+FQ03 Fauquier, Lee District
+FQ04 Fauquier, Marshall District
+FQ05 Fauquier, Scott District
+LD01 Loudoun, Dulles District
+LD02 Loudoun, Algonkian District
+LD03 Loudoun, Blue Ridge District
+LD04 Loudoun, Catoctin District
+LD05 Loudoun, Leesburg District
+LD06 Loudoun, Broad Run District
+LD07 Loudoun, Sterling District
+LD08 Loudoun, Ashburn District
+PW05 Prince William, Brentsville District
+PW10 Prince William, Coles District
+PW20 Prince William, Gainesville District
+PW27 Prince William, Neabsco District
+PW30 Prince William, Occoquan District
+PW15 Prince William, Potomac District
+PW35 Prince William, Woodbridge District
 RH99 Rappahannock County
-SP01 Spotsylvania County, Battlefield District
-SP02 Spotsylvania County, Berkeley District
-SP03 Spotsylvania County, Chancellor District
-SP04 Spotsylvania County, Courtland District
-SP05 Spotsylvania County, Lee Hill District
-SP06 Spotsylvania County, Livingston District
-SP07 Spotsylvania County, Salem District
+SP01 Spotsylvania, Battlefield District
+SP02 Spotsylvania, Berkeley District
+SP03 Spotsylvania, Chancellor District
+SP04 Spotsylvania, Courtland District
+SP05 Spotsylvania, Lee Hill District
+SP06 Spotsylvania, Livingston District
+SP07 Spotsylvania, Salem District
 ST99 Stafford County
 WA99 Warren County
 AL00 Alexandria
