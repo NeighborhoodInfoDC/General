@@ -94,8 +94,8 @@ run;
     data=block10_cluster2017,
     out=block10_cluster2017,
     outlib=general,
-    label="Census 2000 blocks (GeoBlk2000) to cluster 2017 (cluster2017) correspondence file",
-    sortby=GeoBlk2000,
+    label="Census 2010 blocks (GeoBlk2010) to cluster 2017 (cluster2017) correspondence file",
+    sortby=GeoBlk2010,
     /** Metadata parameters **/
     revisions=New file.,
     /** File info parameters **/
