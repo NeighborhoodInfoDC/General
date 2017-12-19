@@ -31,7 +31,7 @@
   
     %** Check that new values are valid **;
     
-    if put( &outvar, $cluster2017v. ) = '' then do;
+    if put( &outvar, $clus17v. ) = '' then do;
       %warn_put( macro=Octo_cluster2017, msg="Invalid 2017 cluster ID: " _n_= &invar= &outvar= )
     end;
     
