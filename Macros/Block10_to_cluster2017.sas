@@ -14,11 +14,11 @@
 
 %macro Block10_to_cluster2017( invar=geoblk2010, outvar=cluster2017, format=Y );
 
-  length &outvar $ 1;
+  length &outvar $ 2;
   
   &outvar = put( &invar, $bk1cl7f. );
   
-  label &outvar = "Regional council districts (2017)";
+  label &outvar = "Neighborhood Clusters (2017)";
   
   %if %upcase( &format ) = Y %then %do;
     format &outvar $clus17a.;
