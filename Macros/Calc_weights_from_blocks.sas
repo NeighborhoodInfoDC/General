@@ -17,6 +17,7 @@
   07/21/12 PAT No longer remove obs. where popwt = 0 and popwt_prop = 0 
                (causes problems when using pieces as weights).
   02/02/17 JD  Added library option.
+  12/27/17 RP  Replaced %File_info() with %Finalize_data_set().
 **************************************************************************/
 
 /** Macro Calc_weights_from_blocks - Start Definition **/
@@ -106,7 +107,7 @@
   ;
   quit;
 
-  data &outlib..&out_ds
+  data &out_ds.
       (label="Weighting file, &geo1dlbl to &geo2dlbl"
        sortedby=&geo1 &geo2
        compress=no);
@@ -141,7 +142,16 @@
   
   run;
   
-  %File_info( data=&outlib..&out_ds, printobs=1000 )
+  %Finalize_data_set( 
+  data=&out_ds.,
+  out=&out_ds.,
+  outlib=&outlib.,
+  label="Weighting file, &geo1dlbl to &geo2dlbl",
+  sortby=&geo1. &geo2.,
+  restrictions=None,
+  revisions=Revised weights.,
+  stats=
+  )
 
   %exit_macro:
 
