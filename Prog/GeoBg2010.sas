@@ -10,27 +10,34 @@
  Description:  2010 Census block group data set and formats.
 
  Modifications:
+  RP 12/28/17 - Updated to run for entire Metro Area.
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
+%DCData_lib( Census )
 
-filename BGPly  "&_dcdata_path\OCTO\Raw\BlockGroupPly.csv" lrecl=256;
+** Revisions to the file **;
+%let revisions = Added MD VA and WV tracts. ;
+
+
+** Combined metro BG data **;
+data census_pl_2010_dmvw;
+	set census.census_pl_2010_dc census.census_pl_2010_md
+		census.census_pl_2010_va census.census_pl_2010_wv;
+	if sumlev = "150";
+	keep state county tract blkgrp;
+run;
+
+
 
 data GeoBg2010;
-
-  infile BGPly dsd stopover firstobs=2;
-
-  input
-    Tract : $6.
-    BlkGrp : $1.
-    Shape_area
-    Shape_len;
+	set census_pl_2010_dmvw;
 
   length Geo2010 $ 11 GeoBg2010 $ 12;
   
-  Geo2010 = '11001' || Tract;
+  Geo2010 = state || county || Tract;
   GeoBg2010 = Geo2010 || BlkGrp;
   
   label
@@ -39,15 +46,20 @@ data GeoBg2010;
     Geo2010 = 'Full census tract ID (2010): ssccctttttt'
     Blkgrp = 'Census block group number (2010)';
   
-  drop Shape_: ;
   
 run;
 
-proc sort data=GeoBg2010 out=General.GeoBg2010 (label='List of DC census block groups (2010)');
-  by GeoBg2010;
-run;
 
-%File_info( data=General.GeoBg2010, printobs=40, stats= )
+%Finalize_data_set( 
+data=GeoBg2010,
+out=GeoBg2010,
+outlib=General,
+label="List of DC, MD, VA, WV census block groups (2010)",
+sortby=GeoBg2010,
+restrictions=None,
+revisions=%str(&revisions.)
+);
+
 
 **** Create formats ****;
 
