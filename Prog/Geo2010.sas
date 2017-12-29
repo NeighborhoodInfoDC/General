@@ -124,7 +124,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo10so,
-  Data=General.Geo2010,
+  Data=General.Geo2010 (where=(state="11")),
   Value=Geo2010,
   Label=tract,
   OtherLabel=' ',
@@ -139,7 +139,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo10os,
-  Data=General.Geo2010,
+  Data=General.Geo2010 (where=(state="11")),
   Value=tract,
   Label=Geo2010,
   OtherLabel=' ',
@@ -154,7 +154,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo10sd,
-  Data=General.Geo2010,
+  Data=General.Geo2010 (where=(state="11")),
   Value=Geo2010,
   Label=tract_dc,
   OtherLabel=' ',
@@ -169,7 +169,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo10ds,
-  Data=General.Geo2010,
+  Data=General.Geo2010 (where=(state="11")),
   Value=tract_dc,
   Label=Geo2010,
   OtherLabel=' ',
