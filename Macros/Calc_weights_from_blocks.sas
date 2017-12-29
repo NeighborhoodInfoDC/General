@@ -31,7 +31,8 @@
   block=,          /** Block ID variable **/
   block_pop_ds=,   /** Block population data set **/
   block_pop_var=,  /** Block population variable **/
-  block_pop_year=  /** Block population year **/
+  block_pop_year=, /** Block population year **/
+  revisions=	   /** Revisions to the final file **/
   );
 
   %local geo1suf geo1name geo1dlbl geo1vfmt 
@@ -149,8 +150,7 @@
   label="Weighting file, &geo1dlbl to &geo2dlbl",
   sortby=&geo1. &geo2.,
   restrictions=None,
-  revisions=Revised weights.,
-  stats=
+  revisions=%str(&revisions.)
   )
 
   %exit_macro:
