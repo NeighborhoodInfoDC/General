@@ -9,23 +9,30 @@
  
  Description:  Create Census tract 2010 list and formats.
 
- Modifications:
+ Modifications: RP 12/28/17 - Updated to run for entire Metro Area.
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
+%DCData_lib( Census )
 
-filename TractPly  "&_dcdata_path\OCTO\Raw\TractPly.csv" lrecl=256;
+
+** Revisions to the file **;
+%let revisions = Added MD VA and WV tracts. ;
+
+
+** Combined metro area tract data **;
+data census_pl_2010_dmvw;
+	set census.census_pl_2010_dc census.census_pl_2010_md
+		census.census_pl_2010_va census.census_pl_2010_wv;
+	if sumlev = "140";
+	keep state county tract;
+run;
+
 
 data Geo2010;
-
-  infile TractPly dsd stopover firstobs=2;
-
-  input
-    Tract : $6.
-    Shape_area
-    Shape_len;
+	set census_pl_2010_dmvw;
 
   length Tract6 $ 6;
   
@@ -35,7 +42,7 @@ data Geo2010;
 
   length Geo2010 $ 11;
   
-  Geo2010 = '11001' || Tract6;
+  Geo2010 = state || county || Tract6;
 
   decpart = ntract - int( ntract );
   
@@ -43,8 +50,11 @@ data Geo2010;
     tract4_2 = left( put( ntract, best. ) );
   else 
     tract4_2 = left( put( ntract, 7.2 ) );
-  
-  tract_num =  'Tract ' || tract4_2;
+
+  if state = '11' then tract_num =  'DC Tract ' || tract4_2;
+  else if state = '24' then tract_num =  'MD Tract ' || tract4_2;
+  else if state = '51' then tract_num =  'VA Tract ' || tract4_2;
+  else if state = '54' then tract_num =  'WV Tract ' || tract4_2;
 
   ** DC tract identifiers **;
   
@@ -60,18 +70,21 @@ data Geo2010;
     tract4_2 = 'Census tract (2010): tt.tt'
     tract_dc = 'Census tract (2010): DC format: tt.t'
     tract = 'Census tract (2010): DC OCTO format: tttttt'
-    tract_num = 'Census tract (2010): Tract tt.tt'
+    tract_num = 'Census tract (2010): [State] Tract tt.tt'
   ;
 
-  drop shape_: decpart;
-
 run;
 
-proc sort data=Geo2010 out=General.Geo2010 (label='List of DC census tracts (2010)');
-  by Geo2010;
-run;
 
-%File_info( data=General.Geo2010, printobs=180, stats= )
+%Finalize_data_set( 
+data=Geo2010,
+out=Geo2010,
+outlib=General,
+label="List of DC, MD, VA, WV census tracts (2010)",
+sortby=Geo2010,
+restrictions=None,
+revisions=%str(&revisions.)
+);
 
 
 **** Create formats ****;
