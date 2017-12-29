@@ -14,34 +14,28 @@
   02/17/06  Revised conversion formats for OCTO & DC style tract names.
             Now draws NCDB data directly from Alpha library.
   10/20/09  Added new format geo00b.
+  12/28/17  Updated to run for entire Metro Area. -RP
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
-%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( NCDB )
 
+%let revisions = Added MD VA and WV tracts. ;
+
 ** Get list of tracts from NCDB **;
 
-rsubmit;
+data Ncdb_tracts ;
 
-data Ncdb_tracts (compress=no);
-
-  set Ncdb.Ncdb_lf_2000_dc (keep=geo2000);
+  set Ncdb.Ncdb_lf_2000 ;
+  if statecd in ("11","24","51","54");
+  keep statecd councd geo2000;
   
 run;
 
-proc download status=no
-  data=Ncdb_tracts 
-  out=Ncdb_tracts (compress=no);
 
-run;
-
-endrsubmit;
-
-
-data General.Geo2000 (label="List of DC census tracts (2000)");
+data Geo2000 ;
 
   set Ncdb_tracts;
   
@@ -58,6 +52,11 @@ data General.Geo2000 (label="List of DC census tracts (2000)");
     tract4_2 = left( put( ntract, 7.2 ) );
   
   tract_num =  'Tract ' || tract4_2;
+
+  if statecd = '11' then tract_num =  'DC Tract ' || tract4_2;
+  else if statecd = '24' then tract_num =  'MD Tract ' || councd || tract4_2;
+  else if statecd = '51' then tract_num =  'VA Tract ' || councd || tract4_2;
+  else if statecd = '54' then tract_num =  'WV Tract ' || councd || tract4_2;
 
   ** DC tract identifiers **;
   
@@ -84,19 +83,23 @@ data General.Geo2000 (label="List of DC census tracts (2000)");
     tract4_2 = 'Census tract (2000):  tt.tt'
     tract_dc = 'Census tract (2000):  DC format:  tt.t'
     tract_octo = 'Census tract (2000):  DC OCTO Name:  2000 Tract tt.tt'
-    tract_num = 'Census tract (2000):  Tract tt.tt'
+    tract_num = 'Census tract (2000):  [State] Tract tt.tt'
   ;
   
   drop decpart;
   
 run;
 
-proc sort data=General.Geo2000;
-  by Geo2000;
 
-%file_info( data=General.Geo2000, printobs=190, stats= )
-
-run;
+%Finalize_data_set( 
+data=Geo2000,
+out=Geo2000,
+outlib=General,
+label="List of DC, MD, VA, WV census tracts (2000)",
+sortby=Geo2000,
+restrictions=None,
+revisions=%str(&revisions.)
+);
 
 
 **** Create formats ****;
@@ -136,7 +139,7 @@ run;
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo00so,
-  Data=General.Geo2000,
+  Data=General.Geo2000 (where=(statecd="11")),
   Value=Geo2000,
   Label=tract_octo,
   OtherLabel=' ',
@@ -151,7 +154,7 @@ run;
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo00os,
-  Data=General.Geo2000,
+  Data=General.Geo2000 (where=(statecd="11")),
   Value=tract_octo,
   Label=Geo2000,
   OtherLabel=' ',
@@ -166,7 +169,7 @@ run;
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo00sd,
-  Data=General.Geo2000,
+  Data=General.Geo2000 (where=(statecd="11")),
   Value=Geo2000,
   Label=tract_dc,
   OtherLabel=' ',
@@ -181,7 +184,7 @@ run;
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo00ds,
-  Data=General.Geo2000,
+  Data=General.Geo2000 (where=(statecd="11")),
   Value=tract_dc,
   Label=Geo2000,
   OtherLabel=' ',

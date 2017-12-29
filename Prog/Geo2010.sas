@@ -73,6 +73,8 @@ data Geo2010;
     tract_num = 'Census tract (2010): [State] Tract tt.tt'
   ;
 
+  drop decpart;
+
 run;
 
 
