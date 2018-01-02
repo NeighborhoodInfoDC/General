@@ -11,44 +11,41 @@
 
  Modifications:
   07/10/12 PAT Add vars Geo2000, GeoBg2000, and City.
+  12/28/17  Updated to run for entire Metro Area. -RP
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
-%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( Census )
 
+%let revisions = Added MD VA and WV tracts. ;
+
 ** Get list of tracts from NCDB **;
 
-rsubmit;
 
-data Census_blocks (compress=no);
-
-  set Census.Cen2000_sf1_dc_blks (keep=GeoBlk2000);
-  
+data cen2000_sf1_all_blks;
+	set Census.Cen2000_sf1_dc_blks Census.Cen2000_sf1_md_blks
+	    Census.Cen2000_sf1_va_blks Census.Cen2000_sf1_wv_blks;
+	keep state cnty GeoBlk2000;
 run;
 
-proc download status=no
-  data=Census_blocks 
-  out=Census_blocks (compress=no);
 
-run;
+data GeoBlk2000 (label="List of DC census blocks (2000)");
 
-endrsubmit;
-
-data General.GeoBlk2000 (label="List of DC census blocks (2000)");
-
-  set Census_blocks;
+  set cen2000_sf1_all_blks;
   
   length block_num $ 30;
   
   block_num = trim( put( substr( geoblk2000, 1, 11 ), $geo00a. ) ) || ', block ' || 
               substr( geoblk2000, 12, 4 );
+
+
   
   label block_num = 'Census block (2000):  Tract tt.tt, block bbbb';
   
-  %Geoblk2000_Octo()
+  *%Geoblk2000_Octo();
+
   
   length Geo2000 $ 11 GeoBg2000 $ 12;
   
@@ -59,22 +56,20 @@ data General.GeoBlk2000 (label="List of DC census blocks (2000)");
     GeoBg2000 = 'Full census block group ID (2000): sscccttttttb'
     Geo2000 = 'Full census tract ID (2000): ssccctttttt';  
 
-  ** Add City var **;
-
-  length City $ 1;
-
-  retain City "1";
-  
-  label City = "Washington, D.C.";
-  
-  format City $city.;
 
 run;
 
-proc sort data=General.GeoBlk2000;
-  by GeoBlk2000;
+%Finalize_data_set( 
+data=GeoBlk2000,
+out=GeoBlk2000,
+outlib=General,
+label="List of DC, MD, VA, WV census blocks (2000)",
+sortby=GeoBlk2000,
+restrictions=None,
+revisions=%str(&revisions.)
+);
 
-run;
+
 
 **** Create formats ****;
 
@@ -117,7 +112,7 @@ run;
   FmtLib=General,
   FmtName=$blk00so,
   Desc="Blocks (2000), standard to OCTO",
-  Data=General.GeoBlk2000,
+  Data=General.GeoBlk2000 (where=(statecd="11")),
   Value=GeoBlk2000,
   Label=cjrTractBl,
   OtherLabel=' ',
@@ -133,7 +128,7 @@ run;
   FmtLib=General,
   FmtName=$blk00os,
   Desc="Blocks (2000), OCTO to standard",
-  Data=General.GeoBlk2000,
+  Data=General.GeoBlk2000 (where=(statecd="11")),
   Value=cjrTractBl,
   Label=GeoBlk2000,
   OtherLabel=' ',
@@ -157,8 +152,5 @@ proc datasets library=General nolist memtype=(data);
     format geobg2000 $bg00a. geo2000 $geo00a. GeoBlk2000 $blk00a.;
 quit;
 
-%file_info( data=General.GeoBlk2000, printobs=40, stats= )
 
-run;
 
-signoff;

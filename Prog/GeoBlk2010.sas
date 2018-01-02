@@ -11,28 +11,34 @@
 
  Modifications:
   07/09/12 PAT Added City var to file (needed for block-correspondence).
+  RP 12/28/17 - Updated to run for entire Metro Area.
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
+%DCData_lib( Census )
 
-filename BlkPly  "&_dcdata_path\OCTO\Raw\BlockPly.csv" lrecl=256;
+
+** Revisions to the file **;
+%let revisions = Added MD VA and WV tracts. ;
+
+
+** Combined metro area tract data **;
+data census_pl_2010_dmvw;
+	set census.census_pl_2010_dc census.census_pl_2010_md
+		census.census_pl_2010_va census.census_pl_2010_wv;
+	if sumlev = "750";
+	keep state county tract blkgrp block;
+run;
+
 
 data GeoBlk2010;
-
-  infile BlkPly dsd stopover firstobs=2;
-
-  input
-    Tract : $6.
-    BlkGrp : $1.
-    Block : $4.
-    Shape_area
-    Shape_len;
+	set census_pl_2010_dmvw;
 
   length Geo2010 $ 11 GeoBg2010 $ 12 GeoBlk2010 $ 15;
   
-  Geo2010 = '11001' || Tract;
+  Geo2010 = state || county || Tract;
   GeoBg2010 = Geo2010 || BlkGrp;
   GeoBlk2010 = Geo2010 || Block;
   
@@ -49,24 +55,19 @@ data GeoBlk2010;
     Blkgrp = 'Census block group number (2010)'
     Block = 'Census block number (2010): bbbb'
     block_num = 'Census block (2010):  Tract tt.tt, block bbbb';
-
-  ** Add City var **;
-
-  length City $ 1;
-
-  retain City "1";
-  
-  label City = "Washington, D.C.";
-  
-  format City $city.;
-
-  drop Shape_: ;
   
 run;
 
-proc sort data=GeoBlk2010 out=General.GeoBlk2010 (label='List of DC census blocks (2010)');
-  by GeoBlk2010;
-run;
+
+%Finalize_data_set( 
+data=GeoBlk2010,
+out=GeoBlk2010,
+outlib=General,
+label="List of DC, MD, VA, WV census blocks (2010)",
+sortby=GeoBlk2010,
+restrictions=None,
+revisions=%str(&revisions.)
+);
 
 
 **** Create formats ****;
@@ -117,5 +118,5 @@ proc datasets library=General nolist memtype=(data);
     format geobg2010 $bg10a. geo2010 $geo10a. GeoBlk2010 $blk10a.;
 quit;
 
-%File_info( data=General.GeoBlk2010, printobs=40, stats= )
+
 

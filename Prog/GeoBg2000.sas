@@ -10,21 +10,31 @@
  Description:  2000 Census block group data set and formats.
 
  Modifications:
+  12/28/17  Updated to run for entire Metro Area. -RP
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
-%include "K:\Metro\PTatian\DCData\SAS\Inc\AlphaSignon.sas" /nosource2;
+%include "L:\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( Census )
 
+%let revisions = Added MD VA and WV tracts. ;
+
+
+data cen2000_sf1_all_blks;
+	set Census.Cen2000_sf1_dc_blks Census.Cen2000_sf1_md_blks
+	    Census.Cen2000_sf1_va_blks Census.Cen2000_sf1_wv_blks;
+	keep state cnty GeoBlk2000;
+run;
+
+
+
 ** Get list of tracts from NCDB **;
 
-rsubmit;
 
 data GeoBg2000;
 
-  set Census.Cen2000_sf1_dc_blks (keep=GeoBlk2000);
+  set cen2000_sf1_all_blks;
 
   length GeoBg2000 $ 12;
   
@@ -48,20 +58,17 @@ data GeoBg2000;
   
 run;
 
-proc download status=no
-  data=GeoBg2000 
-  out=GeoBg2000 (compress=no);
 
-run;
+%Finalize_data_set( 
+data=GeoBg2000,
+out=GeoBg2000,
+outlib=General,
+label="List of DC, MD, VA, WV census block groups (2000)",
+sortby=GeoBg2000,
+restrictions=None,
+revisions=%str(&revisions.)
+);
 
-endrsubmit;
-
-proc sort data=GeoBg2000 out=General.GeoBg2000 (label="List of DC census block groups (2000)") nodupkey;
-  by GeoBg2000;
-
-%file_info( data=General.GeoBg2000, printobs=40, stats= )
-
-run;
 
 **** Create formats ****;
 
@@ -102,4 +109,4 @@ proc catalog catalog=general.formats;
   contents;
 quit;
 
-signoff;
+
