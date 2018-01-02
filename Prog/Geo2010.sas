@@ -52,9 +52,9 @@ data Geo2010;
     tract4_2 = left( put( ntract, 7.2 ) );
 
   if state = '11' then tract_num =  'DC Tract ' || tract4_2;
-  else if state = '24' then tract_num =  'MD Tract ' || county || tract4_2;
-  else if state = '51' then tract_num =  'VA Tract ' || county || tract4_2;
-  else if state = '54' then tract_num =  'WV Tract ' || county || tract4_2;
+  else if state = '24' then tract_num =  'MD Tract ' || county || ' ' || tract4_2;
+  else if state = '51' then tract_num =  'VA Tract ' || county || ' ' || tract4_2;
+  else if state = '54' then tract_num =  'WV Tract ' || county || ' ' || tract4_2;
 
   ** DC tract identifiers **;
   

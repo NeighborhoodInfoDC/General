@@ -54,9 +54,9 @@ data Geo2000 ;
   tract_num =  'Tract ' || tract4_2;
 
   if statecd = '11' then tract_num =  'DC Tract ' || tract4_2;
-  else if statecd = '24' then tract_num =  'MD Tract ' || councd || tract4_2;
-  else if statecd = '51' then tract_num =  'VA Tract ' || councd || tract4_2;
-  else if statecd = '54' then tract_num =  'WV Tract ' || councd || tract4_2;
+  else if statecd = '24' then tract_num =  'MD Tract ' || councd || ' ' || tract4_2;
+  else if statecd = '51' then tract_num =  'VA Tract ' || councd || ' ' || tract4_2;
+  else if statecd = '54' then tract_num =  'WV Tract ' || councd || ' ' || tract4_2;
 
   ** DC tract identifiers **;
   
