@@ -27,15 +27,15 @@ data cluster2017 (label="List of DC Neighborhood Cluster (2017)"
     cluster2017_name = 'Neighborhood Cluster (2017) Name';
 
 datalines;
-1 National Mall, Potomac River
-2 Brookland, Brentwood, Langdon
-3 Takoma, Brightwood, Manor Park
-4 Georgetown, Burleith/Hillandale
-5 River Terrace, Benning, Greenway, Dupont Park
-6 Near Southeast, Navy Yard
-7 Woodland/Fort Stanton, Garfield Heights, Knox Hill
-8 Douglas, Shipley Terrace
-9 Congress Heights, Bellevue, Washington Highlands
+01 National Mall, Potomac River
+02 Brookland, Brentwood, Langdon
+03 Takoma, Brightwood, Manor Park
+04 Georgetown, Burleith/Hillandale
+05 River Terrace, Benning, Greenway, Dupont Park
+06 Near Southeast, Navy Yard
+07 Woodland/Fort Stanton, Garfield Heights, Knox Hill
+08 Douglas, Shipley Terrace
+09 Congress Heights, Bellevue, Washington Highlands
 10 Arboretum, Anacostia River
 11 Joint Base Anacostia-Bolling
 12 Saint Elizabeths

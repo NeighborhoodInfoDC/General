@@ -43,7 +43,6 @@ data block00_cluster2017
     GEO2000 = "Full census tract ID (2000): ssccctttttt";
 
   ** cluster2017 var **;
-  clusterID=substr(name,8,2);
   %octo_cluster2017( check=y )
   
   label 
@@ -58,7 +57,7 @@ data block00_cluster2017
   format _all_ ;
   informat _all_ ;
   
-  keep GeoBlk2000 GeoBg2000 Geo2000 clusterID cluster2017 CJRTRACTBL x y;
+  keep GeoBlk2000 GeoBg2000 Geo2000 cluster2017 CJRTRACTBL x y;
 
 run;
 
@@ -78,7 +77,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$bk0cl7f.,
+  FmtName=$bk0cl7f,
   Data=Block00_cluster2017,
   Value=GeoBlk2000,
   Label=cluster2017,

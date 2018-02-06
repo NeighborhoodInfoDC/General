@@ -40,8 +40,6 @@ data Block10_Cluster2017
     Geo2010 = 'Full census tract ID (2010): ssccctttttt';
 
   ** Cluster code **;
-  clusterID=substr(name,8,2);
-  Gis_id = clusterID;
   %Octo_cluster2017()
   
   label 
@@ -77,7 +75,7 @@ run;
 
 ** Create correspondence format **;
 
-%Data_to_format(
+%Data_to_format( 
   FmtLib=General,
   FmtName=$bk1cl7f,
 
