@@ -1,5 +1,5 @@
 /**************************************************************************
- Macro:    Block00_to_cluster2017
+ Macro:    Block00_to_cluster17
  Library:  Macros
  Project:  NeighborhoodInfo DC
  Author:   Rob Pitingolo
@@ -12,7 +12,7 @@
  Modifications:
 **************************************************************************/
 
-%macro Block10_to_cluster2017( invar=geoblk2010, outvar=cluster2017, format=Y );
+%macro Block10_to_cluster17( invar=geoblk2010, outvar=cluster2017, format=Y );
 
   length &outvar $ 2;
   
@@ -24,7 +24,7 @@
     format &outvar $clus17a.;
   %end;
 
-%mend Block10_to_cluster2017;
+%mend Block10_to_cluster17;
 
 
 
