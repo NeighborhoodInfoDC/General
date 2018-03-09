@@ -27,9 +27,9 @@ data StantonCommons (label="List of Custom Stanton Commons Geographies"
     stantoncommons = 'Stanton Commons (2018) Name';
 
 datalines;
-1 Stanton Commons
+1 Stanton Commons Catchment Area
 2 Ward 8 excluding Stanton Commons
-3 DC excluding Ward 8
+3 Washington DC excluding Ward 8
 ;
   
 run;
