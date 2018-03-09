@@ -66,7 +66,7 @@ run;
 ,
   Data=stantoncommons,
   Value=stantoncommons,
-  Label=Stanton Commons (2018),
+  Label=StantonCommons2018,
   OtherLabel='',
   DefaultLen=.,
   MaxLen=.,
