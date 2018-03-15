@@ -22,6 +22,7 @@
   09/09/12 PAT Final production version for all geos.
   12/17/12 PAT Added summary for voting precincts (VoterPre2012).
   03/28/17     Added summary for Bridge Park impact area (BridgePk)
+  03/15/18 NS  Added summary for Cluster 2017.
 **************************************************************************/
 
 %macro Create_all_summary_from_tracts( 
