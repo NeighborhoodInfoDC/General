@@ -1,6 +1,6 @@
 /**************************************************************************
- Macro:    Block00_to_cluster17
- Library:  
+ Macro:    Block00_to_stantoncommons
+ Library:  Macros
  Project:  Stanton Commons
  Author:   Yipeng Su
  Created:  3/15/2018
