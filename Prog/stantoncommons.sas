@@ -24,7 +24,7 @@ data StantonCommons (label="List of Custom Stanton Commons Geographies"
 
   label 
     stantoncommons = 'Stanton Commons (2018)'
-    stantoncommons = 'Stanton Commons (2018) Name';
+    stantoncommons_name = 'Stanton Commons (2018) Name';
 
 datalines;
 1 Stanton Commons
