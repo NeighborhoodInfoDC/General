@@ -41,9 +41,12 @@ data Block10_stantoncommons
 
   ** Stantoncommons code **;
   %Octo_stantoncommons()
+
+  NAME = _stancname;
   
   label 
     Gis_id = "OCTO stantoncommons ID"
+    NAME = "stantoncommons code"
     Tract = "OCTO tract ID"
     BlkGrp = "OCTO block group ID"
     Block = "OCTO block ID"
