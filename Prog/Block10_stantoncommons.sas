@@ -44,7 +44,6 @@ data Block10_stantoncommons
   
   label 
     Gis_id = "OCTO stantoncommons ID"
-    NAME = "stantoncommons code"
     Tract = "OCTO tract ID"
     BlkGrp = "OCTO block group ID"
     Block = "OCTO block ID"
