@@ -18,10 +18,7 @@
   check=          /** Perform validity check? (Y/N) **/
   );
 
-  length &invar. $ 1;
-
-  &invar.=substr(name,6,1);
-  &invar._num = &invar. +0;
+  &invar._num = &invar.;
 
   Gis_id = &invar.;
 
@@ -30,7 +27,7 @@
 
   length &outvar $ 1;
   
-  &outvar = put( &invar._num, z2. );
+  &outvar = put( &invar._num, z1. );
 
   label
     &outvar = "Stanton Commons (2018)";
