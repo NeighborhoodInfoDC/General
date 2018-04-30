@@ -150,7 +150,7 @@
   label="Weighting file, &geo1dlbl to &geo2dlbl",
   sortby=&geo1. &geo2.,
   restrictions=None,
-  revisions=%str(&revisions.)
+  revisions=%str(New file)
   )
 
   %exit_macro:
