@@ -25,18 +25,25 @@
 %macro Calc_weights_from_blocks( 
   geo1=,           /** Source geography **/
   geo2=,           /** Target geography **/
-  outlib=,		   /** Library, default General **/
+  geo2check=y,     /** Check that target geography is standard DCData geo (Y/N) **/
+  geo2suf=,        /** Target geography suffix (required if geo2check=n, eg: _tr10) **/
+  geo2name=,       /** Target geography short name (required if geo2check=n, eg: Tract **/
+  geo2dlbl=,       /** Target geography data set label name (required if geo2check=n, eg: Census tract (2010)) **/
+  geo2fmt=,        /** Target geography default display format (optional, eg: $geo10a.) **/
+  geo2vfmt=,       /** Target geography verification format (optional, eg: $geo10v.) **/
+  outlib=,		 /** Library, default General **/
   out_ds=,         /** Output data set name **/
   block_corr_ds=,  /** Block-to-geo correspondence data set **/
   block=,          /** Block ID variable **/
   block_pop_ds=,   /** Block population data set **/
   block_pop_var=,  /** Block population variable **/
   block_pop_year=, /** Block population year **/
-  revisions=	   /** Revisions to the final file **/
+  finalize=y,      /** Finalize output data set **/
+  revisions=New file. /** Revisions to the final file **/
   );
 
   %local geo1suf geo1name geo1dlbl geo1vfmt 
-         geo2suf geo2name geo2dlvl geo2vfmt geo2fmt;
+         geo2suf geo2name geo2dlbl geo2vfmt geo2fmt;
 
   ** Set output library **;
   %if %length( &outlib ) = 0 %then %let outlib = General;
@@ -57,24 +64,32 @@
     %goto exit_macro;
   %end;
 
-  %if %sysfunc( putc( &geo2, $geoval. ) ) ~= %then %do;
-    %let geo2suf = %sysfunc( putc( &geo2, $geosuf. ) );
-    %let geo2name = %sysfunc( putc( &geo2, $geoslbl. ) );
-    %let geo2dlbl = %sysfunc( putc( &geo2, $geodlbl. ) );
-    %let geo2fmt = %sysfunc( putc( &geo2, $geoafmt. ) );
-    %let geo2vfmt = %sysfunc( putc( &geo2, $geovfmt. ) );
+  %if %mparam_is_yes( &geo2check ) %then %do;
+    %if %sysfunc( putc( &geo2, $geoval. ) ) ~= %then %do;
+      %let geo2suf = %sysfunc( putc( &geo2, $geosuf. ) );
+      %let geo2name = %sysfunc( putc( &geo2, $geoslbl. ) );
+      %let geo2dlbl = %sysfunc( putc( &geo2, $geodlbl. ) );
+      %let geo2fmt = %sysfunc( putc( &geo2, $geoafmt. ) );
+      %let geo2vfmt = %sysfunc( putc( &geo2, $geovfmt. ) );
+    %end;
+    %else %do;
+      %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (geo2=&geo2). )
+      %goto exit_macro;
+    %end;
   %end;
-  %else %do;
-    %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (geo2=&geo2). )
-    %goto exit_macro;
-  %end;
+  
+  %put _local_;
   
   %note_mput( macro=Calc_weights_from_blocks, msg=Creating weight file &out_ds.. )
 
   proc sql;
     /** Step 1: Merge block population counts with correspondence file **/
     create table _Block_pop as
-    select &geo1., &geo2. format=&geo2fmt, 
+    select &geo1., &geo2. 
+      %if %length( &geo2fmt ) > 0 %then %do;
+        format=&geo2fmt
+      %end;
+      , 
         sum( &block_pop_var. ) as Pop label="&geo2name.-&geo1name. piece population, &block_pop_year." from 
       ( select coalesce( Blk.&block., Cen.&block. ), Blk.&geo1., Blk.&geo2., Cen.&block_pop_var. from 
           &block_corr_ds. as Blk 
@@ -121,11 +136,7 @@
     
     if popwt_prop = . then popwt_prop = 1 / Pieces&geo2suf.;
     
-    ** NO LONGER DOING THIS (7/21/12) - Remove obs. with weight 0 **;
-    
-    ***if popwt = 0 and popwt_prop = 0 then delete;
-    
-    %if &geo1vfmt ~= %then %do;
+    %if %length( &geo1vfmt ) > 0 %then %do;
       ** Check source geo for invalid values **;
 
       if put( &geo1., &geo1vfmt ) = "" then do;
@@ -133,7 +144,7 @@
       end;
     %end;
     
-    %if &geo2vfmt ~= %then %do;
+    %if %length( &geo2vfmt ) > 0 %then %do;
       ** Check target geo for invalid values **;
 
       if put( &geo2., &geo2vfmt ) = "" then do;
@@ -143,23 +154,19 @@
   
   run;
   
-  %Finalize_data_set( 
-  data=&out_ds.,
-  out=&out_ds.,
-  outlib=&outlib.,
-  label="Weighting file, &geo1dlbl to &geo2dlbl",
-  sortby=&geo1. &geo2.,
-  restrictions=None,
-  revisions=%str(New file)
-  )
+  %if %mparam_is_yes( &finalize ) %then %do;
+    %Finalize_data_set( 
+    data=&out_ds.,
+    out=&out_ds.,
+    outlib=&outlib.,
+    label="Weighting file, &geo1dlbl to &geo2dlbl",
+    sortby=&geo1. &geo2.,
+    restrictions=None,
+    revisions=%str(&revisions.)
+    )
+  %end;
 
   %exit_macro:
-
-  ** Cleanup temporary files **;
-  
-  /*proc datasets library=work memtype=(data) nolist nowarn;
-    delete _Block_pop &out_ds*/;
-  quit;
 
 %mend Calc_weights_from_blocks;
 
