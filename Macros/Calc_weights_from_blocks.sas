@@ -25,24 +25,25 @@
 %macro Calc_weights_from_blocks( 
   geo1=,           /** Source geography **/
   geo2=,           /** Target geography **/
-  geo2check=y,     /** Check that target geography is standard area (Y/N) **/
-  geo2suf=,        /** Target geography suffix (eg: _tr10) **/
-  geo2name=,       /** Target geography short name (eg: Tract **/
-  geo2dlbl=,       /** Target geography data set label name (eg: Census tract (2010)) **/
+  geo2check=y,     /** Check that target geography is standard DCData geo (Y/N) **/
+  geo2suf=,        /** Target geography suffix (required if geo2check=n, eg: _tr10) **/
+  geo2name=,       /** Target geography short name (required if geo2check=n, eg: Tract **/
+  geo2dlbl=,       /** Target geography data set label name (required if geo2check=n, eg: Census tract (2010)) **/
   geo2fmt=,        /** Target geography default display format (optional, eg: $geo10a.) **/
   geo2vfmt=,       /** Target geography verification format (optional, eg: $geo10v.) **/
-  outlib=,		   /** Library, default General **/
+  outlib=,		 /** Library, default General **/
   out_ds=,         /** Output data set name **/
   block_corr_ds=,  /** Block-to-geo correspondence data set **/
   block=,          /** Block ID variable **/
   block_pop_ds=,   /** Block population data set **/
   block_pop_var=,  /** Block population variable **/
   block_pop_year=, /** Block population year **/
-  revisions=	   /** Revisions to the final file **/
+  finalize=y,      /** Finalize output data set **/
+  revisions=New file. /** Revisions to the final file **/
   );
 
   %local geo1suf geo1name geo1dlbl geo1vfmt 
-         geo2suf geo2name geo2dlvl geo2vfmt geo2fmt;
+         geo2suf geo2name geo2dlbl geo2vfmt geo2fmt;
 
   ** Set output library **;
   %if %length( &outlib ) = 0 %then %let outlib = General;
@@ -153,15 +154,17 @@
   
   run;
   
-  %Finalize_data_set( 
-  data=&out_ds.,
-  out=&out_ds.,
-  outlib=&outlib.,
-  label="Weighting file, &geo1dlbl to &geo2dlbl",
-  sortby=&geo1. &geo2.,
-  restrictions=None,
-  revisions=%str(New file)
-  )
+  %if %mparam_is_yes( &finalize ) %then %do;
+    %Finalize_data_set( 
+    data=&out_ds.,
+    out=&out_ds.,
+    outlib=&outlib.,
+    label="Weighting file, &geo1dlbl to &geo2dlbl",
+    sortby=&geo1. &geo2.,
+    restrictions=None,
+    revisions=%str(&revisions.)
+    )
+  %end;
 
   %exit_macro:
 
