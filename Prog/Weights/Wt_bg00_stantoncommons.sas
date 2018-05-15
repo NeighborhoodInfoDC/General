@@ -21,7 +21,7 @@
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2000, 
   geo2 = stantoncommons,
-  out_ds = Wt_bg00_stantoncommons,
+  out_ds = Wt_bg00_stanc,
   block_corr_ds = General.Block00_stantoncommons, 
   block = GeoBlk2000,         
   block_pop_ds = Census.Cen2000_sf1_dc_blks,  

@@ -20,7 +20,7 @@
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2010,
   geo2 = stantoncommons,
-  out_ds = Wt_bg10_stantoncommons,
+  out_ds = Wt_bg10_stanc,
   block_corr_ds = General.Block10_stantoncommons, 
   block = GeoBlk2010,
   block_pop_ds = Census.Census_pl_2010_dc (where=(sumlev='750')),
