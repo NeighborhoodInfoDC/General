@@ -1,5 +1,5 @@
 /**************************************************************************
- Program:  Wt_bg00_stantoncommons
+ Program:  Wt_bg00_stanc
  Library:  General
  Project:  Stanton Commons custom geography
  Author:   Yipeng Su
