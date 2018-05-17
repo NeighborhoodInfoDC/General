@@ -1,5 +1,5 @@
 /************************************************************************
-  Program:  Wt_tr00_stantoncommons.sas
+  Program:  Wt_tr00_stanc.sas
   Library:  General
   Project:  Stanton Commons Custom Geography
   Author:   Yipeng Su
@@ -21,7 +21,7 @@
 %Calc_weights_from_blocks( 
   geo1 = Geo2000, 
   geo2 = stantoncommons,
-  out_ds = Wt_tr00_stantoncommons,
+  out_ds = Wt_tr00_stanc,
   block_corr_ds = General.Block00_stantoncommons, 
   block = GeoBlk2000,         
   block_pop_ds = Census.Cen2000_sf1_dc_blks,  
