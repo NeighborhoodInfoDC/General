@@ -99,8 +99,8 @@
     %Finalize_data_set(
     data=&data_pre.&geosuf,
     out=&data_pre.&geosuf,
-    outlib=NCDB,
-    label="NCDB summary, DC, &geodlbl",
+    outlib=&outlib.,
+    label="&data_label.",
     sortby=&geo,
     /** Metadata parameters **/
     revisions=%str(&revisions),
