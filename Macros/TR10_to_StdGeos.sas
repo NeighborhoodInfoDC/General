@@ -22,8 +22,16 @@
 
 %macro tr_geo_corr (geo,wtname);
 
-proc sort data = general.Wt_tr10_&wtname. out = &geo.; by descending popwt; run;
-proc sort data = &geo. (keep = geo2010 &geo.) nodupkey; by geo2010; run;
+proc sort data = general.Wt_tr10_&wtname. out = &geo._all; by geo2010 popwt; run;
+
+data &geo._used &geo._notused;
+	set &geo._all;
+	by geo2010 popwt;
+	if last.Geo2010 then output &geo._used;
+	else output &geo._notused;
+run;
+
+proc sort data = &geo._used (keep = geo2010 &geo.) out = &geo.; by geo2010; run;
 
 
 %mend tr_geo_corr;
