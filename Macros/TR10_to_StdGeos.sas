@@ -33,6 +33,10 @@ run;
 
 proc sort data = &geo._used (keep = geo2010 &geo.) out = &geo.; by geo2010; run;
 
+proc datasets lib=work nolist;
+ delete &geo._all &geo._used &geo._notused;
+run;
+
 
 %mend tr_geo_corr;
 %tr_geo_corr (anc2002,anc02);
