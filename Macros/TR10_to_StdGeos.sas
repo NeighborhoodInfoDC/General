@@ -16,7 +16,7 @@
   in_ds=, 
   out_ds=,
   keepgeos=anc2002 anc2012 Cluster_tr2000 Cluster2017 psa2004 psa2012 VoterPre2012
-		   ward2002 ward2012 Bridgepk stantoncommons /* Keep all by default */
+		   ward2002 ward2012 Bridgepk stantoncommons city /* Keep all by default */
 );
 
 
@@ -50,11 +50,12 @@ run;
 %tr_geo_corr (ward2012,ward12);
 %tr_geo_corr (Bridgepk,bpk);
 %tr_geo_corr (stantoncommons,stanc);
+%tr_geo_corr (city,city);
 
 
 data Tr10_stdgeos;
 	merge anc2002 anc2012 Cluster_tr2000 Cluster2017 psa2004 psa2012 VoterPre2012
-		  ward2002 ward2012 Bridgepk stantoncommons;
+		  ward2002 ward2012 Bridgepk stantoncommons city;
 	by geo2010;
 	keep geo2010 &keepgeos.;
 run;
