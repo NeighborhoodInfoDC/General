@@ -54,8 +54,7 @@ run;
 
 
 data Tr10_stdgeos;
-	merge anc2002 anc2012 Cluster_tr2000 Cluster2017 psa2004 psa2012 VoterPre2012
-		  ward2002 ward2012 Bridgepk stantoncommons city;
+	merge &keepgeos.;
 	by geo2010;
 	keep geo2010 &keepgeos.;
 run;
