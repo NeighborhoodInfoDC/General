@@ -85,11 +85,27 @@ run;
 
 ** Create formats **;
 
-** $cluster2017:  NeiName **;
+** $clus17a: Cluster nn **;
 
 %Data_to_format(
   FmtLib=General,
   FmtName=$clus17a,
+  Data=Cluster2017,
+  Value=Cluster2017,
+  Label="Cluster " || cluster2017,
+  OtherLabel=,
+  DefaultLen=.,
+  MaxLen=.,
+  MinLen=.,
+  Print=Y
+  );
+
+
+** $clus17b:  NeiName **;
+
+%Data_to_format(
+  FmtLib=General,
+  FmtName=$clus17b,
   Data=Cluster2017,
   Value=Cluster2017,
   Label=cluster2017_name,
@@ -99,6 +115,37 @@ run;
   MinLen=.,
   Print=Y
   );
+
+** $clus17f: Cluster nn (...) **;
+
+%Data_to_format(
+  FmtLib=General,
+  FmtName=$clus17f,
+  Data=Cluster2017,
+  Value=Cluster2017,
+  Label="Cluster " || trim( Cluster2017 ) || " (" || trim( cluster2017_name ) || ")",
+  OtherLabel=,
+  DefaultLen=.,
+  MaxLen=.,
+  MinLen=.,
+  Print=Y
+  );
+
+** $clus17g: nn (...) **;
+
+%Data_to_format(
+  FmtLib=General,
+  FmtName=$clus17g,
+  Data=Cluster2017,
+  Value=Cluster2017,
+  Label=trim( Cluster2017 ) || " (" || trim( cluster2017_name ) || ")",
+  OtherLabel=,
+  DefaultLen=.,
+  MaxLen=.,
+  MinLen=.,
+  Print=Y
+  );
+
 
 ** $clus17v:  
 ** Validation format - returns Cluster2017 number if valid, blank otherwise **;
@@ -118,9 +165,12 @@ run;
   );
 
 
-proc catalog catalog=general.formats entrytype=formatc;
-  modify clus17a (desc="Neighborhood Cluster (2017), Area Names");
-  modify clus17v (desc="Neighborhood Cluster  (2017), validation");
+proc catalog catalog=General.formats entrytype=formatc;
+  modify clus17a (desc="Nbrhd clusters (2017), 'Cluster nn'");
+  modify clus17b (desc="Nbrhd clusters (2017), nbrhd names only");
+  modify clus17f (desc="Nbrhd clusters (2017), 'Cluster nn (..)'");
+  modify clus17g (desc="Nbrhd clusters (2017), 'nn (..)'");
+  modify clus17v (desc="Nbrhd clusters (2017), validation");
   contents;
   quit;
 
@@ -138,9 +188,10 @@ quit;
   out=cluster2017,
   outlib=General,
   label="List of DC Neighborhood Clusters (2017)",
+  stats=,
   sortby=cluster2017,
   restrictions=None,
-  revisions=Corrected cluster 2017 names.
+  revisions=Added new cluster display formats.
   );
 
 %file_info( data=General.cluster2017, printobs=5, stats= )
