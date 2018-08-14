@@ -24,6 +24,12 @@
 
 %macro Calc_weights_from_blocks( 
   geo1=,           /** Source geography **/
+  geo1check=y,     /** Check that source geography is standard DCData geo (Y/N) **/
+  geo1suf=,        /** Source geography suffix (required if geo1check=n, eg: _tr10) **/
+  geo1name=,       /** Source geography short name (required if geo1check=n, eg: Tract **/
+  geo1dlbl=,       /** Source geography data set label name (required if geo1check=n, eg: Census tract (2010)) **/
+  geo1fmt=,        /** Source geography default display format (optional, eg: $geo10a.) **/
+  geo1vfmt=,       /** Source geography verification format (optional, eg: $geo10v.) **/
   geo2=,           /** Target geography **/
   geo2check=y,     /** Check that target geography is standard DCData geo (Y/N) **/
   geo2suf=,        /** Target geography suffix (required if geo2check=n, eg: _tr10) **/
@@ -42,9 +48,6 @@
   revisions=New file. /** Revisions to the final file **/
   );
 
-  %local geo1suf geo1name geo1dlbl geo1vfmt 
-         geo2suf geo2name geo2dlbl geo2vfmt geo2fmt;
-
   ** Set output library **;
   %if %length( &outlib ) = 0 %then %let outlib = General;
 
@@ -53,15 +56,17 @@
   %let geo1 = %upcase( &geo1 );
   %let geo2 = %upcase( &geo2 );
 
-  %if %sysfunc( putc( &geo1, $geoval. ) ) ~= %then %do;
-    %let geo1suf = %sysfunc( putc( &geo1, $geosuf. ) );
-    %let geo1name = %sysfunc( putc( &geo1, $geoslbl. ) );
-    %let geo1dlbl = %sysfunc( putc( &geo1, $geodlbl. ) );
-    %let geo1vfmt = %sysfunc( putc( &geo1, $geovfmt. ) );
-  %end;
-  %else %do;
-    %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (GEO1=&geo1). )
-    %goto exit_macro;
+  %if %mparam_is_yes( &geo1check ) %then %do;
+    %if %sysfunc( putc( &geo1, $geoval. ) ) ~= %then %do;
+      %let geo1suf = %sysfunc( putc( &geo1, $geosuf. ) );
+      %let geo1name = %sysfunc( putc( &geo1, $geoslbl. ) );
+      %let geo1dlbl = %sysfunc( putc( &geo1, $geodlbl. ) );
+      %let geo1vfmt = %sysfunc( putc( &geo1, $geovfmt. ) );
+    %end;
+    %else %do;
+      %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (GEO1=&geo1). )
+      %goto exit_macro;
+    %end;
   %end;
 
   %if %mparam_is_yes( &geo2check ) %then %do;
