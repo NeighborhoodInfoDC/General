@@ -25,11 +25,11 @@
 %macro Calc_weights_from_blocks( 
   geo1=,           /** Source geography **/
   geo1check=y,     /** Check that source geography is standard DCData geo (Y/N) **/
-  geo1suf=,        /** Target geography suffix (required if geo1check=n, eg: _tr10) **/
-  geo1name=,       /** Target geography short name (required if geo1check=n, eg: Tract **/
-  geo1dlbl=,       /** Target geography data set label name (required if geo1check=n, eg: Census tract (2010)) **/
-  geo1fmt=,        /** Target geography default display format (optional, eg: $geo10a.) **/
-  geo1vfmt=,       /** Target geography verification format (optional, eg: $geo10v.) **/
+  geo1suf=,        /** Source geography suffix (required if geo1check=n, eg: _tr10) **/
+  geo1name=,       /** Source geography short name (required if geo1check=n, eg: Tract **/
+  geo1dlbl=,       /** Source geography data set label name (required if geo1check=n, eg: Census tract (2010)) **/
+  geo1fmt=,        /** Source geography default display format (optional, eg: $geo10a.) **/
+  geo1vfmt=,       /** Source geography verification format (optional, eg: $geo10v.) **/
   geo2=,           /** Target geography **/
   geo2check=y,     /** Check that target geography is standard DCData geo (Y/N) **/
   geo2suf=,        /** Target geography suffix (required if geo2check=n, eg: _tr10) **/
@@ -47,9 +47,6 @@
   finalize=y,      /** Finalize output data set **/
   revisions=New file. /** Revisions to the final file **/
   );
-
-  %local geo1suf geo1name geo1dlbl geo1vfmt 
-         geo2suf geo2name geo2dlbl geo2vfmt geo2fmt;
 
   ** Set output library **;
   %if %length( &outlib ) = 0 %then %let outlib = General;
