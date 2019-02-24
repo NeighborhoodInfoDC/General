@@ -1,0 +1,41 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Block00_to_bpk.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Block00_to_bpk
+ Library:  
+ Project:  NeighborhoodInfo DC
+ Author:   J. Dev
+ Created:  02/16/17
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description: Convert Census block IDs (2000) to
+ Bridge Park Area (2017).
+
+ Modifications:
+**************************************************************************/
+
+%macro Block00_to_bpk( invar=geoblk2000, outvar=bridgepk, format=Y );
+
+  length &amp;outvar $ 1;
+  
+  &amp;outvar = put( &amp;invar, $bk0bpk. );
+  
+  label &amp;outvar = "11th Street Bridge Park Target Area (2017)";
+  
+  %if %upcase( &amp;format ) = Y %then %do;
+    format &amp;outvar $bpka.;
+  %end;
+
+%mend Block00_to_bpk;
+
+
+
+      </pre>
+   </body>
+</html>

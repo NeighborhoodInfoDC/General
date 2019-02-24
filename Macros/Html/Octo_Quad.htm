@@ -1,0 +1,40 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_Quad.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_Quad
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  04/11/11
+ Version:  SAS 9.1
+ Environment:  Windows
+ 
+ Description: Convert OCTO quadrant ID to
+ NeighborhoodInfo DC standard var Quad.
+
+ Modifications:
+**************************************************************************/
+
+%macro Octo_Quad( invar=Quadrant, outvar=Quad );
+
+  length &amp;outvar $ 2;
+  
+  &amp;outvar = left( upcase( &amp;invar ) );
+  
+  if &amp;outvar not in ( 'NW', 'NE', 'SW', 'SE' ) then &amp;outvar = '';
+
+  label
+    &amp;outvar = "DC quadrant";
+    
+%mend Octo_Quad;
+
+
+
+      </pre>
+   </body>
+</html>

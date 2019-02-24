@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\GeoBlk2000_Octo.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    GeoBlk2000_Octo
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  08/21/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert NeighborhoodInfo DC standard 
+ var GeoBlk2000 to OCTO census block ID (cjrTractBl).
+
+ Modifications:
+**************************************************************************/
+
+%macro GeoBlk2000_Octo( outvar=cjrTractBl, invar=GeoBlk2000 );
+
+  length &amp;outvar $ 254;
+
+  if &amp;invar ~= "" then do;
+    
+    &amp;outvar = trim( left( put( 1 * substr( &amp;invar, 6, 6 ), 6. ) ) ) || ' ' ||
+              substr( &amp;invar, 12, 4 );
+    
+  end;
+
+  label
+    &amp;outvar = "OCTO census block ID (2000)";
+    
+%mend GeoBlk2000_Octo;
+
+
+
+      </pre>
+   </body>
+</html>

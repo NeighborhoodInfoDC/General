@@ -1,0 +1,42 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Block00_to_ward12.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Block00_to_ward12
+ Library:  
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  07/21/12
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description: Convert Census block IDs (2000) to
+ DC wards (2012).
+
+ Modifications:
+  08/28/12 PAT Corrected block to geo format name. 
+**************************************************************************/
+
+%macro Block00_to_ward12( invar=geoblk2000, outvar=Ward2012, format=Y );
+
+  length &amp;outvar $ 1;
+  
+  &amp;outvar = put( &amp;invar, $bk0wdaf. );
+  
+  label &amp;outvar = "Ward (2012)";
+  
+  %if %upcase( &amp;format ) = Y %then %do;
+    format &amp;outvar $ward12a.;
+  %end;
+
+%mend Block00_to_ward12;
+
+
+
+      </pre>
+   </body>
+</html>

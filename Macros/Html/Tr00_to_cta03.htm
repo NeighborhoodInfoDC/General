@@ -1,0 +1,39 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Tr00_to_cta03.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Tr00_to_cta03
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  08/01/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert tract ID to Casey Target
+ Area ID.
+
+ Modifications:
+**************************************************************************/
+
+%macro Tr00_to_cta03( tract=Geo2000, cta=Casey_ta2003 );
+
+  length &amp;cta $ 1;
+  
+  &amp;cta = put( &amp;tract, $tr0cta. );
+  
+  label &amp;cta = "Casey target area (2003)";
+  
+  format &amp;cta $cta03f.;
+
+%mend Tr00_to_cta03;
+
+
+
+      </pre>
+   </body>
+</html>

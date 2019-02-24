@@ -1,0 +1,39 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Tr00_to_cnb03.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Tr00_to_cnb03
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  08/01/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert tract ID to 
+ Casey Target Neighborhoods ID.
+
+ Modifications:
+**************************************************************************/
+
+%macro Tr00_to_cnb03( tract=Geo2000, cnb=Casey_nbr2003 );
+
+  length &amp;cnb $ 1;
+  
+  &amp;cnb = put( &amp;tract, $tr0cnb. );
+  
+  label &amp;cnb = "Casey target area neighborhood (2003)";
+  
+  format &amp;cnb $cnb03f.;
+
+%mend Tr00_to_cnb03;
+
+
+
+      </pre>
+   </body>
+</html>

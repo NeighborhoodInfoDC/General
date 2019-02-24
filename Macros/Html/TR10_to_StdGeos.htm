@@ -1,3 +1,10 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\TR10_to_StdGeos.sas</title>
+   </head>
+   <body>
+      <pre>
 /**************************************************************************
  Macro:  TR10_to_StdGeos
  Library:  General
@@ -22,19 +29,19 @@
 
 %macro tr_geo_corr (geo,wtname);
 
-proc sort data = general.Wt_tr10_&wtname. out = &geo._all; by geo2010 popwt; run;
+proc sort data = general.Wt_tr10_&amp;wtname. out = &amp;geo._all; by geo2010 popwt; run;
 
-data &geo._used &geo._notused;
-	set &geo._all;
+data &amp;geo._used &amp;geo._notused;
+	set &amp;geo._all;
 	by geo2010 popwt;
-	if last.Geo2010 then output &geo._used;
-	else output &geo._notused;
+	if last.Geo2010 then output &amp;geo._used;
+	else output &amp;geo._notused;
 run;
 
-proc sort data = &geo._used (keep = geo2010 &geo.) out = &geo.; by geo2010; run;
+proc sort data = &amp;geo._used (keep = geo2010 &amp;geo.) out = &amp;geo.; by geo2010; run;
 
 proc datasets lib=work nolist;
- delete &geo._all &geo._used &geo._notused;
+ delete &amp;geo._all &amp;geo._used &amp;geo._notused;
 run;
 
 
@@ -54,17 +61,17 @@ run;
 
 
 data Tr10_stdgeos;
-	merge &keepgeos.;
+	merge &amp;keepgeos.;
 	by geo2010;
-	keep geo2010 &keepgeos.;
+	keep geo2010 &amp;keepgeos.;
 run;
 
 
 proc sort data = Tr10_stdgeos; by geo2010; run;
-proc sort data = &in_ds.; by geo2010; run;
+proc sort data = &amp;in_ds.; by geo2010; run;
 
-data &out_ds.;
-	merge &in_ds. (in=a) Tr10_stdgeos;
+data &amp;out_ds.;
+	merge &amp;in_ds. (in=a) Tr10_stdgeos;
 	by geo2010;
 	if a;
 run;
@@ -73,3 +80,6 @@ run;
 
 
 /* End of macro defintion */
+      </pre>
+   </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_Anc2002.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_Anc2002
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  05/16/05
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert OCTO ANC ID to
+ NeighborhoodInfo DC standard var Anc2002.
+
+ Modifications:
+**************************************************************************/
+
+%macro Octo_Anc2002( invar=Name, outvar=Anc2002 );
+
+  ** ANC code **;
+  
+  length &amp;outvar $ 2;
+  
+  if &amp;invar ~= "" then 
+    &amp;outvar = ANC_ID;
+  else
+    &amp;outvar = "";
+    
+  label
+    &amp;outvar = "Advisory Neighborhood Commission (2002)";
+    
+%mend Octo_Anc2002;
+
+
+
+      </pre>
+   </body>
+</html>

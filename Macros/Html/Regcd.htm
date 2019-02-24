@@ -1,0 +1,56 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Regcd.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Regcd
+ Library:  General
+ Project:  NeighborhoodInfo DC
+ Author:   J. Dev
+ Created:  06/20/17
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description: Convert regcd to
+ NeighborhoodInfo DC standard var councildist.
+
+ Modifications:
+**************************************************************************/
+
+%macro Regcd( 
+  invar=regcd,   /** Input var name **/
+  outvar=councildist, /** Output var name **/
+  check=n         /** Perform validity check? (Y/N) **/
+  );
+
+  %let check = %upcase( &amp;check );
+
+  ** regcd code **;
+  
+  length &amp;outvar $ 4;
+  
+  &amp;outvar = upcase( left( &amp;invar ) );
+
+  label
+    &amp;outvar = "Regional Council District (2017)";
+  
+  %if &amp;check = Y %then %do;
+  
+    %** Check that new values are valid **;
+    
+    if put( &amp;outvar, $regcdv. ) = '' then do;
+      %warn_put( macro=Regcd, msg="Invalid regcd ID: " _n_= &amp;invar= &amp;outvar= )
+    end;
+    
+  %end;
+    
+%mend Regcd;
+
+
+
+      </pre>
+   </body>
+</html>

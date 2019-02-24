@@ -1,0 +1,188 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Calc_weights_from_blocks.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:  Calc_weights_from_blocks
+ Library:  General
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  07/07/12
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description:  Autocall macro to calculate weights using block-level
+ population counts and block-to-geo correspondence file.
+
+ Modifications:
+  07/15/12 PAT Added Pieces_ vars = num. pieces for geography splits.
+               Changed calculation for cases where weight is missing 
+               (0 population) to 1 / number of geography splits.
+  07/21/12 PAT No longer remove obs. where popwt = 0 and popwt_prop = 0 
+               (causes problems when using pieces as weights).
+  02/02/17 JD  Added library option.
+  12/27/17 RP  Replaced %File_info() with %Finalize_data_set().
+**************************************************************************/
+
+/** Macro Calc_weights_from_blocks - Start Definition **/
+
+%macro Calc_weights_from_blocks( 
+  geo1=,           /** Source geography **/
+  geo1check=y,     /** Check that source geography is standard DCData geo (Y/N) **/
+  geo1suf=,        /** Source geography suffix (required if geo1check=n, eg: _tr10) **/
+  geo1name=,       /** Source geography short name (required if geo1check=n, eg: Tract **/
+  geo1dlbl=,       /** Source geography data set label name (required if geo1check=n, eg: Census tract (2010)) **/
+  geo1fmt=,        /** Source geography default display format (optional, eg: $geo10a.) **/
+  geo1vfmt=,       /** Source geography verification format (optional, eg: $geo10v.) **/
+  geo2=,           /** Target geography **/
+  geo2check=y,     /** Check that target geography is standard DCData geo (Y/N) **/
+  geo2suf=,        /** Target geography suffix (required if geo2check=n, eg: _tr10) **/
+  geo2name=,       /** Target geography short name (required if geo2check=n, eg: Tract **/
+  geo2dlbl=,       /** Target geography data set label name (required if geo2check=n, eg: Census tract (2010)) **/
+  geo2fmt=,        /** Target geography default display format (optional, eg: $geo10a.) **/
+  geo2vfmt=,       /** Target geography verification format (optional, eg: $geo10v.) **/
+  outlib=,		 /** Library, default General **/
+  out_ds=,         /** Output data set name **/
+  block_corr_ds=,  /** Block-to-geo correspondence data set **/
+  block=,          /** Block ID variable **/
+  block_pop_ds=,   /** Block population data set **/
+  block_pop_var=,  /** Block population variable **/
+  block_pop_year=, /** Block population year **/
+  finalize=y,      /** Finalize output data set **/
+  revisions=New file. /** Revisions to the final file **/
+  );
+
+  ** Set output library **;
+  %if %length( &amp;outlib ) = 0 %then %let outlib = General;
+
+  %** Check geo parameters **;
+  
+  %let geo1 = %upcase( &amp;geo1 );
+  %let geo2 = %upcase( &amp;geo2 );
+
+  %if %mparam_is_yes( &amp;geo1check ) %then %do;
+    %if %sysfunc( putc( &amp;geo1, $geoval. ) ) ~= %then %do;
+      %let geo1suf = %sysfunc( putc( &amp;geo1, $geosuf. ) );
+      %let geo1name = %sysfunc( putc( &amp;geo1, $geoslbl. ) );
+      %let geo1dlbl = %sysfunc( putc( &amp;geo1, $geodlbl. ) );
+      %let geo1vfmt = %sysfunc( putc( &amp;geo1, $geovfmt. ) );
+    %end;
+    %else %do;
+      %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (GEO1=&amp;geo1). )
+      %goto exit_macro;
+    %end;
+  %end;
+
+  %if %mparam_is_yes( &amp;geo2check ) %then %do;
+    %if %sysfunc( putc( &amp;geo2, $geoval. ) ) ~= %then %do;
+      %let geo2suf = %sysfunc( putc( &amp;geo2, $geosuf. ) );
+      %let geo2name = %sysfunc( putc( &amp;geo2, $geoslbl. ) );
+      %let geo2dlbl = %sysfunc( putc( &amp;geo2, $geodlbl. ) );
+      %let geo2fmt = %sysfunc( putc( &amp;geo2, $geoafmt. ) );
+      %let geo2vfmt = %sysfunc( putc( &amp;geo2, $geovfmt. ) );
+    %end;
+    %else %do;
+      %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (geo2=&amp;geo2). )
+      %goto exit_macro;
+    %end;
+  %end;
+  
+  %put _local_;
+  
+  %note_mput( macro=Calc_weights_from_blocks, msg=Creating weight file &amp;out_ds.. )
+
+  proc sql;
+    /** Step 1: Merge block population counts with correspondence file **/
+    create table _Block_pop as
+    select &amp;geo1., &amp;geo2. 
+      %if %length( &amp;geo2fmt ) &gt; 0 %then %do;
+        format=&amp;geo2fmt
+      %end;
+      , 
+        sum( &amp;block_pop_var. ) as Pop label="&amp;geo2name.-&amp;geo1name. piece population, &amp;block_pop_year." from 
+      ( select coalesce( Blk.&amp;block., Cen.&amp;block. ), Blk.&amp;geo1., Blk.&amp;geo2., Cen.&amp;block_pop_var. from 
+          &amp;block_corr_ds. as Blk 
+            left join
+          &amp;block_pop_ds. as Cen
+          on Blk.&amp;block. = Cen.&amp;block. )
+    group by &amp;geo1., &amp;geo2.;
+
+    /** Step 2: Create weights from summary population counts **/
+    create table &amp;out_ds (compress=no) as 
+    select *,
+           ( Pop / Pop&amp;geo1suf. ) as Popwt label="Population weight for counts (Pop / Pop&amp;geo1suf.)",
+           ( Pop / Pop&amp;geo2suf. ) as Popwt_prop label="Population weight for proportions (Pop / Pop&amp;geo2suf.)" from 
+      ( select * from 
+          _Block_pop
+            left join
+        ( select &amp;geo1., 
+                 count(*) as Pieces&amp;geo1suf. label="&amp;geo1name. pieces split by &amp;geo2name.", 
+                 sum( pop ) as Pop&amp;geo1suf. label="&amp;geo1name. population, &amp;block_pop_year."
+          from _Block_pop
+          group by &amp;geo1. ) as Source
+        on _Block_pop.&amp;geo1. = Source.&amp;geo1. ) as Source_pop
+      left join
+      ( select &amp;geo2., 
+               count(*) as Pieces&amp;geo2suf. label="&amp;geo2name. pieces split by &amp;geo1name.", 
+               sum( pop ) as Pop&amp;geo2suf. label="&amp;geo2name. population, &amp;block_pop_year."
+        from _Block_pop 
+        group by &amp;geo2. ) as Target_pop
+      on Source_pop.&amp;geo2. = Target_pop.&amp;geo2.
+    order by Source_pop.&amp;geo1., Target_pop.&amp;geo2.
+  ;
+  quit;
+
+  data &amp;out_ds.
+      (label="Weighting file, &amp;geo1dlbl to &amp;geo2dlbl"
+       sortedby=&amp;geo1 &amp;geo2
+       compress=no);
+       
+    set &amp;out_ds;
+    
+    ** Set missing weights to 1 / # of pieces **;
+    
+    if popwt = . then popwt = 1 / Pieces&amp;geo1suf.;
+    
+    if popwt_prop = . then popwt_prop = 1 / Pieces&amp;geo2suf.;
+    
+    %if %length( &amp;geo1vfmt ) &gt; 0 %then %do;
+      ** Check source geo for invalid values **;
+
+      if put( &amp;geo1., &amp;geo1vfmt ) = "" then do;
+        %err_put( msg="Invalid &amp;geo1name: " &amp;geo1= )
+      end;
+    %end;
+    
+    %if %length( &amp;geo2vfmt ) &gt; 0 %then %do;
+      ** Check target geo for invalid values **;
+
+      if put( &amp;geo2., &amp;geo2vfmt ) = "" then do;
+        %err_put( msg="Invalid &amp;geo2name: " &amp;geo2= )
+      end;
+    %end;
+  
+  run;
+  
+  %if %mparam_is_yes( &amp;finalize ) %then %do;
+    %Finalize_data_set( 
+    data=&amp;out_ds.,
+    out=&amp;out_ds.,
+    outlib=&amp;outlib.,
+    label="Weighting file, &amp;geo1dlbl to &amp;geo2dlbl",
+    sortby=&amp;geo1. &amp;geo2.,
+    restrictions=None,
+    revisions=%str(&amp;revisions.)
+    )
+  %end;
+
+  %exit_macro:
+
+%mend Calc_weights_from_blocks;
+
+/** End Macro Definition **/
+      </pre>
+   </body>
+</html>

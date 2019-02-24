@@ -1,3 +1,10 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\ucounty.sas</title>
+   </head>
+   <body>
+      <pre>
 /***************************************************************************
  * Macro: UCOUNTY
  * Description:  Include file to create unique place ID (UCOUNTY)
@@ -11,17 +18,20 @@
 %macro ucounty( ucountyv, varlbl, statev, countyv );
 
 length
-  &ucountyv $ 5
+  &amp;ucountyv $ 5
 ;
 
-if &statev ~= "" and &countyv ~= "" then
-  &ucountyv = &statev || &countyv;
+if &amp;statev ~= "" and &amp;countyv ~= "" then
+  &amp;ucountyv = &amp;statev || &amp;countyv;
 
 label
-  &ucountyv = "&varlbl"
+  &amp;ucountyv = "&amp;varlbl"
 ;
 
 %mend ucounty;
 
 /** End Macro Definition **/
 
+      </pre>
+   </body>
+</html>

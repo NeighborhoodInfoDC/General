@@ -1,0 +1,56 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_Anc2012.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_Anc2012
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  07/03/12
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description: Convert OCTO ANC ID to
+ NeighborhoodInfo DC standard var Anc2012.
+
+ Modifications:
+**************************************************************************/
+
+%macro Octo_Anc2012( 
+  invar=ANC_ID,   /** Input var name **/
+  outvar=Anc2012, /** Output var name **/
+  check=n         /** Perform validity check? (Y/N) **/
+  );
+
+  %let check = %upcase( &amp;check );
+
+  ** ANC code **;
+  
+  length &amp;outvar $ 2;
+  
+  &amp;outvar = upcase( left( &amp;invar ) );
+
+  label
+    &amp;outvar = "Advisory Neighborhood Commission (2012)";
+  
+  %if &amp;check = Y %then %do;
+  
+    %** Check that new values are valid **;
+    
+    if put( &amp;outvar, $anc12v. ) = '' then do;
+      %warn_put( macro=Octo_Anc2012, msg="Invalid 2012 ANC ID: " _n_= &amp;invar= &amp;outvar= )
+    end;
+    
+  %end;
+    
+%mend Octo_Anc2012;
+
+
+
+      </pre>
+   </body>
+</html>

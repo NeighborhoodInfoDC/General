@@ -1,0 +1,41 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Block00_to_casey_nbr2003.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Block00_to_casey_nbr2003
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  08/23/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert Census block IDs (2000) to
+ Casey target area neighborhood (2003).
+
+ Modifications:
+**************************************************************************/
+
+%macro Block00_to_casey_nbr2003( invar=geoblk2000, outvar=casey_nbr2003, format=Y );
+
+  length &amp;outvar $ 2;
+  
+  &amp;outvar = put( &amp;invar, $bk0cn3f. );
+  
+  label &amp;outvar = "Casey target area neighborhood (2003)";
+  
+  %if %upcase( &amp;format ) = Y %then %do;
+    format &amp;outvar $cnb03f.;
+  %end;
+
+%mend Block00_to_casey_nbr2003;
+
+
+
+      </pre>
+   </body>
+</html>

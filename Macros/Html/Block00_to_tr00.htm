@@ -1,0 +1,41 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Block00_to_tr00.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Block00_to_tr00
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  09/04/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert Census block IDs (2000) to
+ Census tracts (2000).
+
+ Modifications:
+**************************************************************************/
+
+%macro Block00_to_tr00( invar=geoblk2000, outvar=Geo2000, format=Y );
+
+  length &amp;outvar $ 11;
+  
+  &amp;outvar = left( &amp;invar );
+  
+  label &amp;outvar = "Full census tract ID (2000): ssccctttttt";
+  
+  %if %upcase( &amp;format ) = Y %then %do;
+    format &amp;outvar $geo00a.;
+  %end;
+
+%mend Block00_to_tr00;
+
+
+
+      </pre>
+   </body>
+</html>
