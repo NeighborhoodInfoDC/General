@@ -10,6 +10,9 @@
   
  Description: Generate HTML list of macros in library.
 
+ Resubmit this program locally to update the index whenever you 
+ create a new macro or edit an existing macro. 
+
  Modifications:
 **************************************************************************/
 
