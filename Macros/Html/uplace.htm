@@ -1,3 +1,10 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\uplace.sas</title>
+   </head>
+   <body>
+      <pre>
 /****************************************************************************
  * Macro: UPLACE
  * Description: Census 2000
@@ -12,17 +19,20 @@
 %macro uplace( uplacev, varlbl, statev, placev );
 
 length
-  &uplacev $ 7
+  &amp;uplacev $ 7
 ;
 
-if &statev ~= "" and &placev ~= "" then
-  &uplacev = &statev || &placev;
+if &amp;statev ~= "" and &amp;placev ~= "" then
+  &amp;uplacev = &amp;statev || &amp;placev;
 
 label
-  &uplacev = "&varlbl"
+  &amp;uplacev = "&amp;varlbl"
 ;
 
 %mend uplace;
 
 /** End Macro Definition **/
 
+      </pre>
+   </body>
+</html>

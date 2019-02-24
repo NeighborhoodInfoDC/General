@@ -1,0 +1,48 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Fedtractno_geo2000.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Fedtractno_geo2000
+ Library:  OCTO
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  02/09/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert Fedtractno in OCTO tract
+ shapefile to standard Geo2000 tract ID.
+
+ Modifications:
+  01/24/07  Corrected problem with tract 84.10.
+            Added invar= and outvar= parameters.
+  12/13/12 PAT Added validation test - only valid 2000 tracts are saved
+               to outvar, otherwise output value is missing (blank).
+**************************************************************************/
+
+%macro Fedtractno_geo2000( outvar=Geo2000, invar=Fedtractno );
+
+  length &amp;outvar $ 11;
+  
+  select ( &amp;invar );
+    when ( '' )
+      &amp;outvar = '';
+    when ( '84.01' )
+      &amp;outvar = '11001008410';
+    otherwise
+      &amp;outvar = put( "11001" || put( 100 * input( &amp;invar, 16. ), z6. ), $geo00v. );
+  end;
+
+  label &amp;outvar = "Full census tract ID (2000): ssccctttttt";
+
+%mend Fedtractno_geo2000;
+
+
+
+      </pre>
+   </body>
+</html>

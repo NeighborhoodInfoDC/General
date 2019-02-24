@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_Zip.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_ZIP
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  05/16/05
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert OCTO ZIP Code to
+ NeighborhoodInfo DC standard var ZIP.
+
+ Modifications:
+**************************************************************************/
+
+%macro Octo_ZIP( invar=Zipcode, outvar=Zip );
+
+  ** ZIP code **;
+  
+  length &amp;outvar $ 5;
+  
+  if &amp;invar &gt; 0 then 
+    &amp;outvar = put( &amp;invar, z5. );
+  else  
+    &amp;outvar = "";
+
+  label
+    &amp;outvar = "ZIP code (5-digit)";
+    
+%mend Octo_ZIP;
+
+
+
+      </pre>
+   </body>
+</html>

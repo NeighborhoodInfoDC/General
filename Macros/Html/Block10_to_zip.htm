@@ -1,0 +1,41 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Block10_to_zip.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Block10_to_zip
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  03/21/11
+ Version:  SAS 9.1
+ Environment:  Windows
+ 
+ Description: Convert Census block IDs (2010) to
+ DC ZIP code.
+
+ Modifications:
+**************************************************************************/
+
+%macro Block10_to_zip( invar=geoblk2010, outvar=Zip, format=Y );
+
+  length &amp;outvar $ 5;
+  
+  &amp;outvar = put( &amp;invar, $bk1zipf. );
+  
+  label &amp;outvar = "ZIP code (5-digit)";
+  
+  %if %upcase( &amp;format ) = Y %then %do;
+    format &amp;outvar $zipa.;
+  %end;
+
+%mend Block10_to_zip;
+
+
+
+      </pre>
+   </body>
+</html>

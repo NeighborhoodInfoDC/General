@@ -14,10 +14,6 @@ Prog/Temp/
 *.log
 *.lst
 
-# Web
-*.html
-*.htm
-
 # MS Office
 *.doc
 *.docx

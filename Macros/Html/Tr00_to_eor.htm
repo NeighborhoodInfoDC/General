@@ -1,0 +1,38 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Tr00_to_eor.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Tr00_to_eor
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  08/01/06
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert tract ID to EOR ID.
+
+ Modifications:
+**************************************************************************/
+
+%macro Tr00_to_eor( tract=Geo2000, eor=Eor );
+
+  length &amp;eor $ 1;
+  
+  &amp;eor = put( &amp;tract, $tr0eor. );
+  
+  label &amp;eor = "East of the Anacostia River";
+  
+  format &amp;eor $eor.;
+
+%mend Tr00_to_eor;
+
+
+
+      </pre>
+   </body>
+</html>

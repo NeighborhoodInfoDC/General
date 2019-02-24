@@ -1,3 +1,10 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Block10_to_cluster17.sas</title>
+   </head>
+   <body>
+      <pre>
 /**************************************************************************
  Macro:    Block10_to_cluster17
  Library:  Macros
@@ -14,17 +21,20 @@
 
 %macro Block10_to_cluster17( invar=geoblk2010, outvar=cluster2017, format=Y );
 
-  length &outvar $ 2;
+  length &amp;outvar $ 2;
   
-  &outvar = put( &invar, $bk1cl7f. );
+  &amp;outvar = put( &amp;invar, $bk1cl7f. );
   
-  label &outvar = "Neighborhood Clusters (2017)";
+  label &amp;outvar = "Neighborhood Clusters (2017)";
   
-  %if %upcase( &format ) = Y %then %do;
-    format &outvar $clus17a.;
+  %if %upcase( &amp;format ) = Y %then %do;
+    format &amp;outvar $clus17a.;
   %end;
 
 %mend Block10_to_cluster17;
 
 
 
+      </pre>
+   </body>
+</html>

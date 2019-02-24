@@ -1,0 +1,1800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="Generator" content="SAS Software Version 9.2, see www.sas.com">
+<meta http-equiv="Content-type" content="text/html; charset=windows-1252">
+<title>General Library Macros - Urban-Greater DC</title>
+<style type="text/css">
+<!--
+.AfterCaption
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  padding: 0px;
+  border-spacing: 0px;
+}
+.Batch
+{
+  font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  padding: 7px;
+  border-collapse: separate;
+  border-spacing: 1px;
+  border: 1px solid #CCCCCC;
+}
+.BeforeCaption
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  padding: 0px;
+  border-spacing: 0px;
+}
+.Body
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.BodyDate
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 0px;
+  border-spacing: 0px;
+  width: 100%;
+  text-align: right;
+  vertical-align: top;
+}
+.ByContentFolder
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.Byline
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  padding: 0px;
+  border-spacing: 0px;
+}
+.BylineContainer
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 1px;
+  border-spacing: 1px;
+  border: 0px solid #000000;
+  width: 100%;
+}
+.Caption
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  padding: 0px;
+  border-spacing: 0px;
+}
+.Cell
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.Container
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ContentFolder
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.ContentItem
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.ContentProcLabel
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  list-style-type: decimal;
+}
+.ContentProcName
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  list-style-type: decimal;
+}
+.Contents
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  margin-left: 8px;
+  margin-right: 8px;
+  list-style-type: decimal;
+}
+.ContentsDate
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  width: 100%;
+}
+.ContentTitle
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+}
+.Continued
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  padding: 0px;
+  border-spacing: 0px;
+  width: 100%;
+  text-align: left;
+}
+.Data
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.DataEmphasis
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.DataEmphasisFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.DataEmpty
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.DataFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.DataStrong
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.DataStrongFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.Date
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  width: 100%;
+}
+.Document
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+a:link {
+color:#800080
+}
+a:visited {
+color:#0000CC
+}
+a:active {
+color:#0000CC
+}
+.ErrorBanner
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ErrorContent
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ErrorContentFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ExtendedPage
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  padding: 2pt;
+  border: 1pt solid #000000;
+  text-align: center;
+}
+.FatalBanner
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.FatalContent
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.FatalContentFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.FolderAction
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.Footer
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.FooterEmphasis
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.FooterEmphasisFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.FooterEmpty
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.FooterFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.FooterStrong
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.FooterStrongFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.Frame
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.Graph
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 0px;
+  border-collapse: separate;
+  border-spacing: 1px;
+  border: 1px solid #CCCCCC;
+}
+.Header
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeaderEmphasis
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeaderEmphasisFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeaderEmpty
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeaderFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeadersAndFooters
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeaderStrong
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.HeaderStrongFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.Index
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.IndexAction
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.IndexItem
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.IndexProcName
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  list-style-type: decimal;
+}
+.IndexTitle
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+}
+.LayoutContainer
+{
+  padding: 0px;
+  border-spacing: 30px;
+  border: 0px solid #000000;
+}
+.LayoutRegion
+{
+  padding: 0px;
+  border-spacing: 30px;
+  border: 0px solid #000000;
+}
+.List
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: disc;
+  width: 100%;
+  text-align: left;
+}
+.List10
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List2
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: circle;
+  width: 100%;
+  text-align: left;
+}
+.List3
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List4
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List5
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List6
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List7
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List8
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.List9
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  list-style-type: square;
+  width: 100%;
+  text-align: left;
+}
+.ListItem
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem10
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem2
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem3
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem4
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem5
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem6
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem7
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem8
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.ListItem9
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.Note
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.NoteBanner
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.NoteContent
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.NoteContentFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.Output
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 7px;
+  border-collapse: separate;
+  border-spacing: 1px;
+  border: 1px solid #CCCCCC;
+}
+.PageNo
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  padding: 0px;
+  border-spacing: 0px;
+  text-align: right;
+  vertical-align: top;
+}
+.Pages
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  margin-left: 8px;
+  margin-right: 8px;
+  list-style-type: decimal;
+}
+.PagesDate
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+  width: 100%;
+}
+.PagesItem
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  margin-left: 6pt;
+  list-style-type: none;
+}
+.PagesProcLabel
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  list-style-type: decimal;
+}
+.PagesProcName
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  list-style-type: decimal;
+}
+.PagesTitle
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+}
+.Paragraph
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  width: 100%;
+  text-align: left;
+}
+.Parskip
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  padding: 0px;
+  border-spacing: 0px;
+  border: 0px solid #000000;
+}
+.PrePage
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+.ProcTitle
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.ProcTitleFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+}
+.RowFooter
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowFooterEmphasis
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowFooterEmphasisFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowFooterEmpty
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowFooterFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowFooterStrong
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowFooterStrongFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeader
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeaderEmphasis
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeaderEmphasisFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeaderEmpty
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeaderFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeaderStrong
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.RowHeaderStrongFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #F1EACB;
+}
+.SystemFooter
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter10
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter2
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter3
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter4
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter5
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter6
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter7
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter8
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemFooter9
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle10
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle2
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle3
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle4
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle5
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle6
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle7
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle8
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SystemTitle9
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.SysTitleAndFooterContainer
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 1px;
+  border-spacing: 1px;
+  border: 0px solid #000000;
+  width: 100%;
+}
+.table
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-collapse: separate;
+  border-spacing: 0px;
+  border: 1px solid #CCCCCC;
+}
+.top_stacked_value
+{
+  padding-bottom: 1px;
+}
+.middle_stacked_value
+{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+.bottom_stacked_value
+{
+  padding-top: 1px;
+}
+.TitleAndNoteContainer
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 1px;
+  border-spacing: 1px;
+  border: 0px solid #000000;
+  width: 100%;
+}
+.TitlesAndFooters
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}
+.UserText
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+.WarnBanner
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.WarnContent
+{
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.WarnContentFixed
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.l {text-align: left }
+.c {text-align: center }
+.r {text-align: right }
+.d {text-align: right }
+.j {text-align: justify }
+.t {vertical-align: top }
+.m {vertical-align: middle }
+.b {vertical-align: bottom }
+TD, TH {vertical-align: top }
+.stacked_cell{padding: 0 }
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- 
+function startup(){
+
+}
+function shutdown(){
+
+}
+
+//-->
+</script>
+
+</head>
+<body onload="startup()" onunload="shutdown()" class="Body">
+
+<script language="javascript" type="text/javascript">
+<!-- 
+var _info = navigator.userAgent
+var _ie = (_info.indexOf("MSIE") > 0
+          && _info.indexOf("Win") > 0
+          && _info.indexOf("Windows 3.1") < 0);
+
+//-->
+</script>
+
+<div class="branch">
+<a name="IDX"></a>
+<table class="SysTitleAndFooterContainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="l SystemTitle">General Library Macros - Urban-Greater DC</td>
+</tr>
+</table><br>
+<div>
+<div align="left">
+<table class="table" cellspacing="0" cellpadding="5" rules="groups" frame="box" border="1" bordercolor="#CCCCCC" summary="Procedure Report: Detailed and/or summarized report">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c Header" scope="col">Macro</th>
+<th class="c Header" scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="l Data"><a href="Block00_to_anc02.htm" target="Code">Block00_to_anc02</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC ANCs (2002).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_anc12.htm" target="Code">Block00_to_anc12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC ANCs (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_bg00.htm" target="Code">Block00_to_bg00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to block groups (2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_bpk.htm" target="Code">Block00_to_bpk</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Bridge Park Area (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_casey_nbr2003.htm" target="Code">Block00_to_casey_nbr2003</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Casey target area neighborhood (2003).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_casey_ta2003.htm" target="Code">Block00_to_casey_ta2003</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Casey target area (2003).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_city.htm" target="Code">Block00_to_city</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Washington, D.C..</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_cluster00.htm" target="Code">Block00_to_cluster00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC Neighborhood Clusters (2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_cluster17.htm" target="Code">Block00_to_cluster17</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Cluster (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_cluster_tr00.htm" target="Code">Block00_to_cluster_tr00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC Neighborhood Clusters (tract-based, 2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_eor.htm" target="Code">Block00_to_eor</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to East of the Anacostia River.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_psa04.htm" target="Code">Block00_to_psa04</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC PSAs (2004).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_psa12.htm" target="Code">Block00_to_psa12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC PSAs (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_regcd.htm" target="Code">Block00_to_regcd</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Regional Council District Areas (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_regcnt.htm" target="Code">Block00_to_regcnt</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Regional counties (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_stantoncommons.htm" target="Code">Block00_to_stantoncommons</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Stanton Commons ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_tr00.htm" target="Code">Block00_to_tr00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Census tracts (2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_tr10.htm" target="Code">Block00_to_tr10</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Census tracts (2010).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_vp12.htm" target="Code">Block00_to_vp12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to Voting Precincts (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_ward02.htm" target="Code">Block00_to_ward02</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC wards (2002).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_ward12.htm" target="Code">Block00_to_ward12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC wards (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block00_to_zip.htm" target="Code">Block00_to_zip</a>
+</td>
+<td class="l Data">Convert Census block IDs (2000) to DC ZIP code.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_anc02.htm" target="Code">Block10_to_anc02</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC ANCs (2002).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_anc12.htm" target="Code">Block10_to_anc12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC ANCs (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_bg10.htm" target="Code">Block10_to_bg10</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to block groups (2010).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_bpk.htm" target="Code">Block10_to_bpk</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Bridge Park area (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_city.htm" target="Code">Block10_to_city</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Washington, D.C..</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_cluster00.htm" target="Code">Block10_to_cluster00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC Neighborhood Clusters (2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_cluster17.htm" target="Code">Block10_to_cluster17</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Cluster (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_cluster_tr00.htm" target="Code">Block10_to_cluster_tr00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC Neighborhood Clusters (tract-based, 2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_eor.htm" target="Code">Block10_to_eor</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to East of the Anacostia River.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_psa04.htm" target="Code">Block10_to_psa04</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC PSAs (2004).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_psa12.htm" target="Code">Block10_to_psa12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC PSAs (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_regcd.htm" target="Code">Block10_to_regcd</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Regional Council District Areas (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_regcnt.htm" target="Code">Block10_to_regcnt</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Regional counties (2017).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_stantoncommons.htm" target="Code">Block10_to_stantoncommons</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Stanton Commons geography.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_tr00.htm" target="Code">Block10_to_tr00</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Census tracts (2000).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_tr10.htm" target="Code">Block10_to_tr10</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Census tracts (2010).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_vp12.htm" target="Code">Block10_to_vp12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to Voting Precincts (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_ward02.htm" target="Code">Block10_to_ward02</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC wards (2002).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_ward12.htm" target="Code">Block10_to_ward12</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC wards (2012).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Block10_to_zip.htm" target="Code">Block10_to_zip</a>
+</td>
+<td class="l Data">Convert Census block IDs (2010) to DC ZIP code.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Bridgepk.htm" target="Code">Bridgepk</a>
+</td>
+<td class="l Data">Convert Bridgepk ID to NeighborhoodInfo DC standard var bridgepk</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Calc_weights_from_blocks.htm" target="Code">Calc_weights_from_blocks</a>
+</td>
+<td class="l Data">Autocall macro to calculate weights using block-level population counts and block-to-geo correspondence file.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Create_all_summary_from_tracts.htm" target="Code">Create_all_summary_from_tracts</a>
+</td>
+<td class="l Data">Create all summary level files from a tract level summary file.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Create_summary_from_tracts.htm" target="Code">Create_summary_from_tracts</a>
+</td>
+<td class="l Data">Create geographic summary data set from a tract summary data set for the specified geography.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Fedtractno.htm" target="Code">Fedtractno</a>
+</td>
+<td class="l Data">Create FEDTRACTNO variable for matching census tract data to OCTO tract shape file.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Fedtractno_geo2000.htm" target="Code">Fedtractno_geo2000</a>
+</td>
+<td class="l Data">Convert Fedtractno in OCTO tract shapefile to standard Geo2000 tract ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="GeoBlk2000_Octo.htm" target="Code">GeoBlk2000_Octo</a>
+</td>
+<td class="l Data">Convert NeighborhoodInfo DC standard var GeoBlk2000 to OCTO census block ID (cjrTractBl).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Metro03.htm" target="Code">Metro03</a>
+</td>
+<td class="l Data">Add 2003 metropolitan/micropolitan statistical area code (METRO03). Notes: Must have Cen2000 format library in FMTSEARCH.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Metro15.htm" target="Code">Metro15</a>
+</td>
+<td class="l Data">Add 2015 metropolitan/micropolitan statistical area code (METRO15).</td>
+</tr>
+<tr>
+<td class="l Data"><a href="msapma.htm" target="Code">MSAPMA</a>
+</td>
+<td class="l Data">Census 2000 - Include file to create MSAPMA99 variable.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Anc2002.htm" target="Code">Octo_Anc2002</a>
+</td>
+<td class="l Data">Convert OCTO ANC ID to NeighborhoodInfo DC standard var Anc2002.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Anc2012.htm" target="Code">Octo_Anc2012</a>
+</td>
+<td class="l Data">Convert OCTO ANC ID to NeighborhoodInfo DC standard var Anc2012.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Cluster2000.htm" target="Code">Octo_Cluster2000</a>
+</td>
+<td class="l Data">Convert OCTO neighborhood cluster ID to NeighborhoodInfo DC standard var Cluster2000.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_cluster2017.htm" target="Code">Octo_Cluster2017</a>
+</td>
+<td class="l Data">Convert OCTO cluster id to NeighborhoodInfo DC standard var cluster2017.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_GeoBlk2000.htm" target="Code">Octo_GeoBlk2000</a>
+</td>
+<td class="l Data">Convert OCTO census block ID to NeighborhoodInfo DC standard var GeoBlk2000.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_GeoBlk2010.htm" target="Code">Octo_GeoBlk2010</a>
+</td>
+<td class="l Data">Convert OCTO census block ID to NeighborhoodInfo DC standard var GeoBlk2010.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Psa2004.htm" target="Code">Octo_Psa2004</a>
+</td>
+<td class="l Data">Convert OCTO PSA ID to NeighborhoodInfo DC standard var Psa2004.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Psa2012.htm" target="Code">Octo_Psa2012</a>
+</td>
+<td class="l Data">Convert OCTO PSA ID to NeighborhoodInfo DC standard var Psa2012.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Quad.htm" target="Code">Octo_Quad</a>
+</td>
+<td class="l Data">Convert OCTO quadrant ID to NeighborhoodInfo DC standard var Quad.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_stantoncommons.htm" target="Code">Octo_StantonCommons</a>
+</td>
+<td class="l Data">Convert OCTO field to NeighborhoodInfo DC standard var StantonCommons.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_VoterPre2012.htm" target="Code">Octo_VoterPre2012</a>
+</td>
+<td class="l Data">Convert OCTO Name var to NeighborhoodInfo DC standard var VoterPre2012.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_ward2002.htm" target="Code">Octo_ward2002</a>
+</td>
+<td class="l Data">Convert OCTO ward id to NeighborhoodInfo DC standard var Ward2002.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_ward2012.htm" target="Code">Octo_Ward2012</a>
+</td>
+<td class="l Data">Convert OCTO ward id to NeighborhoodInfo DC standard var Ward2012.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Octo_Zip.htm" target="Code">Octo_ZIP</a>
+</td>
+<td class="l Data">Convert OCTO ZIP Code to NeighborhoodInfo DC standard var ZIP.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Regcd.htm" target="Code">Regcd</a>
+</td>
+<td class="l Data">Convert regcd to NeighborhoodInfo DC standard var councildist.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Regcnt.htm" target="Code">Regcnt</a>
+</td>
+<td class="l Data">Convert geoid to NeighborhoodInfo DC standard var county.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Tr00_to_city.htm" target="Code">Tr00_to_city</a>
+</td>
+<td class="l Data">Convert tract ID to city ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Tr00_to_cnb03.htm" target="Code">Tr00_to_cnb03</a>
+</td>
+<td class="l Data">Convert tract ID to Casey Target Neighborhoods ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Tr00_to_cta03.htm" target="Code">Tr00_to_cta03</a>
+</td>
+<td class="l Data">Convert tract ID to Casey Target Area ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Tr00_to_eor.htm" target="Code">Tr00_to_eor</a>
+</td>
+<td class="l Data">Convert tract ID to EOR ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="Tr10_to_eor.htm" target="Code">Tr10_to_eor</a>
+</td>
+<td class="l Data">Convert 2010 tract ID to EOR ID.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="TR10_to_StdGeos.htm" target="Code">TR10_to_StdGeos</a>
+</td>
+<td class="l Data">This program appends NIDC standard geographies to geo2010.</td>
+</tr>
+<tr>
+<td class="l Data"><a href="ucounty.htm" target="Code">UCOUNTY</a>
+</td>
+<td class="l Data">Include file to create unique place ID (UCOUNTY)</td>
+</tr>
+<tr>
+<td class="l Data"><a href="uplace.htm" target="Code">UPLACE</a>
+</td>
+<td class="l Data">Census 2000 Include file to create unique place ID (UPLACE98)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<table class="SysTitleAndFooterContainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="l SystemFooter">Updated 02/24/2019</td>
+</tr>
+</table><br>
+</div>
+</body>
+</html>

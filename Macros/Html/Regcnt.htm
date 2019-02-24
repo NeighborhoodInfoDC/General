@@ -1,0 +1,56 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Regcnt.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Regcnt
+ Library:  General
+ Project:  NeighborhoodInfo DC
+ Author:   J. Dev
+ Created:  06/20/17
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description: Convert geoid to
+ NeighborhoodInfo DC standard var county.
+
+ Modifications:
+**************************************************************************/
+
+%macro Regcnt( 
+  invar=geoid,   /** Input var name **/
+  outvar=county, /** Output var name **/
+  check=n         /** Perform validity check? (Y/N) **/
+  );
+
+  %let check = %upcase( &amp;check );
+
+  ** geoid code **;
+  
+  length &amp;outvar $ 5;
+  
+  &amp;outvar = upcase( left( &amp;invar ) );
+
+  label
+    &amp;outvar = "Regional counties (2017)";
+  
+  %if &amp;check = Y %then %do;
+  
+    %** Check that new values are valid **;
+    
+    if put( &amp;outvar, $regcntv. ) = '' then do;
+      %warn_put( macro=Regcnt, msg="Invalid geoid ID: " _n_= &amp;invar= &amp;outvar= )
+    end;
+    
+  %end;
+    
+%mend Regcnt;
+
+
+
+      </pre>
+   </body>
+</html>

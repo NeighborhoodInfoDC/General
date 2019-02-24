@@ -1,0 +1,54 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_GeoBlk2000.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_GeoBlk2000
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  05/16/05
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert OCTO census block ID to
+ NeighborhoodInfo DC standard var GeoBlk2000.
+
+ Modifications:
+ 07/04/12 PAT Added check= parameter to check block ID values.
+**************************************************************************/
+
+%macro Octo_GeoBlk2000( invar=CJRTRACTBL, outvar=GeoBlk2000, check=n );
+
+  %let check = %upcase( &amp;check );
+
+  length &amp;outvar $ 15;
+
+  if &amp;invar ~= "" then do;
+    
+    &amp;outvar = "11001" || put( 1 * scan( &amp;invar, 1 ), z6. ) || 
+              put( 1 * scan( &amp;invar, 2 ), z4. );
+  
+  end;
+
+  label
+    &amp;outvar = "Full census block ID (2000): sscccttttttbbbb";
+
+  %if &amp;check = Y %then %do;
+  
+    if put( &amp;outvar, $blk00v. ) = '' then do;
+      %warn_put( msg="Invalid 2000 block ID: " _n_= &amp;invar= &amp;outvar= )
+    end;
+    
+  %end;
+
+%mend Octo_GeoBlk2000;
+
+
+
+      </pre>
+   </body>
+</html>

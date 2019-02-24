@@ -1,0 +1,41 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Metro03.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Metro03
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  07/22/04
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Add 2003 metropolitan/micropolitan 
+ statistical area code (METRO03).
+ 
+ Notes: Must have Cen2000 format library in FMTSEARCH.
+
+ Modifications:
+**************************************************************************/
+
+%macro Metro03( ucountyv );
+
+  ** Create 2003 metro variable from unique county ID **;
+
+  length Metro03 $ 5;
+
+  metro03 = put( &amp;ucountyv, $ctym03f. );
+  
+  label metro03 = "Metropolitan/micropolitan statistical area (2003)";
+
+%mend Metro03;
+
+
+
+      </pre>
+   </body>
+</html>

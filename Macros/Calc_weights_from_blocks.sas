@@ -1,5 +1,5 @@
 /**************************************************************************
- Program:  Calc_weights_from_blocks.sas
+ Macro:  Calc_weights_from_blocks
  Library:  General
  Project:  NeighborhoodInfo DC
  Author:   P. Tatian

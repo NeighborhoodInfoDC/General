@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_Psa2004.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_Psa2004
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  05/16/05
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description: Convert OCTO PSA ID to
+ NeighborhoodInfo DC standard var Psa2004.
+
+ Modifications:
+**************************************************************************/
+
+%macro Octo_Psa2004( invar=Name, outvar=Psa2004 );
+
+  ** PSA code **;
+  
+  length &amp;outvar $ 3;
+  
+  if &amp;invar ~= . then 
+    &amp;outvar = put( &amp;invar, z3. );
+  else  
+    &amp;outvar = "";
+
+  label
+    &amp;outvar = "MPD Police Service Area (2004)";
+    
+%mend Octo_Psa2004;
+
+
+
+      </pre>
+   </body>
+</html>

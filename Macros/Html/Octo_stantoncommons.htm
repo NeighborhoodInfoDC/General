@@ -1,0 +1,58 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Octo_stantoncommons.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Octo_StantonCommons
+ Library:  Octo
+ Project:  NeighborhoodInfo DC
+ Author:   Yipeng Su
+ Created:  3/15/2017
+ Version:  SAS 9.4
+ Environment:  Windows
+ 
+ Description: Convert OCTO field to
+ NeighborhoodInfo DC standard var StantonCommons. 
+
+**************************************************************************/
+
+%macro Octo_StantonCommons( 
+  invar=_stanc,      /** Input var **/
+  outvar=stantoncommons, /** Output var **/
+  check=          /** Perform validity check? (Y/N) **/
+  );
+
+  &amp;invar._num = &amp;invar.;
+
+  Gis_id = &amp;invar.;
+
+
+  %let check = %upcase( &amp;check );
+
+  length &amp;outvar $ 1;
+  
+  &amp;outvar = put( &amp;invar._num, z1. );
+
+  label
+    &amp;outvar = "Stanton Commons (2018)";
+
+  %if &amp;check = Y %then %do;
+  
+    %** Check that new values are valid **;
+    
+    if put( &amp;outvar, $stancv. ) = ' ' then do;
+      %warn_put( macro=Octo_stantoncommons, msg="Invalid StantonCommons ID: " _n_= &amp;invar= &amp;outvar= )
+    end;
+    
+  %end;
+    
+%mend Octo_stantoncommons;
+
+
+
+      </pre>
+   </body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html public "-//w3c//dtd html 4.0 final//en">
+<html>
+   <head>
+      <title>C:\DCData\Libraries\General\Macros\Create_all_summary_from_tracts.sas</title>
+   </head>
+   <body>
+      <pre>
+/**************************************************************************
+ Macro:    Create_all_summary_from_tracts
+ Library:  Macros
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  07/29/06
+ Version:  SAS 9.2
+ Environment:  Windows
+ 
+ Description:  Create all summary level files from a tract level summary file.
+
+ Modifications:
+  08/27/06 PAT Added REVISIONS= parameter.
+  09/26/06 PAT Added LIB= parameter.
+  12/22/10 PAT Added MPRINT= parameter.
+  07/14/12 PAT Removed casey_nbr2003 and casey_ta2003 from list of geos.
+               Added Anc2012, Ward2012, and Psa2010.
+               Added TRACT_YR= parameter for specifying source tract year.
+               DISABLED ALL GEOS EXCEPT WARDS FOR TESTING.
+  07/21/12 PAT Added tract-level summary for 2010 (if based on 2000 tracts)
+               or for 2000 (if based on 2010).
+  09/09/12 PAT Final production version for all geos.
+  12/17/12 PAT Added summary for voting precincts (VoterPre2012).
+  03/28/17     Added summary for Bridge Park impact area (BridgePk)
+  03/15/18 NS  Added summary for Cluster 2017.
+  05/16/18 YS  Add summary for StantonCommons
+**************************************************************************/
+
+%macro Create_all_summary_from_tracts( 
+  lib=,
+  data_pre=,
+  data_label=,
+  count_vars=, 
+  prop_vars=, 
+  calc_vars=, 
+  calc_vars_labels=,
+  tract_yr=2000,
+  register=,
+  finalize=y,
+  creator_process=,
+  restrictions=,
+  revisions=,
+  mprint=n
+);
+
+  %Create_summary_from_tracts( geo=city, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=eor, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=ward2002, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=ward2012, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=zip, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=psa2004, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=psa2012, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=anc2002, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=anc2012, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=cluster_tr2000, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %Create_summary_from_tracts( geo=voterpre2012, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+    
+  %Create_summary_from_tracts( geo=bridgepk, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+ %Create_summary_from_tracts( geo=cluster2017, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+ %Create_summary_from_tracts( geo=stantoncommons, 
+    lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+    prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+    tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+    restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+
+  %if &amp;tract_yr = 2000 %then %do;
+    %Create_summary_from_tracts( geo=geo2010, 
+      lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+      prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+      tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+      restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+  %end;
+  %else %if &amp;tract_yr = 2010 %then %do;
+    %Create_summary_from_tracts( geo=geo2000, 
+      lib=&amp;lib, outlib=&amp;lib, data_pre=&amp;data_pre, data_label=&amp;data_label, count_vars=&amp;count_vars,
+      prop_vars=&amp;prop_vars, calc_vars=&amp;calc_vars, calc_vars_labels=&amp;calc_vars_labels,
+      tract_yr=&amp;tract_yr, register=&amp;finalize, creator_process=&amp;creator_process,
+      restrictions=&amp;restrictions, revisions=&amp;revisions, mprint=&amp;mprint )
+  %end;
+
+%mend Create_all_summary_from_tracts;
+
+
+
+      </pre>
+   </body>
+</html>
