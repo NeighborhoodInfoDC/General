@@ -26,7 +26,7 @@ proc sql;
       coalesce( base.ssl, geo.ssl) as ssl, 
       geo.cluster2017, geo.ward2012, 
       base.landarea, base.in_last_ownerpt 
-    from RealProp.Parcel_base (where=(in_last_ownerpt and ui_proptype in ( '10', '11', '12', '13', '19' ))) as base 
+    from RealProp.Parcel_base (where=(in_last_ownerpt )) as base 
       left join
       RealProp.Parcel_geo as geo
     on base.ssl = geo.ssl
