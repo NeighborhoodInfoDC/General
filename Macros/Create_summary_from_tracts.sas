@@ -96,18 +96,20 @@
       mprint=&mprint
     )
   
-    %Finalize_data_set(
-    data=&data_pre.&geosuf,
-    out=&data_pre.&geosuf,
-    outlib=&outlib.,
-    label="&data_label.",
-    sortby=&geo,
-    /** Metadata parameters **/
-    revisions=%str(&revisions),
-    /** File info parameters **/
-    printobs=0,
-    freqvars=&geo
-  )
+	%if &register = Y %then %do;
+	    %Finalize_data_set(
+	    data=&data_pre.&geosuf,
+	    out=&data_pre.&geosuf,
+	    outlib=&outlib.,
+	    label="&data_label.",
+	    sortby=&geo,
+	    /** Metadata parameters **/
+	    revisions=%str(&revisions),
+	    /** File info parameters **/
+	    printobs=0,
+	    freqvars=&geo
+	    )
+  %end;
 
   %exit_macro:
 
