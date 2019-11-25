@@ -19,7 +19,7 @@
 
 data PSA2019 (label="Police Service Area (2019)");
 
-  input psa2019 $3. psa2019_name & $99.; 
+  input psa2019 $3. psa2019_name & $10.; 
 
   label 
     psa2019 = 'Police Service Area (2019)'
@@ -177,11 +177,11 @@ run;
 
 
 proc catalog catalog=General.formats entrytype=formatc;
-  modify psa17a (desc="Police Service Areas (2019), 'psa nn'");
-  modify psa17b (desc="Police Service Areas (2019), psa names only");
-  modify psa17f (desc="Police Service Areas (2019), 'psa nn (..)'");
-  modify psa17g (desc="Police Service Areas (2019), 'nn (..)'");
-  modify psa17v (desc="Police Service Areas (2019), validation");
+  modify psa19a (desc="Police Service Areas (2019), 'psa nn'");
+  modify psa19b (desc="Police Service Areas (2019), psa names only");
+  modify psa19f (desc="Police Service Areas (2019), 'psa nn (..)'");
+  modify psa19g (desc="Police Service Areas (2019), 'nn (..)'");
+  modify psa19v (desc="Police Service Areas (2019), validation");
   contents;
   quit;
 
