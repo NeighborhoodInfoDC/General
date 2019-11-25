@@ -134,7 +134,7 @@ run;
   FmtName=$psa2019f,
   Data=PSA2019,
   Value=psa2019,
-  Label="Police Service Area " || trim( Cluster2017 ) || " (" || trim( cluster2017_name ) || ")",
+  Label="Police Service Area " || trim( psa2019 ) || " (" || trim( psa2019_name ) || ")",
   OtherLabel=,
   DefaultLen=.,
   MaxLen=.,
@@ -165,7 +165,7 @@ run;
   FmtLib=General,
   FmtName=$psa19v,
   Data=PSA2019,
-  Value=CPSA2019,
+  Value=PSA2019,
   Label=PSA2019,
   OtherLabel='',
   DefaultLen=.,
@@ -188,7 +188,7 @@ proc catalog catalog=General.formats entrytype=formatc;
 
 proc datasets library=Work nolist memtype=(data);
   modify psa2019;
-    format psa2019 $psa19a.;
+    format psa2019 $psa2019a.;
 quit;
 
 ** Save final dataset to SAS1 **;
@@ -203,8 +203,6 @@ quit;
   restrictions=None,
   revisions=Added new cluster display formats.
   );
-
-%file_info( data=General.PSA2019, printobs=5, stats= )
 
 
 /* End of Program */
