@@ -1,3 +1,4 @@
+/**************************************************************************
  Program:  PSA2019.sas
  Library:  General
  Project:  NeighborhoodInfo DC
@@ -141,7 +142,7 @@ run;
   Print=Y
   );
 
-** $psa19g: nn (...) **;
+** $psa17g: nn (...) **;
 
 %Data_to_format(
   FmtLib=General,
@@ -162,21 +163,10 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$psa17v,
+  FmtName=$psa19v,
   Data=PSA2019,
   Value=CPSA2019,
   Label=PSA2019,
-  )
-
-** $PSA12v:  
-** Validation format - returns PSA number if valid, blank otherwise **;
-
-%Data_to_format(
-  FmtLib=General,
-  FmtName=$PSA12v,
-  Data=General.PSA2012,
-  Value=PSA2012,
-  Label=PSA2012,
   OtherLabel='',
   DefaultLen=.,
   MaxLen=.,
@@ -218,3 +208,4 @@ quit;
 
 
 /* End of Program */
+
