@@ -8,20 +8,15 @@
  Environment:  Windows
  
  Description: Convert OCTO cluster id to
- NeighborhoodInfo DC standard var Psa2017.
+ NeighborhoodInfo DC standard var Psa2019.
 
 **************************************************************************/
 
 %macro Octo_Psa2019( 
-  invar=clusterID,      /** Input var **/
+  invar=Name,      /** Input var **/
   outvar=Psa2019, /** Output var **/
   check=          /** Perform validity check? (Y/N) **/
   );
-
-  length &invar. $ 2;
-
-  &invar.=substr(name,9,2);
-  &invar._num = &invar. +0;
 
   Gis_id = &invar.;
 
