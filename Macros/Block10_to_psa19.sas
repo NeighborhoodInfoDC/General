@@ -16,7 +16,7 @@
 
   length &outvar $ 3;
   
-  &outvar = put( &invar, $psa2019f. );
+  &outvar = put( &invar, $bk1ps9f. );
   
   label &outvar = "PSA (2019)";
   
