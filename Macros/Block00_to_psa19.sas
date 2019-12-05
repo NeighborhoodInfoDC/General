@@ -21,7 +21,7 @@
   label &outvar = "PSA (2019)";
   
   %if %upcase( &format ) = Y %then %do;
-    format &outvar $psa2019a.;
+    format &outvar $psa19a.;
   %end;
 
 %mend Block00_to_psa19;
