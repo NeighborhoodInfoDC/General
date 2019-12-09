@@ -100,7 +100,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$psa2019a,
+  FmtName=$psa19a,
   Data=PSA2019,
   Value=psa2019,
   Label="Police Service Area " || psa2019,
@@ -116,7 +116,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$psa2019b,
+  FmtName=$psa19b,
   Data=PSA2019,
   Value=psa2019,
   Label=psa2019_name,
@@ -131,7 +131,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$psa2019f,
+  FmtName=$psa19f,
   Data=PSA2019,
   Value=psa2019,
   Label="Police Service Area " || trim( psa2019 ) || " (" || trim( psa2019_name ) || ")",
@@ -146,7 +146,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$psa2019g,
+  FmtName=$psa19g,
   Data=PSA2019,
   Value=PSA2019,
   Label=trim( PSA2019 ) || " (" || trim( psa2019_name ) || ")",
@@ -188,7 +188,7 @@ proc catalog catalog=General.formats entrytype=formatc;
 
 proc datasets library=Work nolist memtype=(data);
   modify psa2019;
-    format psa2019 $psa2019a.;
+    format psa2019 $psa19a.;
 quit;
 
 ** Save final dataset to SAS1 **;
