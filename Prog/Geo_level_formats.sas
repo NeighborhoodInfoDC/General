@@ -2,8 +2,8 @@
  Program:  Geo_level_formats.sas
  Library:  General
  Project:  NeighborhoodInfo DC
- Author:   P. Tatian
- Created:  07/31/06
+ Author:   Eleanor Noble
+ Updated:  12/12/2019
  Version:  SAS 8.2
  Environment:  Windows
  
@@ -40,7 +40,7 @@ libname doc 'L:\Libraries\General\Doc';
 %macro Create_format( name=, col=, desc= );
 
 %let start_row = 5;
-%let end_row = 34;
+%let end_row = 35;
 
 /* Updated code for StatTransfer */
 
