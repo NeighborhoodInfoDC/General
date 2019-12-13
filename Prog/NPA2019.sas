@@ -46,11 +46,11 @@ run;
 ** $npa2019a: npa nn **;
 
 %Data_to_format(
-  FmtLib=General,
+  FmtLib=general,
   FmtName=$npa19a,
   Data=NPA2019,
   Value=NPA2019,
-  Label="Neighborhood Planning Area" || npa2019,
+  Label="Neighborhood Planning Area " || npa2019,
   OtherLabel=,
   DefaultLen=.,
   MaxLen=.,
@@ -62,7 +62,7 @@ run;
 ** $npa2019b:  NeiName **;
 
 %Data_to_format(
-  FmtLib=General,
+  FmtLib=general,
   FmtName=$npa19b,
   Data=NPA2019,
   Value=npa2019,
@@ -77,7 +77,7 @@ run;
 ** $npa19f: npa nn (...) **;
 
 %Data_to_format(
-  FmtLib=General,
+  FmtLib=general,
   FmtName=$npa19f,
   Data=NPA2019,
   Value=npa2019,
@@ -92,11 +92,11 @@ run;
 ** $npa17g: nn (...) **;
 
 %Data_to_format(
-  FmtLib=General,
+  FmtLib=general,
   FmtName=$npa19g,
   Data=NPA2019,
   Value=NPA2019,
-  Label=trim( PSA2019 ) || " (" || trim( npa2019_name ) || ")",
+  Label=trim( npa2019 ) || " (" || trim( npa2019_name ) || ")",
   OtherLabel=,
   DefaultLen=.,
   MaxLen=.,
@@ -109,7 +109,7 @@ run;
 ** Validation format - returns NPA2019 number if valid, blank otherwise **;
 
 %Data_to_format(
-  FmtLib=General,
+  FmtLib=general,
   FmtName=$npa19v,
   Data=NPA2019,
   Value=NPA2019,
