@@ -1,30 +1,30 @@
 /**************************************************************************
- Macro:    Block10_to_psa19
- Library:  
+ Macro:    Block10_to_npa19
+ Library:  general
  Project:  NeighborhoodInfo DC
- Author:   Rob Pitingolo
- Created:  12/5/19
+ Author:   Eleanor Noble
+ Created:  12/20/19
  Version:  SAS 9.4
  Environment:  Windows
  
- Description: Convert Census block IDs (2010) to PSA (2019).
+ Description: Convert Census block IDs (2010) to NPA (2019).
 
  Modifications:
 **************************************************************************/
 
-%macro Block10_to_psa19( invar=geoblk2010, outvar=psa2019, format=Y );
+%macro Block10_to_npa19( invar=geoblk2010, outvar=npa2019, format=Y );
 
-  length &outvar $ 3;
+  length &outvar $ 1;
   
-  &outvar = put( &invar, $bk1ps9f. );
+  &outvar = put( &invar, $bk1npa19f. );
   
-  label &outvar = "PSA (2019)";
+  label &outvar = "NPA (2019)";
   
   %if %upcase( &format ) = Y %then %do;
-    format &outvar $psa19a.;
+    format &outvar $npa19a.;
   %end;
 
-%mend Block10_to_psa19;
+%mend Block10_to_npa19;
 
 
 

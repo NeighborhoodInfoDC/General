@@ -3,7 +3,7 @@
  Library:  
  Project:  NeighborhoodInfo DC
  Author:   Eleanor Noble
- Created:  12/518/19
+ Created:  12/18/19
  Version:  SAS 9.4
  Environment:  Windows
  
@@ -16,7 +16,7 @@
 
   length &outvar $ 1;
   
-  &outvar = put( &invar, $$bk0ps9f. );
+  &outvar = put( &invar, $$bk0npa19f. ); 
   
   label &outvar = "NPA (2019)";
   

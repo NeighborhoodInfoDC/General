@@ -10,7 +10,7 @@
   Description:  Create Census 2000 block to NPA 2019
   correspondence file.
 
-  Adds correspondence format $bk0ps9f. to local General library.
+  Adds correspondence format $bk0npa19f. to local General library.
 
   Modifications:
 ************************************************************************/
@@ -20,7 +20,7 @@
 ** Define libraries **;
 %DCData_lib( OCTO )
 
-*options obs=50;
+*options obs=5;
 
 data block00_npa19
   (label="Census 2000 blocks (GeoBlk2000) to NPA2019 (npa2019) correspondence file");
@@ -46,7 +46,7 @@ data block00_npa19
   %Octo_npa2019( check=y )
   
   label 
-    psa2019 = "NPA (2019)"
+    npa2019 = "NPA (2019)"
     CJRTRACTBL = "OCTO tract/block ID"
     x = "Block centroid X coord. (MD State Plane NAD 83 meters)"
     y = "Block centroid Y coord. (MD State Plane NAD 83 meters)"
@@ -77,7 +77,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$bk0ps9f,
+  FmtName=$bk0npa19f,
   Data=block00_npa19,
   Value=GeoBlk2000,
   Label=npa2019,
