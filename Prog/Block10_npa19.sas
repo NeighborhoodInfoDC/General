@@ -41,7 +41,7 @@ data Block10_NPA19
     Geo2010 = 'Full census tract ID (2010): ssccctttttt';
 
   ** Cluster code **;
-  %Octo_Psa2019()
+  %Octo_NPA2019()
   
   label 
     Gis_id = "OCTO NPA ID"
