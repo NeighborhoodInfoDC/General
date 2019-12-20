@@ -13,7 +13,7 @@
 **************************************************************************/
 
 %macro Octo_npa2019( 
-  invar=Name,      /** Input var **/
+  invar=OBJECTID,      /** Input var **/
   outvar=npa2019, /** Output var **/
   check=          /** Perform validity check? (Y/N) **/
   );
@@ -23,9 +23,9 @@
 
   %let check = %upcase( &check );
 
-   ** PSA code **;
+   ** NPA code **;
   
-  length &outvar $ 3;
+  length &outvar $ 1;
   
   &outvar = upcase( left( &invar ) );
   
@@ -37,7 +37,7 @@
     %** Check that new values are valid **;
     
     if put( &outvar, $npa19v. ) = '' then do;
-      %warn_put( macro=Octo_Psa2019, msg="Invalid 2019 NPA ID: " _n_= &invar= &outvar= )
+      %warn_put( macro=Octo_NPA2019, msg="Invalid 2019 NPA ID: " _n_= &invar= &outvar= )
     end;
     
   %end;
