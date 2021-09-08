@@ -28,19 +28,20 @@
   03/07/17 RP   Updated code to remove the DDE. Geographic Levels file must 
 				first be converted to a SAS dataset in StatTransfer. 
   04/27/18 YS   Added new geo: StantonCommons
+  09/08/21 RP   Added new geographies from 2020 Census update.
 **************************************************************************/
 
-%include "L:\SAS\Inc\StdLocal.sas";
+%include "\\sas1\dcdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-libname doc 'L:\Libraries\General\Doc';
+libname doc '\\sas1\dcdata\Libraries\General\Doc';
 
 /** Macro Create_format - Start Definition **/
 
 %macro Create_format( name=, col=, desc= );
 
 %let start_row = 5;
-%let end_row = 35;
+%let end_row = 38;
 
 /* Updated code for StatTransfer */
 
