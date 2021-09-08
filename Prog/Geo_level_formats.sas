@@ -111,25 +111,36 @@ run;
 
 %Create_format( name=$geobw1f, col=13, desc="Geo name to block grp 10 weighting file" )
 
-%Create_format( name=$geoafmt, col=15, desc="Geo name to geography label format" )
+%Create_format( name=$geotw2f, col=14, desc="Geo name to tract 2020 weighting file" )
 
-%Create_format( name=$geovfmt, col=16, desc="Geo name to geography validation format" )
+%Create_format( name=$geobw2f, col=15, desc="Geo name to block grp 20 weighting file" )
 
-%Create_format( name=$geobk0f, col=17, desc="Geo name to 2000 block corresp. format" )
+%Create_format( name=$geoafmt, col=17, desc="Geo name to geography label format" )
 
-%Create_format( name=$geotr0f, col=18, desc="Geo name to 2000 tract corresp. format" )
+%Create_format( name=$geovfmt, col=18, desc="Geo name to geography validation format" )
 
-%Create_format( name=$geobk1f, col=19, desc="Geo name to 2010 block corresp. format" )
+%Create_format( name=$geobk0f, col=19, desc="Geo name to 2000 block corresp. format" )
 
-%Create_format( name=$geotr1f, col=20, desc="Geo name to 2010 tract corresp. format" )
+%Create_format( name=$geotr0f, col=20, desc="Geo name to 2000 tract corresp. format" )
 
-%Create_format( name=$geodlbl, col=21, desc="Geo name to data set label" )
+%Create_format( name=$geobk1f, col=21, desc="Geo name to 2010 block corresp. format" )
 
-%Create_format( name=$geoslbl, col=22, desc="Geo name to short label" )
+%Create_format( name=$geotr1f, col=22, desc="Geo name to 2010 tract corresp. format" )
 
-%Create_format( name=$geobk0m, col=23, desc="Geo name to 2000 block macro name" )
+%Create_format( name=$geobk2f, col=23, desc="Geo name to 2020 block corresp. format" )
 
-%Create_format( name=$geobk1m, col=24, desc="Geo name to 2010 block macro name" )
+%Create_format( name=$geotr2f, col=24, desc="Geo name to 2020 tract corresp. format" )
+
+%Create_format( name=$geodlbl, col=25, desc="Geo name to data set label" )
+
+%Create_format( name=$geoslbl, col=26, desc="Geo name to short label" )
+
+%Create_format( name=$geobk0m, col=27, desc="Geo name to 2000 block macro name" )
+
+%Create_format( name=$geobk1m, col=28, desc="Geo name to 2010 block macro name" )
+
+%Create_format( name=$geobk2m, col=29, desc="Geo name to 2020 block macro name" )
+
 
 proc catalog catalog=General.formats;
   contents;
