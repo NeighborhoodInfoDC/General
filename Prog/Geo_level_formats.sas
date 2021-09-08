@@ -28,19 +28,20 @@
   03/07/17 RP   Updated code to remove the DDE. Geographic Levels file must 
 				first be converted to a SAS dataset in StatTransfer. 
   04/27/18 YS   Added new geo: StantonCommons
+  09/08/21 RP   Added new geographies from 2020 Census update.
 **************************************************************************/
 
-%include "L:\SAS\Inc\StdLocal.sas";
+%include "\\sas1\dcdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-libname doc 'L:\Libraries\General\Doc';
+libname doc '\\sas1\dcdata\Libraries\General\Doc';
 
 /** Macro Create_format - Start Definition **/
 
 %macro Create_format( name=, col=, desc= );
 
 %let start_row = 5;
-%let end_row = 35;
+%let end_row = 38;
 
 /* Updated code for StatTransfer */
 
@@ -110,25 +111,36 @@ run;
 
 %Create_format( name=$geobw1f, col=13, desc="Geo name to block grp 10 weighting file" )
 
-%Create_format( name=$geoafmt, col=15, desc="Geo name to geography label format" )
+%Create_format( name=$geotw2f, col=14, desc="Geo name to tract 2020 weighting file" )
 
-%Create_format( name=$geovfmt, col=16, desc="Geo name to geography validation format" )
+%Create_format( name=$geobw2f, col=15, desc="Geo name to block grp 20 weighting file" )
 
-%Create_format( name=$geobk0f, col=17, desc="Geo name to 2000 block corresp. format" )
+%Create_format( name=$geoafmt, col=17, desc="Geo name to geography label format" )
 
-%Create_format( name=$geotr0f, col=18, desc="Geo name to 2000 tract corresp. format" )
+%Create_format( name=$geovfmt, col=18, desc="Geo name to geography validation format" )
 
-%Create_format( name=$geobk1f, col=19, desc="Geo name to 2010 block corresp. format" )
+%Create_format( name=$geobk0f, col=19, desc="Geo name to 2000 block corresp. format" )
 
-%Create_format( name=$geotr1f, col=20, desc="Geo name to 2010 tract corresp. format" )
+%Create_format( name=$geotr0f, col=20, desc="Geo name to 2000 tract corresp. format" )
 
-%Create_format( name=$geodlbl, col=21, desc="Geo name to data set label" )
+%Create_format( name=$geobk1f, col=21, desc="Geo name to 2010 block corresp. format" )
 
-%Create_format( name=$geoslbl, col=22, desc="Geo name to short label" )
+%Create_format( name=$geotr1f, col=22, desc="Geo name to 2010 tract corresp. format" )
 
-%Create_format( name=$geobk0m, col=23, desc="Geo name to 2000 block macro name" )
+%Create_format( name=$geobk2f, col=23, desc="Geo name to 2020 block corresp. format" )
 
-%Create_format( name=$geobk1m, col=24, desc="Geo name to 2010 block macro name" )
+%Create_format( name=$geotr2f, col=24, desc="Geo name to 2020 tract corresp. format" )
+
+%Create_format( name=$geodlbl, col=25, desc="Geo name to data set label" )
+
+%Create_format( name=$geoslbl, col=26, desc="Geo name to short label" )
+
+%Create_format( name=$geobk0m, col=27, desc="Geo name to 2000 block macro name" )
+
+%Create_format( name=$geobk1m, col=28, desc="Geo name to 2010 block macro name" )
+
+%Create_format( name=$geobk2m, col=29, desc="Geo name to 2020 block macro name" )
+
 
 proc catalog catalog=General.formats;
   contents;
