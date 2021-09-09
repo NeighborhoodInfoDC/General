@@ -9,7 +9,7 @@
  
  Description: 2020 Census block data set and formats.
 
- Modifications:
+ Modifications: Updated for 2020 redistricting data
 **************************************************************************/
 
 %include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";

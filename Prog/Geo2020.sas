@@ -9,7 +9,7 @@
  
  Description:  Create Census tract 2020 list and formats.
 
- Modifications: 
+ Modifications: Updated for 2020 redistricting data
 **************************************************************************/
 
 %include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
