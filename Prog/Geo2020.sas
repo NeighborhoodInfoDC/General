@@ -96,7 +96,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20a,
-  Data=General.Geo2020,
+  Data=Geo2020,
   Value=Geo2020,
   Label=tract_num,
   OtherLabel=,
@@ -111,7 +111,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20b,
-  Data=General.Geo2020,
+  Data=Geo2020,
   Value=Geo2020,
   Label=tract4_2,
   OtherLabel=,
@@ -126,7 +126,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20so,
-  Data=General.Geo2020 (where=(state="11")),
+  Data=Geo2020 (where=(state="11")),
   Value=Geo2020,
   Label=tract,
   OtherLabel=' ',
@@ -141,7 +141,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20os,
-  Data=General.Geo2020 (where=(state="11")),
+  Data=Geo2020 (where=(state="11")),
   Value=tract,
   Label=Geo2020,
   OtherLabel=' ',
@@ -156,7 +156,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20sd,
-  Data=General.Geo2020 (where=(state="11")),
+  Data=Geo2020 (where=(state="11")),
   Value=Geo2020,
   Label=tract_dc,
   OtherLabel=' ',
@@ -171,7 +171,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20ds,
-  Data=General.Geo2020 (where=(state="11")),
+  Data=Geo2020 (where=(state="11")),
   Value=tract_dc,
   Label=Geo2020,
   OtherLabel=' ',
@@ -187,7 +187,7 @@ revisions=%str(&revisions.)
 %Data_to_format(
   FmtLib=General,
   FmtName=$geo20v,
-  Data=General.Geo2020,
+  Data=Geo2020,
   Value=Geo2020,
   Label=Geo2020,
   OtherLabel='',
