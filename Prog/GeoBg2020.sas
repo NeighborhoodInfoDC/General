@@ -18,7 +18,7 @@
 %DCData_lib( Census )
 
 ** Revisions to the file **;
-%let revisions = Added MD VA and WV tracts. ;
+%let revisions = Updated for 2020 redistricting data ;
 
 
 ** Combined metro BG data **;
