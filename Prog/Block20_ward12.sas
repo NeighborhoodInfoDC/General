@@ -10,7 +10,7 @@
   Description:  Create Census 2020 block to Ward (2012) 
   correspondence file.
 
-  Adds correspondence format $bk1wdaf. to local General library.
+  Adds correspondence format $bk2wdaf. to local General library.
 
   Modifications: Updated for 2020 redistricting data
 ************************************************************************/
@@ -78,13 +78,11 @@ run;
 proc sort data=Block20_Ward12 nodupkey;
   by GeoBlk2020;
 
-%File_info( data=Block20_Ward12, stats=, freqvars=Ward2012  )
-
 ** Create correspondence format **;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$bk1wdaf,
+  FmtName=$bk2wdaf,
   Data=Block20_Ward12,
   Value=GeoBlk2020,
   Label=Ward2012,
@@ -94,3 +92,15 @@ proc sort data=Block20_Ward12 nodupkey;
   Contents=Y
   )
 
+%Finalize_data_set(
+    data=Block20_Ward12,
+    out=Block20_Ward12,
+    outlib=general,
+    label="Census 2020 blocks (GeoBlk2020) to Ward 2012 (Ward2012) correspondence file",
+    sortby=GeoBlk2020,
+    /** Metadata parameters **/
+    revisions=New file.,
+    /** File info parameters **/
+    printobs=5,
+    freqvars=
+  )
