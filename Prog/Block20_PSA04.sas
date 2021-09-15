@@ -43,7 +43,7 @@ data Block20_PSA04
 
   ** PSA code **;
   
-  %Octo_Psa2004()
+  %Octo_Psa2004(invar=Name_1)
   
   ** Police district code **;
   
@@ -79,9 +79,6 @@ run;
 
 proc sort data=Block20_PSA04 nodupkey;
   by GeoBlk2020;
-
-%File_info( data=Block20_PSA04, stats=, freqvars=PolDist2004 PSA2004 )
-
 run;
 
 ** Create correspondence formats **;

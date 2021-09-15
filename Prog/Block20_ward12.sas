@@ -47,7 +47,7 @@ data Block20_Ward12
 
   ** Ward2012 var **;
 
-  %Octo_Ward2012( check=y )
+  %Octo_Ward2012( invar=ward_id, check=y )
   
   label 
     Ward = "OCTO Ward ID"

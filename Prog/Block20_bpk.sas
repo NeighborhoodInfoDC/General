@@ -47,7 +47,7 @@ data Block20_bpk
 
   ** Bridgepk var **;
 
-  %Bridgepk( check=y )
+  %Bridgepk( invar=bridgepkID, check=y )
   
   label 
     bridgepkID = "Bridge Park ID"
@@ -76,6 +76,7 @@ run;
 
 proc sort data=Block20_bpk nodupkey;
   by GeoBlk2020;
+run;
 
 ** Create correspondence format **;
 

@@ -40,7 +40,7 @@ data Block20_stantoncommons
     Geo2020 = 'Full census tract ID (2020): ssccctttttt';
 
   ** Stantoncommons code **;
-  %Octo_stantoncommons()
+  %Octo_stantoncommons(invar=_stanc);
 
   NAME = _stancname;
   

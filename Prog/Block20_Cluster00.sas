@@ -41,7 +41,7 @@ data Block20_Cluster00
 
   ** Cluster code **;
   
-  %Octo_cluster2000()
+  %Octo_cluster2000(invar=name_1)
   
   label 
     Gis_id = "OCTO Cluster ID"
@@ -71,6 +71,7 @@ run;
 
 proc sort data=Block20_Cluster00 nodupkey;
   by GeoBlk2020;
+run;
 
 ** Create correspondence format **;
 

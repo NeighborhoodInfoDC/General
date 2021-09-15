@@ -44,25 +44,18 @@ data Block20_tract10
   
   length Geo2010 $ 11;
   
-  Geo2010 = '11001' || Tract;
+  Geo2010 = GEOID_1;
   
   label
     Geo2010 = 'Full census tract ID (2010): ssccctttttt';
 
-  label 
-    ANC_ID = "OCTO ANC code"
-    Name = "OCTO ANC name"
-    CJRTRACTBL = "OCTO tract/block ID"
-    x = "Block centroid X coord. (MD State Plane NAD 83 meters)"
-    y = "Block centroid Y coord. (MD State Plane NAD 83 meters)"
-  ;
   
   ** Remove silly formats/informats, unneeded variables **;
   
   format _all_ ;
   informat _all_ ;
   
-  keep GeoBlk2020 Geo2010 CJRTRACTBL x y;
+  keep GeoBlk2020 Geo2010 ;
 
 run;
 

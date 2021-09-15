@@ -41,7 +41,7 @@ data Block20_Zip
 
   ** ZIP code **;
   
-  %Octo_zip()
+  %Octo_zip(invar=zipcode);
   
   label 
     Gis_id = "OCTO ZIP code ID"
@@ -71,6 +71,7 @@ run;
 
 proc sort data=Block20_Zip nodupkey;
   by GeoBlk2020;
+run;
 
 ** Create correspondence format **;
 

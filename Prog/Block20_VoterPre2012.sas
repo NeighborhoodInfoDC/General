@@ -47,7 +47,7 @@ data Block20_VoterPre2012
   end;
 
   ** VotingPre2012 var **;
-  %Octo_VoterPre2012( check=y )
+  %Octo_VoterPre2012(invar=name_1, check=y )
 	
   name ='Voting ' || name;
   
@@ -79,8 +79,8 @@ run;
 
 proc sort data=Block20_VoterPre2012 nodupkey;
   by GeoBlk2020;
+run;
 
-%File_info( data=Block20_VoterPre2012, stats=, freqvars=VoterPre2012  )
 
 ** Create correspondence format **;
 

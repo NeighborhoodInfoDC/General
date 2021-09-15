@@ -41,7 +41,7 @@ data Block20_Ward02
 
   ** Ward code **;
   
-  %Octo_ward2002()
+  %Octo_ward2002(invar=ward_id)
   
   label 
     Gis_id = "OCTO Ward ID"

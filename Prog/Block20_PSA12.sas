@@ -47,7 +47,7 @@ data Block20_Psa12
 
   ** PSA code **;
   
-  %Octo_Psa2012( check=y )
+  %Octo_Psa2012(invar=name_1, check=y )
   
   ** Police district code **;
   

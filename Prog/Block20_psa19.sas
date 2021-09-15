@@ -41,7 +41,7 @@ data Block20_PSA19
     Geo2020 = 'Full census tract ID (2020): ssccctttttt';
 
   ** Cluster code **;
-  %Octo_Psa2019()
+  %Octo_Psa2019(invar=name_1)
   
   label 
     Gis_id = "OCTO Cluster ID"

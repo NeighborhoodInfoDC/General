@@ -72,8 +72,8 @@ run;
 
 proc sort data=Block20_tract00 nodupkey;
   by GeoBlk2020;
+run;
 
-%File_info( data=Block20_tract00, stats=, freqvars=Geo2000 )
 
 ** Create correspondence format **;
 
