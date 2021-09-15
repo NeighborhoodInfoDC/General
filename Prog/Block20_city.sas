@@ -17,14 +17,23 @@
 
 ** Define libraries **;
 
+data Geoblk2020_City;
+	set General.Geoblk2020;
+	City = 1;
+run;
+
+proc sort data=Geoblk2020_city nodupkey;
+  by GeoBlk2020;
+run;
+
 ** Create correspondence format **;
 
 %Data_to_format(
   FmtLib=General,
   FmtName=$bk2city,
-  Data=Geoblk2020,
+  Data=Geoblk2020_City,
   Value=GeoBlk2020,
-  Label="1",
+  Label=City,
   OtherLabel="",
   Desc="Block 2020 to city correspondence",
   Print=N,
