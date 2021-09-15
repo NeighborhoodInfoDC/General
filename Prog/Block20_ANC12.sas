@@ -47,7 +47,7 @@ data Block20_Anc12
 
   ** ANC code **;
   
-  %Octo_anc2012( check=y )
+  %Octo_anc2012(invar=anc_id, check=y )
 
   label 
     ANC_ID = "OCTO ANC code"
@@ -77,6 +77,7 @@ run;
 
 proc sort data=Block20_Anc12 nodupkey;
   by GeoBlk2020;
+run;
 
 ** Create correspondence format **;
 

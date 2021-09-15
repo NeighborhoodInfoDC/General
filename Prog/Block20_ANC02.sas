@@ -33,8 +33,8 @@ data Block20_ANC02
   length Geo2020 $ 11 GeoBg2020 $ 12 GeoBlk2020 $ 15;
   
   Geo2020 = '11001' || Tract;
-  GeoBg2010 = Geo2020 || BlkGrp;
-  GeoBlk2010 = Geo2020 || Block;
+  GeoBg2020 = Geo2020 || BlkGrp;
+  GeoBlk2020 = Geo2020 || Block;
   
   label
     GeoBlk2020 = 'Full census block ID (2020): sscccttttttbbbb'
@@ -43,7 +43,7 @@ data Block20_ANC02
 
   ** ANC code **;
   
-  %Octo_anc2002()
+  %Octo_anc2002(invar=anc_id);
 
   label 
     Gis_id = "OCTO ANC ID"
