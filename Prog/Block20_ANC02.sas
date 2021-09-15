@@ -73,6 +73,7 @@ run;
 
 proc sort data=Block20_ANC02 nodupkey;
   by GeoBlk2020;
+run;
 
 ** Create correspondence format **;
 
