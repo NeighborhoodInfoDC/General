@@ -18,19 +18,19 @@
   check=          /** Perform validity check? (Y/N) **/
   );
 
-  length &invar. $ 2;
+  length cname $ 2;
 
-  &invar.=substr(name,9,2);
-  &invar._num = &invar. +0;
+  cname=substr(&invar.,9,2);
+  cname_num = cname+0;
 
-  Gis_id = &invar.;
+  Gis_id = cname;
 
 
   %let check = %upcase( &check );
 
   length &outvar $ 2;
   
-  &outvar = put( &invar._num, z2. );
+  &outvar = put( cname_num, z2. );
 
   label
     &outvar = "Cluster (2017)";
