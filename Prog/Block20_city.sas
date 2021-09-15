@@ -19,7 +19,7 @@
 
 data Geoblk2020_City;
 	set General.Geoblk2020;
-	City = 1;
+	City = "1";
 run;
 
 proc sort data=Geoblk2020_city nodupkey;
