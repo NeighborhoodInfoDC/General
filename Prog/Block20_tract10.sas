@@ -25,7 +25,7 @@ libname Cen2020m "&_dcdata_path\General\Maps\Census 2020";
 data Block20_tract10 
   (label="Census 2020 blocks (GeoBlk2020) to Census 2010 tract (Geo2010) correspondence file");
 
-  set Block20_tract10;
+  set Cen2020m.Block20_tract10;
   
   ** Census block, block group, and tract IDs **;
   
@@ -77,6 +77,7 @@ run;
 
 proc sort data=Block20_tract10 nodupkey;
   by GeoBlk2020;
+run;
 
 ** Create correspondence format **;
 
