@@ -14,7 +14,7 @@
 **************************************************************************/
 
 %macro Octo_VoterPre2012( 
-  invar=Name,   /** Input var name **/
+  invar=NAME_1,   /** Input var name **/
   outvar=VoterPre2012, /** Output var name **/
   check=n         /** Perform validity check? (Y/N) **/
   );

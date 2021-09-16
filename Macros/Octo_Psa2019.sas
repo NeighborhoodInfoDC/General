@@ -13,7 +13,7 @@
 **************************************************************************/
 
 %macro Octo_Psa2019( 
-  invar=Name,      /** Input var **/
+  invar=Name_1,      /** Input var **/
   outvar=Psa2019, /** Output var **/
   check=          /** Perform validity check? (Y/N) **/
   );
