@@ -47,7 +47,7 @@ data Block20_ANC02
 
   label 
     Gis_id = "OCTO ANC ID"
-    NAME = "ANC code"
+    anc_id = "ANC code"
     Tract = "OCTO tract ID"
     BlkGrp = "OCTO block group ID"
     Block = "OCTO block ID"
@@ -58,7 +58,7 @@ data Block20_ANC02
   format Gis_id Name Tract BlkGrp Block ;
   informat _all_ ;
   
-  keep anc2002 Tract BlkGrp Block gis_id geoblk2020 GeoBg2020 Geo2020 name;
+  keep anc2002 Tract BlkGrp Block anc_id geoblk2020 GeoBg2020 Geo2020 ;
   
 run;
 

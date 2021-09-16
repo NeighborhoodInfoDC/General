@@ -84,9 +84,6 @@ run;
 
 proc sort data=Block20_Psa12 nodupkey;
   by GeoBlk2020;
-
-%File_info( data=Block20_Psa12, stats=, freqvars=PolDist2012 Psa2012 )
-
 run;
 
 ** Create correspondence formats **;
@@ -103,15 +100,16 @@ run;
   Contents=N
   )
 
-%Data_to_format(
-  FmtLib=General,
-  FmtName=$bk2pdaf,
-  Data=Block20_Psa12,
-  Value=GeoBlk2020,
-  Label=PolDist2012,
-  OtherLabel="",
-  Desc="Block 2020 to PolDist 12 correspondence",
-  Print=N,
-  Contents=Y
+%Finalize_data_set(
+    data=Block20_Psa12,
+    out=Block20_Psa12,
+    outlib=general,
+    label="Census 2020 blocks (GeoBlk2020) to PSA 2012 (psa2012) correspondence file",
+    sortby=GeoBlk2020,
+    /** Metadata parameters **/
+    revisions=New file.,
+    /** File info parameters **/
+    printobs=5,
+    freqvars=
   )
 

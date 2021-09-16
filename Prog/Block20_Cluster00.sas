@@ -77,7 +77,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$bk2c20f,
+  FmtName=$Bk2cl0f,
   Data=Block20_Cluster00,
   Value=GeoBlk2020,
   Label=Cluster2000,

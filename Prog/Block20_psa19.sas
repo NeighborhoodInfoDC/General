@@ -79,7 +79,6 @@ run;
 %Data_to_format( 
   FmtLib=General,
   FmtName=$bk2ps9f,
-
   Data=Block20_PSA19,
   Value=GeoBlk2020,
   Label=psa2019,

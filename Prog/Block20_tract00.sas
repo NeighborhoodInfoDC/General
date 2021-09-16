@@ -46,10 +46,10 @@ data Block20_tract00
   %Fedtractno_geo2000()
   
   label 
-    Gis_id = "OCTO ZIP code ID"
     Tract = "OCTO tract ID"
     BlkGrp = "OCTO block group ID"
     Block = "OCTO block ID"
+	Fedtractno = "Federal Tract No"
   ;
   
   ** Remove silly formats/informats, unneeded variables **;
@@ -57,7 +57,7 @@ data Block20_tract00
   format _all_ ;
   informat _all_ ;
   
-  keep GeoBlk2020 Geo2000 Tract BlkGrp Block Gis_id;
+  keep GeoBlk2020 GeoBg2020 Geo2020 Geo2000 Fedtractno;
 
 run;
 

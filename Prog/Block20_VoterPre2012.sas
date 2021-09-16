@@ -49,11 +49,11 @@ data Block20_VoterPre2012
   ** VotingPre2012 var **;
   %Octo_VoterPre2012(invar=name_1, check=y )
 	
-  name ='Voting ' || name;
+  name ='Voting ' || name_1;
   
   label 
     VoterPre2012 = "OCTO Voting Precinct ID"
-    NAME = "OCTO Voting Precinct name"
+    NAME_1 = "OCTO Voting Precinct name"
     Tract = "OCTO tract ID"
     BlkGrp = "OCTO block group ID"
     Block = "OCTO block ID"

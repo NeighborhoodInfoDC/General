@@ -57,7 +57,7 @@ data Block20_stantoncommons
   format _all_ ;
   informat _all_ ;
   
-  keep GeoBlk2020 GeoBg2020 Geo2020 stantoncommons Tract BlkGrp Block Gis_id NAME;
+  keep GeoBlk2020 GeoBg2020 Geo2020 stantoncommons Tract BlkGrp Block Gis_id ;
 
 run;
 

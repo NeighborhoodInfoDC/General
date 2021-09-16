@@ -55,7 +55,7 @@ data Block20_tract10
   format _all_ ;
   informat _all_ ;
   
-  keep GeoBlk2020 Geo2010 ;
+  keep GeoBlk2020 GeoBg2020 Geo2020 Geo2010 ;
 
 run;
 

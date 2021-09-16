@@ -95,15 +95,16 @@ run;
   Contents=N
   )
 
-%Data_to_format(
-  FmtLib=General,
-  FmtName=$bk2pd4f,
-  Data=Block20_PSA04,
-  Value=GeoBlk2020,
-  Label=PolDist2004,
-  OtherLabel="",
-  Desc="Block 2020 to PolDist 04 correspondence",
-  Print=N,
-  Contents=Y
+%Finalize_data_set(
+    data=Block20_PSA04,
+    out=Block20_PSA04,
+    outlib=general,
+    label="Census 2020 blocks (GeoBlk2020) to PSA 2004 (psa2004) correspondence file",
+    sortby=GeoBlk2020,
+    /** Metadata parameters **/
+    revisions=New file.,
+    /** File info parameters **/
+    printobs=5,
+    freqvars=
   )
 
