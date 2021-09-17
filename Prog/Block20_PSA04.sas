@@ -32,9 +32,9 @@ data Block20_PSA04
   
   length Geo2020 $ 11 GeoBg2020 $ 12 GeoBlk2020 $ 15;
   
-  Geo2020 = '11001' || Tract;
-  GeoBg2020 = Geo2020 || BlkGrp;
-  GeoBlk2020 = Geo2020 || Block;
+  Geo2020 = substr(geoid,10,11);
+  GeoBg2020 = substr(geoid,10,12);
+  GeoBlk2020 = substr(geoid,10,15);
   
   label
     GeoBlk2020 = 'Full census block ID (2020): sscccttttttbbbb'
