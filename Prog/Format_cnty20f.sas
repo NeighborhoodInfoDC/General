@@ -1,14 +1,14 @@
 /**************************************************************************
- Program:  Format_cnty15f.sas
+ Program:  Format_cnty20f.sas
  Library:  General
- Project:  NeighborhoodInfo DC
+ Project:  Urban-Greater DC
  Author:   P. Tatian
- Created:  11/9/2017
+ Created:  9/19/21
  Version:  SAS 9.4
  Environment:  Windows
  
- Description:  Create $cnty15f - labels for counties in 
- 2015 Metropolitan/micropolitan statistical area definition.
+ Description:  Create $cnty20f - labels for counties in 
+ 2020 Metropolitan/micropolitan statistical area definition.
 
  Modifications:
 **************************************************************************/
@@ -18,7 +18,7 @@
 ** Define libraries **;
 
 proc format library=General;
-  value $cnty15f
+  value $cnty20f
     "11001" = "District of Columbia"
     "24009" = "Calvert County, MD"
     "24017" = "Charles County, MD"
@@ -31,6 +31,7 @@ proc format library=General;
     "51059" = "Fairfax County, VA"
     "51061" = "Fauquier County, VA"
     "51107" = "Loudoun County, VA"
+    "51113" = "Madison County, VA"
     "51153" = "Prince William County, VA"
     "51157" = "Rappahannock County, VA"
     "51177" = "Spotsylvania County, VA"
@@ -47,7 +48,7 @@ proc format library=General;
 run;
 
 proc catalog catalog=General.formats;
-  modify cnty15f (desc="County labels 2015 MSA def") / entrytype=formatc;
+  modify cnty20f (desc="County labels 2020 MSA def") / entrytype=formatc;
   contents;
 quit;
 
