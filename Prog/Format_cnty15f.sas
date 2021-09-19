@@ -13,13 +13,13 @@
  Modifications:
 **************************************************************************/
 
-%include "L:\SAS\Inc\StdLocal.sas";
+%include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 
 proc format library=General;
   value $cnty15f
-    "11001" = "District of Columbia, DC"
+    "11001" = "District of Columbia"
     "24009" = "Calvert County, MD"
     "24017" = "Charles County, MD"
     "24021" = "Frederick County, MD"
