@@ -1,14 +1,14 @@
 /************************************************************************
-  Program:  Wt_bg20_npa19.sas
+  Program:  Wt_tr20_ward02.sas
   Library:  General
   Project:  Urban-Greater DC
   Author:   Elizabeth Burton
-  Created:  09/20/2021
+  Created:  09/24/21
   Version:  SAS 9.4
   Environment:  Windows
   
-  Description:  Create weighting file for converting 2020 block groups to
-  2019 NPAs.
+  Description:  Create weighting file for converting 2020 tracts to
+  2002 Wards.
 
   Modifications:
 ************************************************************************/
@@ -19,13 +19,21 @@
 %DCData_lib( Census )
 
 %Calc_weights_from_blocks( 
-  geo1 = GeoBg2020,
-  geo2 = NPA2019,
-  out_ds = Wt_bg20_npa19,
-  block_corr_ds = General.Block20_NPA19, 
+  geo1 = Geo2020,
+  geo2 = Ward2002,
+  out_ds = Wt_tr20_ward02,
+  block_corr_ds = General.Block20_Ward02, 
   block = GeoBlk2020,
   block_pop_ds = Census.Census_pl_2020_dc (where=(sumlev='750')),
   block_pop_var = p0010001, 
   block_pop_year = 2020
 )
+
+libname save "D:\DCData\Libraries\General\Data\Save";
+
+proc compare base=Save.Wt_tr20_ward02 compare=General.Wt_tr20_ward02 maxprint=(40,32000);
+  id Geo2020 Ward2002;
+  *var Pop Tract_Pop Popwt ;
+  *with Pop Pop_tr20 Popwt ;
+run;
 
