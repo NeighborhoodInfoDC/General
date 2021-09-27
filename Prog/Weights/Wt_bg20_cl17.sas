@@ -16,7 +16,7 @@
 %include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-libname Cen2020m "&_dcdata_path\General\Prog";
+%DCData_lib( Census )
 
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2020,

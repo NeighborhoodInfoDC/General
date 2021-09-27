@@ -28,12 +28,3 @@
   block_pop_var = p0010001, 
   block_pop_year = 2020
 )
-
-libname save "D:\DCData\Libraries\General\Data\Save";
-
-proc compare base=Save.Wt_tr20_ward02 compare=General.Wt_tr20_ward02 maxprint=(40,32000);
-  id Geo2020 Ward2002;
-  *var Pop Tract_Pop Popwt ;
-  *with Pop Pop_tr20 Popwt ;
-run;
-
