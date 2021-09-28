@@ -21,7 +21,6 @@
 %Calc_weights_from_blocks( 
   geo1 = Geo2020,
   geo2 = bridgepk,
-  outlib = Work,
   out_ds = Wt_tr20_bpk,
   block_corr_ds = General.Block20_bpk, 
   block = GeoBlk2020,
@@ -30,12 +29,3 @@
   block_pop_year = 2020
 )
 
-%Finalize_data_set( 
-  data=Wt_tr20_bpk,
-  out=Wt_tr20_bpk,
-  outlib=General,
-  label="Weighting file from 2020 tracts to Bridge Park Area",
-  sortby=bridgepk,
-  restrictions=None,
-  revisions=New File.
-  )

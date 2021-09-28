@@ -21,7 +21,6 @@
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2020, 
   geo2 = bridgepk,
-  outlib = Work,
   out_ds = Wt_bg20_bpk,
   block_corr_ds = General.Block20_bpk, 
   block = GeoBlk2020,         
