@@ -12,7 +12,7 @@
  Modifications:
 **************************************************************************/
 
-%macro Block10_to_stantoncommons( invar=geoblk2020, outvar=stantoncommons, format=Y );
+%macro Block20_to_stantoncommons( invar=geoblk2020, outvar=stantoncommons, format=Y );
 
   length &outvar $ 1;
   
