@@ -17,7 +17,7 @@
 
   length &outvar $ 11;
   
-  &outvar = left( &invar );
+  &outvar = put( &invar, $bk2tr1f. );
   
   label &outvar = "Full census tract ID (2010): ssccctttttt";
   
@@ -26,6 +26,3 @@
   %end;
 
 %mend Block20_to_tr10;
-
-
-
