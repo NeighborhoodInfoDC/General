@@ -90,7 +90,7 @@ run;
 
 %Data_to_format(
   FmtLib=General,
-  FmtName=$bk1psaf,
+  FmtName=$bk2psaf,
   Data=Block20_Psa12,
   Value=GeoBlk2020,
   Label=Psa2012,
