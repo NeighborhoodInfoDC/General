@@ -22,7 +22,7 @@
   label &outvar = "Neighborhood cluster (2000)";
   
   %if %upcase( &format ) = Y %then %do;
-    format &outvar $c2us00a.;
+    format &outvar $clus00a.;
   %end;
 
 %mend Block10_to_cluster00;

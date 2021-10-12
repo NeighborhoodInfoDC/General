@@ -21,7 +21,7 @@
   label &outvar = "Neighborhood Clusters (2017)";
   
   %if %upcase( &format ) = Y %then %do;
-    format &outvar $c1us17a.;
+    format &outvar $clus17a.;
   %end;
 
 %mend Block20_to_cluster17;
