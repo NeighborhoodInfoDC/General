@@ -13,7 +13,7 @@
   08/07/14 PAT Updated for SAS1 server.
 **************************************************************************/
 
-%include "L:\SAS\Inc\StdLocal.sas";
+%include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 

@@ -1,5 +1,5 @@
 /**************************************************************************
- Program:  Style_rtf_arial_6pt.sas
+ Program:  Style_Rtf_lato_8_5pt.sas
  Library:  General
  Project:  NeighborhoodInfo DC
  Author:   P. Tatian
@@ -7,7 +7,7 @@
  Version:  SAS 8.2
  Environment:  Windows
  
- Description:  Create ODS style Rtf_arial_6pt.
+ Description:  Create ODS style Rtf_lato_8pt.
 
  Modifications:
 **************************************************************************/
@@ -19,7 +19,7 @@
 ** New style for RTF output **;
 
 proc template;
-  define style Styles.Rtf_arial_6pt;
+  define style Styles.Rtf_lato_8_5pt;
     parent=styles.rtf;
        style Table from Output /
              /** Cell background color **/
@@ -44,21 +44,21 @@ proc template;
              protectspecialchars=off;
        replace fonts /
         /** Main table font **/
-        'docFont' = ("Arial",6pt)
+        'docFont' = ("lato",8.5pt)
         /** Heading fonts **/
-        'headingEmphasisFont' = ("Arial",6pt,Bold Italic)
-        'headingFont' = ("Arial",6pt,Bold)
-        'StrongFont' = ("Arial",6pt,Bold)
-        'EmphasisFont' = ("Arial",6pt,Italic)
+        'headingEmphasisFont' = ("lato",8.5pt,Bold Italic)
+        'headingFont' = ("lato",8.5pt,Bold)
+        'StrongFont' = ("lato",8.5pt,Bold)
+        'EmphasisFont' = ("lato",8.5pt,Italic)
         /** Title & footnote fonts **/
-        'TitleFont' = ("Arial",10pt,Bold)
-        'TitleFont2' = ("Arial",10pt,Bold)
+        'TitleFont' = ("lato",10pt,Bold)
+        'TitleFont2' = ("lato",10pt,Bold)
         /** Fixed-width fonts **/
-        'FixedEmphasisFont' = ("Courier New, Courier",6pt,Italic)
-        'FixedStrongFont' = ("Courier New, Courier",6pt,Bold)
-        'FixedHeadingFont' = ("Courier New, Courier",6pt,Bold)
-        'BatchFixedFont' = ("SAS Monospace, Courier New, Courier",6.6pt)
-        'FixedFont' = ("Courier New, Courier",6pt);
+        'FixedEmphasisFont' = ("Courier New, Courier",8.5pt,Italic)
+        'FixedStrongFont' = ("Courier New, Courier",8.5pt,Bold)
+        'FixedHeadingFont' = ("Courier New, Courier",8.5pt,Bold)
+        'BatchFixedFont' = ("SAS Monospace, Courier New, Courier",6.8pt)
+        'FixedFont' = ("Courier New, Courier",8.5pt);
       style body from body /
         /** Document page margins **/
         leftmargin=0.5in
@@ -83,7 +83,7 @@ proc template;
   
   source styles.printer;
   source styles.rtf;
-  source Styles.Rtf_arial_6pt;
+  source Styles.Rtf_lato_8_5pt;
 
 run;
 

@@ -7,13 +7,12 @@
  Version:  SAS 8.2
  Environment:  Windows
  
- Description:  Create ODS style Rtf_arial_9pt.
+ Description:  Create ODS style Rtf_arial_9pt_graybb.
 
  Modifications:
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
-***%include "C:\DCData\SAS\Inc\Stdhead.sas";
+%include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 
@@ -78,7 +77,7 @@ proc template;
   
   source styles.printer;
   source styles.rtf;
-  source Styles.Rtf_arial_9pt_bb;
+  source Styles.Rtf_arial_9pt_graybb;
 
 run;
 
