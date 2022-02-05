@@ -25,7 +25,7 @@
     format &outvar $clus00a.;
   %end;
 
-%mend Block10_to_cluster00;
+%mend Block20_to_cluster00;
 
 
 
