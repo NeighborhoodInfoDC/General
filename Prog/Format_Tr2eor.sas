@@ -3,11 +3,11 @@
  Library:  General
  Project:  NeighborhoodInfo DC
  Author:   P. Tatian
- Created:  05/04/11
- Version:  SAS 9.1
+ Created:  02/05/22
+ Version:  SAS 9.4
  Environment:  Windows
  
- Description:  Correspondence format between 2010 tracts 
+ Description:  Correspondence format between 2020 tracts 
  and East of the River ($Tr2eor).
 
    1 = East of the River
