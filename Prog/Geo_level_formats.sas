@@ -29,6 +29,7 @@
 				first be converted to a SAS dataset in StatTransfer. 
   04/27/18 YS   Added new geo: StantonCommons
   09/08/21 RP   Added new geographies from 2020 Census update.
+  02/07/22 EB	Added new geo: Ward (2022)
 **************************************************************************/
 
 %include "\\sas1\dcdata\SAS\Inc\StdLocal.sas";
@@ -41,7 +42,7 @@ libname doc '\\sas1\dcdata\Libraries\General\Doc';
 %macro Create_format( name=, col=, desc= );
 
 %let start_row = 5;
-%let end_row = 38;
+%let end_row = 39;
 
 /* Updated code for StatTransfer */
 
