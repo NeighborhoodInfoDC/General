@@ -16,7 +16,7 @@
 
 ** Define libraries **;
 
-data General.Ward2022 (label="List of DC wards (2022)" compress=no);
+data Ward2022 (label="List of DC wards (2022)" compress=no);
 
   input Ward2022 $1.;
   
@@ -39,12 +39,22 @@ datalines;
   
 run;
 
-proc sort data=General.Ward2022;
+proc sort data=Ward2022;
   by Ward2022;
 
-%file_info( data=General.Ward2022, printobs=190, stats= )
-
 run;
+
+  %Finalize_data_set(
+    data=Ward2022,
+    out=Ward2022,
+    outlib=general,
+    label="Wards (2022)",
+    sortby=Ward2022,
+    /** Metadata parameters **/
+    revisions=New file.,
+    /** File info parameters **/
+    printobs=8
+  )
 
 ** Create formats **;
 
@@ -54,7 +64,7 @@ run;
   FmtLib=General,
   FmtName=$ward22a,
   Desc="Wards (2022), 'Ward n'",
-  Data=General.Ward2022,
+  Data=Ward2022,
   Value=Ward2022,
   Label=ward_label,
   OtherLabel=,
@@ -71,7 +81,7 @@ run;
   FmtLib=General,
   FmtName=$ward22v,
   Desc="Wards (2022), validation",
-  Data=General.Ward2022,
+  Data=Ward2022,
   Value=Ward2022,
   Label=Ward2022,
   OtherLabel='',
@@ -81,18 +91,7 @@ run;
   Print=Y
   )
 
-  %Finalize_data_set(
-    data=General.Ward2022,
-    out=General.Ward2022,
-    outlib=general,
-    label="Wards (2022), 'Ward n'",
-    sortby=Ward2022,
-    /** Metadata parameters **/
-    revisions=New file.,
-    /** File info parameters **/
-    printobs=5,
-    freqvars=
-  )
+
 
 ** Add $ward22a format to data set **;
 
