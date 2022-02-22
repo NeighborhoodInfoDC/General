@@ -26,7 +26,7 @@
   &outvar = put( &invar, 1. );
 
   label
-    &outvar = "Ward (2012)";
+    &outvar = "Ward (2022)";
 
   %if &check = Y %then %do;
   
