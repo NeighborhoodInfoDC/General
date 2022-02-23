@@ -42,7 +42,7 @@ data Block00_Ward22
     GeoBg2000 = "Full census block group ID (2000): sscccttttttb"
     GEO2000 = "Full census tract ID (2000): ssccctttttt";
 
-  ** Ward2012 var **;
+  ** Ward2022 var **;
 
   %Octo_Ward2022( check=y )
   
@@ -69,7 +69,8 @@ run;
 %Dup_check(
   data=Block00_Ward22,
   by=GeoBlk2000,
-  id=Ward2022
+  id=Ward2022;
+run;
 )
 
 proc sort data=Block00_Ward22 nodupkey;

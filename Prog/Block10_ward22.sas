@@ -77,6 +77,7 @@ run;
 
 proc sort data=Block10_Ward22 nodupkey;
   by GeoBlk2010;
+run;
 
 ** Create correspondence format **;
 
