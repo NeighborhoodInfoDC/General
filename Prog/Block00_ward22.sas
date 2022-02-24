@@ -69,12 +69,12 @@ run;
 %Dup_check(
   data=Block00_Ward22,
   by=GeoBlk2000,
-  id=Ward2022;
-run;
+  id=Ward2022
 )
 
 proc sort data=Block00_Ward22 nodupkey;
   by GeoBlk2000;
+run;
 
 ** Create correspondence format **;
 
@@ -94,7 +94,7 @@ proc sort data=Block00_Ward22 nodupkey;
     data=Block00_Ward22,
     out=Block00_Ward22,
     outlib=general,
-    label="Wards (2022)""Census 2000 blocks (GeoBlk2000) to Wards (Ward2022) correspondence file",
+    label="Census 2000 blocks (GeoBlk2000) to Wards (Ward2022) correspondence file",
     sortby=GeoBlk2000,
     /** Metadata parameters **/
     revisions=New file.,
