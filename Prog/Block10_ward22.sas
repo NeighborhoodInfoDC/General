@@ -97,7 +97,7 @@ run;
     data=Block10_Ward22,
     out=Block10_Ward22,
     outlib=general,
-    label="Wards (2022)""Census 2010 blocks (GeoBlk2010) to Wards (Ward2022) correspondence file",
+    label="Census 2010 blocks (GeoBlk2010) to Wards (Ward2022) correspondence file",
     sortby=GeoBlk2010,
     /** Metadata parameters **/
     revisions=New file.,
