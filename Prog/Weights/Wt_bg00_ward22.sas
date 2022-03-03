@@ -25,7 +25,7 @@
   block_corr_ds = General.Block00_ward22, 
   block = GeoBlk2000,         
   block_pop_ds = Census.Cen2000_sf1_dc_blks,  
-  block_pop_var = 100, 
+  block_pop_var = pop100, 
   block_pop_year = 2000
 )
 
