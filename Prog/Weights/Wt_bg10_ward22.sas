@@ -22,7 +22,7 @@
   geo1 = GeoBg2010, 
   geo2 = Ward2022,
   out_ds = Wt_bg10_ward22,
-  block_corr_ds = Block10_ward22, 
+  block_corr_ds = General.Block10_ward22, 
   block = GeoBlk2010,         
   block_pop_ds = Census.Census_pl_2010_dc (where=(sumlev='750')),  
   block_pop_var = p0010001, 
