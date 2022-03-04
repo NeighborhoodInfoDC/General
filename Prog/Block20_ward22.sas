@@ -33,8 +33,8 @@ data Block20_ward22
   length Geo2020 $ 11 GeoBg2020 $ 12 GeoBlk2020 $ 15;
   
   Geo2020 = '11001' || Tract;
-  GeoBg2020 = Geo2020 || BlkGrp;
   GeoBlk2020 = Geo2020 || Block;
+  GeoBg2020 = substr(GeoBlk2020,1,12);
   
   label
     GeoBlk2020 = 'Full census block ID (2020): sscccttttttbbbb'
