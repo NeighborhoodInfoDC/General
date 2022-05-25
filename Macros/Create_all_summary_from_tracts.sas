@@ -24,6 +24,7 @@
   03/28/17     Added summary for Bridge Park impact area (BridgePk)
   03/15/18 NS  Added summary for Cluster 2017.
   05/16/18 YS  Add summary for StantonCommons
+  05/25/22 EB  Add summary for ward2022
 **************************************************************************/
 
 %macro Create_all_summary_from_tracts( 
@@ -122,6 +123,12 @@
     restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
 
  %Create_summary_from_tracts( geo=stantoncommons, 
+    lib=&lib, outlib=&lib, data_pre=&data_pre, data_label=&data_label, count_vars=&count_vars,
+    prop_vars=&prop_vars, calc_vars=&calc_vars, calc_vars_labels=&calc_vars_labels,
+    tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
+    restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
+
+ %Create_summary_from_tracts( geo=ward2022, 
     lib=&lib, outlib=&lib, data_pre=&data_pre, data_label=&data_label, count_vars=&count_vars,
     prop_vars=&prop_vars, calc_vars=&calc_vars, calc_vars_labels=&calc_vars_labels,
     tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
