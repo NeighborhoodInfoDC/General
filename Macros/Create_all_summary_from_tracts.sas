@@ -135,14 +135,21 @@
     restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
 
   %if &tract_yr = 2000 %then %do;
-    %Create_summary_from_tracts( geo=geo2010, 
+    %Create_summary_from_tracts( geo=geo2000, 
       lib=&lib, outlib=&lib, data_pre=&data_pre, data_label=&data_label, count_vars=&count_vars,
       prop_vars=&prop_vars, calc_vars=&calc_vars, calc_vars_labels=&calc_vars_labels,
       tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
       restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
   %end;
   %else %if &tract_yr = 2010 %then %do;
-    %Create_summary_from_tracts( geo=geo2000, 
+    %Create_summary_from_tracts( geo=geo2010, 
+      lib=&lib, outlib=&lib, data_pre=&data_pre, data_label=&data_label, count_vars=&count_vars,
+      prop_vars=&prop_vars, calc_vars=&calc_vars, calc_vars_labels=&calc_vars_labels,
+      tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
+      restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
+  %end;
+  %else %if &tract_yr = 2020 %then %do;
+    %Create_summary_from_tracts( geo=geo2020, 
       lib=&lib, outlib=&lib, data_pre=&data_pre, data_label=&data_label, count_vars=&count_vars,
       prop_vars=&prop_vars, calc_vars=&calc_vars, calc_vars_labels=&calc_vars_labels,
       tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
