@@ -50,7 +50,6 @@
     %let tractid = Geo2010;
     %let wtfile = %sysfunc( putc( &geo, $geotw1f. ) );
   %end;
-  %else %do;
   %else %if &tract_yr = 2020 %then %do;
     %let tractid = Geo2020;
     %let wtfile = %sysfunc( putc( &geo, $geotw2f. ) );
