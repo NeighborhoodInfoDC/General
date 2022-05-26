@@ -51,8 +51,13 @@
     %let wtfile = %sysfunc( putc( &geo, $geotw1f. ) );
   %end;
   %else %do;
+  %else %if &tract_yr = 2020 %then %do;
+    %let tractid = Geo2020;
+    %let wtfile = %sysfunc( putc( &geo, $geotw2f. ) );
+  %end;
+  %else %do;
     %err_mput( macro=Create_summary_from_tracts, 
-               msg=Must specify source tract year as 2000 or 2010: TRACT_YR=&tract_yr.. )
+               msg=Must specify source tract year as 2000 or 2010 or 2020: TRACT_YR=&tract_yr.. )
     %note_mput( macro=Create_summary_from_tracts, msg=Macro exiting. )
     %goto exit_macro;
   %end;
@@ -74,7 +79,8 @@
 
   %Transform_geo_data(
       dat_ds_name=%if &tract_yr = 2000 %then &lib..&data_pre._tr00;
-		%else %if &tract_yr = 2010 %then &lib..&data_pre._tr10;,
+		%else %if &tract_yr = 2010 %then &lib..&data_pre._tr10;
+		%else %if &tract_yr = 2020 %then &lib..&data_pre._tr20;,
       dat_org_geo=&tractid,
       dat_count_vars=&count_vars,
       dat_prop_vars=&prop_vars,
