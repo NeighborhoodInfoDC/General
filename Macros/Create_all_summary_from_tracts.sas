@@ -41,7 +41,8 @@
   creator_process=,
   restrictions=,
   revisions=,
-  mprint=n
+  mprint=n,
+  include_tracts=y
 );
 
   %Create_summary_from_tracts( geo=city, 
@@ -134,6 +135,7 @@
     tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
     restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
 
+%if &include_tracts = y %then %do;
   %if &tract_yr = 2000 %then %do;
     %Create_summary_from_tracts( geo=geo2000, 
       lib=&lib, outlib=&lib, data_pre=&data_pre, data_label=&data_label, count_vars=&count_vars,
@@ -155,6 +157,7 @@
       tract_yr=&tract_yr, register=&finalize, creator_process=&creator_process,
       restrictions=&restrictions, revisions=&revisions, mprint=&mprint )
   %end;
+%end;
 
 %mend Create_all_summary_from_tracts;
 
