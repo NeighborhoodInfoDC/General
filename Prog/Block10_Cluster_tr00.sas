@@ -13,7 +13,7 @@
  Modifications:
 **************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+%include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 
@@ -21,7 +21,7 @@ libname Cen2010m "&_dcdata_path\General\Maps\Census 2010";
 
 *options obs=50;
 
-data General.Block10_Cluster_tr00 
+data Block10_Cluster_tr00 
   (label="Census 2010 blocks (GeoBlk2010) to Tract-Based Neighborhood Cluster (Cluster_tr2000) correspondence file");
 
   set Cen2010m.Block10_Cluster_tr00;
@@ -66,22 +66,22 @@ run;
 ** Each block should be assigned to only one geographic unit **;
 
 %Dup_check(
-  data=General.Block10_Cluster_tr00,
+  data=Block10_Cluster_tr00,
   by=GeoBlk2010,
   id=Cluster_tr2000
 )
 
-proc sort data=General.Block10_Cluster_tr00 nodupkey;
+proc sort data=Block10_Cluster_tr00 nodupkey;
   by GeoBlk2010;
+run;
 
-%File_info( data=General.Block10_Cluster_tr00, stats=, freqvars=Cluster_tr2000 )
 
 ** Create correspondence format **;
 
 %Data_to_format(
   FmtLib=General,
   FmtName=$bk1ct0f,
-  Data=General.Block10_Cluster_tr00,
+  Data=Block10_Cluster_tr00,
   Value=GeoBlk2010,
   Label=Cluster_tr2000,
   OtherLabel="",
@@ -90,3 +90,16 @@ proc sort data=General.Block10_Cluster_tr00 nodupkey;
   Contents=Y
   )
 
+
+%Finalize_data_set(
+  data=Block10_Cluster_tr00,
+  out=Block10_Cluster_tr00,
+  outlib=general,
+  label="Census 2010 blocks (GeoBlk2010) to Tract-Based Neighborhood Cluster (Cluster_tr2000) correspondence file",
+  sortby=GeoBlk2010,
+  /** Metadata parameters **/
+  revisions=New file.,
+  /** File info parameters **/
+  printobs=5,
+  freqvars=
+  )
