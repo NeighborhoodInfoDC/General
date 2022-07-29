@@ -10,10 +10,10 @@
   Description:  Create weighting file for converting 2010 block groups to
   2000 tract-based neighborhood clusters.
 
-  Modifications:
+  Modifications: 07/29/2022 LH Update for SAS1
 ************************************************************************/
 
-%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+%include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( Census )
