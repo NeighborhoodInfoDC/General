@@ -8,7 +8,7 @@
   Environment:  Windows
   
   Description:  Create weighting file for converting 2020 block groups to
-  2012 tracts.
+  2020 tracts.
 
   Modifications:
 ************************************************************************/
