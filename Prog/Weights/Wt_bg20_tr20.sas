@@ -18,7 +18,7 @@
 ** Define libraries **;
 %DCData_lib( Census )
 
-** Combine 2010 population files for each state **;
+** Combine 2020 population files for each state **;
 data census_pl_2020_dmvw;
 	set census.Census_pl_2020_dc census.Census_pl_2020_md
 		census.Census_pl_2020_va census.Census_pl_2020_wv;
