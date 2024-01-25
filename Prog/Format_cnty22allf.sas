@@ -19,7 +19,7 @@
 
 %Get_census_api(
   out=cnty22,
-  api='https://api.census.gov/data/2022/acs/acs1?get=NAME&for=county:*&in=state:11,24,51,54'
+  api='https://api.census.gov/data/2022/acs/acs5?get=NAME&for=county:*&in=state:11,24,51,54'
 )
 
 %Data_to_format(
