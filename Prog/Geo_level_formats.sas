@@ -10,9 +10,11 @@
  Description:  Create special formats for processing geographic
  levels.  Information is taken from the Excel workbook
  
- D:\DCData\Libraries\General\Doc\Geographic levels.xlsx
+ \\sas1\DCData\Libraries\General\Doc\Geographic levels.xlsx
  
- which must be open before this program is run.
+ which must be saved to this CSV file before this program is run.
+ 
+ \\sas1\DCData\Libraries\General\Doc\Geographic levels.csv
 
  Modifications:
   12/08/06 PAT  Added $GEODLBL format.
@@ -30,59 +32,68 @@
   04/27/18 YS   Added new geo: StantonCommons
   09/08/21 RP   Added new geographies from 2020 Census update.
   02/07/22 EB	Added new geo: Ward (2022)
+  02/16/24 PT   Change code to use import from CSV file created from XLSX.
+                Added new geo COUNTY (all counties).
 **************************************************************************/
 
 %include "\\sas1\dcdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
-libname doc '\\sas1\dcdata\Libraries\General\Doc';
+
+
+** Get geographic level information **;
+
+filename fimport "&_dcdata_r_path\General\Doc\Geographic levels.csv" lrecl=2000;
+
+proc import out=FmtIn
+  datafile=fimport
+  dbms=csv replace;
+  datarow=6;
+  getnames=yes;
+  guessingrows=100;
+run;
+
+filename fimport clear;
+
+data FmtIn;
+
+  set FmtIn;
+  
+  where not( missing( geoval ) );
+  
+  array a{*} _character_;
+  
+  do i = 1 to dim( a );
+    if left( a{i} ) = '-' then a{i} = '';
+  end;
+  
+  length xgeolen $ 8;
+  
+  if geolen > 0 then xgeolen = left( put( geolen, 8. ) );
+  
+  drop i var: geolen;
+  rename xgeolen=geolen;
+
+run;
+
 
 /** Macro Create_format - Start Definition **/
 
-%macro Create_format( name=, col=, desc= );
+%macro Create_format( name=, format=, desc= );
 
-%let start_row = 5;
-%let end_row = 39;
+  %if %length( &format ) = 0 %then %let format = &name;
 
-/* Updated code for StatTransfer */
-
-data xlsFileA;
-	set doc.geolevels;
-	if &start_row. <= _n_ <= &end_row.;
-	keep c5;
-	rename c5 = VarName;
-run;
-
-data xlsFileb;
-	set doc.geolevels;
-	if &start_row. <= _n_ <= &end_row.;
-	keep c&col.;
-	rename c&col. = xValue;
-run;
-
-data FmtIn;
-	merge xlsFileA xlsFileb;
-	if xValue not in ( "", "-" );
-run;
-
-
-%Data_to_format(
-  FmtLib=General,
-  FmtName=&name,
-  Data=FmtIn,
-  Value=upcase(VarName),
-  Label=xValue,
-  OtherLabel="",
-  DefaultLen=.,
-  MaxLen=.,
-  MinLen=.,
-  Print=Y,
-  Desc=&desc,
-  Contents=N
-  )
-
-filename _all_ clear;
-
+  %Data_to_format(
+    FmtLib=General,
+    FmtName=$&format,
+    Data=FmtIn,
+    Value=upcase(geoval),
+    Label=&name,
+    OtherLabel="",
+    Print=Y,
+    Desc=&desc,
+    Contents=N
+    )
 
 run;
 
@@ -90,57 +101,57 @@ run;
 
 /** End Macro Definition **/
 
-%Create_format( name=$geoval, col=5, desc="Validate geography name" )
+%Create_format( name=geoval, desc="Validate geography name" )
 
-%Create_format( name=$geolen, col=6, desc="Geo name to geography var length" )
+%Create_format( name=geolen, desc="Geo name to geography var length" )
 
-%Create_format( name=$geosuf, col=3, desc="Geo name to file name suffix" )
+%Create_format( name=geosuf, desc="Geo name to file name suffix" )
 
-%Create_format( name=$geolbl, col=1, desc="Geo name to geography label" )
+%Create_format( name=geolbl, desc="Geo name to geography label" )
 
-/** Next two are repeated to accomodate original format names $GEOTWTF AND $GEOBWTF **/
+/** Next two are repeated to accomodate original format names $GEOTWTF AND $GEOBWTF for 2000 **/
 
-%Create_format( name=$geotwtf, col=10, desc="Geo name to tract 2000 weighting file" )
+%Create_format( name=geotw0f, format=geotwtf, desc="Geo name to tract 2000 weighting file" )
 
-%Create_format( name=$geobwtf, col=11, desc="Geo name to block grp 00 weighting file" )
+%Create_format( name=geobw0f, format=geobwtf, desc="Geo name to block grp 00 weighting file" )
 
-%Create_format( name=$geotw0f, col=10, desc="Geo name to tract 2000 weighting file" )
+%Create_format( name=geotw0f, desc="Geo name to tract 2000 weighting file" )
 
-%Create_format( name=$geobw0f, col=11, desc="Geo name to block grp 00 weighting file" )
+%Create_format( name=geobw0f, desc="Geo name to block grp 00 weighting file" )
 
-%Create_format( name=$geotw1f, col=12, desc="Geo name to tract 2010 weighting file" )
+%Create_format( name=geotw1f, desc="Geo name to tract 2010 weighting file" )
 
-%Create_format( name=$geobw1f, col=13, desc="Geo name to block grp 10 weighting file" )
+%Create_format( name=geobw1f, desc="Geo name to block grp 10 weighting file" )
 
-%Create_format( name=$geotw2f, col=14, desc="Geo name to tract 2020 weighting file" )
+%Create_format( name=geotw2f, desc="Geo name to tract 2020 weighting file" )
 
-%Create_format( name=$geobw2f, col=15, desc="Geo name to block grp 20 weighting file" )
+%Create_format( name=geobw2f, desc="Geo name to block grp 20 weighting file" )
 
-%Create_format( name=$geoafmt, col=17, desc="Geo name to geography label format" )
+%Create_format( name=geoafmt, desc="Geo name to geography label format" )
 
-%Create_format( name=$geovfmt, col=18, desc="Geo name to geography validation format" )
+%Create_format( name=geovfmt, desc="Geo name to geography validation format" )
 
-%Create_format( name=$geobk0f, col=19, desc="Geo name to 2000 block corresp. format" )
+%Create_format( name=geobk0f, desc="Geo name to 2000 block corresp. format" )
 
-%Create_format( name=$geotr0f, col=20, desc="Geo name to 2000 tract corresp. format" )
+%Create_format( name=geotr0f, desc="Geo name to 2000 tract corresp. format" )
 
-%Create_format( name=$geobk1f, col=21, desc="Geo name to 2010 block corresp. format" )
+%Create_format( name=geobk1f, desc="Geo name to 2010 block corresp. format" )
 
-%Create_format( name=$geotr1f, col=22, desc="Geo name to 2010 tract corresp. format" )
+%Create_format( name=geotr1f, desc="Geo name to 2010 tract corresp. format" )
 
-%Create_format( name=$geobk2f, col=23, desc="Geo name to 2020 block corresp. format" )
+%Create_format( name=geobk2f, desc="Geo name to 2020 block corresp. format" )
 
-%Create_format( name=$geotr2f, col=24, desc="Geo name to 2020 tract corresp. format" )
+%Create_format( name=geotr2f, desc="Geo name to 2020 tract corresp. format" )
 
-%Create_format( name=$geodlbl, col=25, desc="Geo name to data set label" )
+%Create_format( name=geodlbl, desc="Geo name to data set label" )
 
-%Create_format( name=$geoslbl, col=26, desc="Geo name to short label" )
+%Create_format( name=geoslbl, desc="Geo name to short label" )
 
-%Create_format( name=$geobk0m, col=27, desc="Geo name to 2000 block macro name" )
+%Create_format( name=geobk0m, desc="Geo name to 2000 block macro name" )
 
-%Create_format( name=$geobk1m, col=28, desc="Geo name to 2010 block macro name" )
+%Create_format( name=geobk1m, desc="Geo name to 2010 block macro name" )
 
-%Create_format( name=$geobk2m, col=29, desc="Geo name to 2020 block macro name" )
+%Create_format( name=geobk2m, desc="Geo name to 2020 block macro name" )
 
 
 proc catalog catalog=General.formats;
