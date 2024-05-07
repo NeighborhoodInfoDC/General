@@ -435,7 +435,7 @@ run;
     data=Block10_Tract20,
     out=Block10_Tract20,
     outlib=general,
-    label="Census 2000 blocks (GeoBlk2010) to Tract 2020 (geo2020) correspondence file",
+    label="Census 2010 blocks (GeoBlk2010) to Tract 2020 (geo2020) correspondence file",
     sortby=GeoBlk2010,
     /** Metadata parameters **/
     revisions=New file.,
