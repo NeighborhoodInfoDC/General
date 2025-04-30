@@ -34,6 +34,7 @@
   02/07/22 EB	Added new geo: Ward (2022)
   02/16/24 PT   Change code to use import from CSV file created from XLSX.
                 Added new geo COUNTY (all counties).
+  04/30/25 RP	Added new geo: ANC (2023)
 **************************************************************************/
 
 %include "\\sas1\dcdata\SAS\Inc\StdLocal.sas";
