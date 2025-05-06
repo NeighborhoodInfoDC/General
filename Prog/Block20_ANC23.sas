@@ -51,7 +51,7 @@ data Block20_ANC23
   
   label 
     ANC_ID = "OCTO ANC ID"
-    NAME_1 = "OCTO Ward name"
+    NAME_1 = "OCTO ANC name"
     Tract = "OCTO tract ID"
     BlkGrp = "OCTO block group ID"
     Block = "OCTO block ID"
