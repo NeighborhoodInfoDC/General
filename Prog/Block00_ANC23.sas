@@ -42,13 +42,13 @@ data Block00_ANC23
     GeoBg2000 = "Full census block group ID (2000): sscccttttttb"
     GEO2000 = "Full census tract ID (2000): ssccctttttt";
 
-  ** Ward2022 var **;
+  ** ANC 2023 var **;
 
   %Octo_Anc2023( invar=ANC_ID, check=y )
   
   label 
-    ANC_ID = "OCTO Ward ID"
-    NAME = "OCTO Ward name"
+    ANC_ID = "OCTO ANC ID"
+    NAME = "OCTO ANC name"
     CJRTRACTBL = "OCTO tract/block ID"
     x = "Block centroid X coord. (MD State Plane NAD 83 meters)"
     y = "Block centroid Y coord. (MD State Plane NAD 83 meters)"
