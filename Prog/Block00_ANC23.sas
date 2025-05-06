@@ -53,6 +53,9 @@ data Block00_ANC23
     x = "Block centroid X coord. (MD State Plane NAD 83 meters)"
     y = "Block centroid Y coord. (MD State Plane NAD 83 meters)"
   ;
+
+  ** Fix inconsistent duplicate block **;
+  if GeoBlk2000 = "110010072001000" then Anc2023 = "8F";
   
   ** Remove silly formats/informats, unneeded variables **;
   
