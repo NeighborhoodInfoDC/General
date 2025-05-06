@@ -135,6 +135,11 @@ run;
   Print=Y
   )
 
+proc catalog catalog=general.formats entrytype=formatc;
+  modify anc23a (desc="ANCs (2023), 'ANC nn'");
+  modify anc23v (desc="ANCs (2023), validation");
+  contents;
+quit;
   
 ** Add $anc23a format to data set **;
 
