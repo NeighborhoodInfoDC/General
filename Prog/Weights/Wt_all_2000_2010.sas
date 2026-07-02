@@ -15,7 +15,7 @@
    12/27/17 RP Updated for weighting the entire region. 
 **************************************************************************/
 
-%include "L:\SAS\Inc\StdLocal.sas";
+%include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
 
 ** Define libraries **;
 %DCData_lib( Census )
@@ -40,6 +40,8 @@ run;
 %Calc_weights_from_blocks( 
   geo1 = Geo2000, 
   geo2 = Geo2010,
+  geo1check=n,
+  geo2check=n,
   out_ds = Wt_tr00_tr10,
   block_corr_ds = Work.blk_xwalk_2000_2010_dmvw, 
   block = GeoBlk2000,
@@ -54,6 +56,8 @@ run;
 %Calc_weights_from_blocks( 
   geo1 = Geo2010, 
   geo2 = Geo2000,
+  geo1check=n,
+  geo2check=n,
   out_ds = Wt_tr10_tr00,
   block_corr_ds = Work.blk_xwalk_2000_2010_dmvw, 
   block = GeoBlk2010,
@@ -62,12 +66,13 @@ run;
   block_pop_year = 2010
 )
 
-
 ** Wt_bg00_tr00: 2000 block groups to 2000 tracts **;
 
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2000, 
   geo2 = Geo2000,
+  geo1check=n,
+  geo2check=n,
   out_ds = Wt_bg00_tr00,
   block_corr_ds = Work.blk_xwalk_2000_2010_dmvw, 
   block = GeoBlk2000,
@@ -81,6 +86,8 @@ run;
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2000, 
   geo2 = Geo2010,
+  geo1check=n,
+  geo2check=n,
   out_ds = Wt_bg00_tr10,
   block_corr_ds = Work.blk_xwalk_2000_2010_dmvw, 
   block = GeoBlk2000,
@@ -94,6 +101,8 @@ run;
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2010, 
   geo2 = Geo2000,
+  geo1check=n,
+  geo2check=n,
   out_ds = Wt_bg10_tr00,
   block_corr_ds = Work.blk_xwalk_2000_2010_dmvw, 
   block = GeoBlk2010,
@@ -107,6 +116,8 @@ run;
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2010, 
   geo2 = Geo2010,
+  geo1check=n,
+  geo2check=n,
   out_ds = Wt_bg10_tr10,
   block_corr_ds = Work.blk_xwalk_2000_2010_dmvw, 
   block = GeoBlk2010,

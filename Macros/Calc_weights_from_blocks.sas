@@ -56,31 +56,27 @@
   %let geo1 = %upcase( &geo1 );
   %let geo2 = %upcase( &geo2 );
 
-  %if %mparam_is_yes( &geo1check ) %then %do;
-    %if %sysfunc( putc( &geo1, $geoval. ) ) ~= %then %do;
-      %let geo1suf = %sysfunc( putc( &geo1, $geosuf. ) );
-      %let geo1name = %sysfunc( putc( &geo1, $geoslbl. ) );
-      %let geo1dlbl = %sysfunc( putc( &geo1, $geodlbl. ) );
-      %let geo1vfmt = %sysfunc( putc( &geo1, $geovfmt. ) );
-    %end;
-    %else %do;
-      %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (GEO1=&geo1). )
-      %goto exit_macro;
-    %end;
+  %if %sysfunc( putc( &geo1, $geoval. ) ) ~= %then %do;
+    %if %length( &geo1suf ) = 0 %then %let geo1suf = %sysfunc( putc( &geo1, $geosuf. ) );
+    %if %length( &geo1name ) = 0 %then %let geo1name = %sysfunc( putc( &geo1, $geoslbl. ) );
+    %if %length( &geo1dlbl ) = 0 %then %let geo1dlbl = %sysfunc( putc( &geo1, $geodlbl. ) );
+    %if %length( &geo1vfmt ) = 0 %then %let geo1vfmt = %sysfunc( putc( &geo1, $geovfmt. ) );
+  %end;
+  %else %do;
+    %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (GEO1=&geo1). )
+    %goto exit_macro;
   %end;
 
-  %if %mparam_is_yes( &geo2check ) %then %do;
-    %if %sysfunc( putc( &geo2, $geoval. ) ) ~= %then %do;
-      %let geo2suf = %sysfunc( putc( &geo2, $geosuf. ) );
-      %let geo2name = %sysfunc( putc( &geo2, $geoslbl. ) );
-      %let geo2dlbl = %sysfunc( putc( &geo2, $geodlbl. ) );
-      %let geo2fmt = %sysfunc( putc( &geo2, $geoafmt. ) );
-      %let geo2vfmt = %sysfunc( putc( &geo2, $geovfmt. ) );
-    %end;
-    %else %do;
-      %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (geo2=&geo2). )
-      %goto exit_macro;
-    %end;
+  %if %sysfunc( putc( &geo2, $geoval. ) ) ~= %then %do;
+    %if %length( &geo2suf ) = 0 %then %let geo2suf = %sysfunc( putc( &geo2, $geosuf. ) );
+    %if %length( &geo2name ) = 0 %then %let geo2name = %sysfunc( putc( &geo2, $geoslbl. ) );
+    %if %length( &geo2dlbl ) = 0 %then %let geo2dlbl = %sysfunc( putc( &geo2, $geodlbl. ) );
+    %if %length( &geo2fmt ) = 0 %then %let geo2fmt = %sysfunc( putc( &geo2, $geoafmt. ) );
+    %if %length( &geo2vfmt ) = 0 %then %let geo2vfmt = %sysfunc( putc( &geo2, $geovfmt. ) );
+  %end;
+  %else %do;
+    %err_mput( macro=Calc_weights_from_blocks, msg=Invalid or missing value of geography (geo2=&geo2). )
+    %goto exit_macro;
   %end;
   
   %put _local_;
@@ -141,7 +137,7 @@
     
     if popwt_prop = . then popwt_prop = 1 / Pieces&geo2suf.;
     
-    %if %length( &geo1vfmt ) > 0 %then %do;
+    %if %mparam_is_yes( &geo1check ) and %length( &geo1vfmt ) > 0 %then %do;
       ** Check source geo for invalid values **;
 
       if put( &geo1., &geo1vfmt ) = "" then do;
@@ -149,7 +145,7 @@
       end;
     %end;
     
-    %if %length( &geo2vfmt ) > 0 %then %do;
+    %if %mparam_is_yes( &geo2check ) and %length( &geo2vfmt ) > 0 %then %do;
       ** Check target geo for invalid values **;
 
       if put( &geo2., &geo2vfmt ) = "" then do;
