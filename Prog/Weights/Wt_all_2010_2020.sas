@@ -71,29 +71,14 @@ run;
   block_pop_year = 2020
 )
 
-** Wt_bg00_tr10: 2010 block groups to 2010 tracts **;
-
-%Calc_weights_from_blocks( 
-  geo1 = GeoBg2010, 
-  geo2 = Geo2010,
-  geo1check=n,
-  geo2check=n,
-  out_ds = Wt_bg00_tr10,
-  block_corr_ds = Work.blk_xwalk_2010_2020_dmvw, 
-  block = GeoBlk2010,
-  block_pop_ds = Work.Census_pl_2010_dmvw (where=(sumlev='750')),
-  block_pop_var = p0010001, 
-  block_pop_year = 2010
-)
-
-** Wt_bg00_tr20: 2010 block groups to 2020 tracts **;
+** Wt_bg10_tr20: 2010 block groups to 2020 tracts **;
 
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2010, 
   geo2 = Geo2020,
   geo1check=n,
   geo2check=n,
-  out_ds = Wt_bg00_tr20,
+  out_ds = Wt_bg10_tr20,
   block_corr_ds = Work.blk_xwalk_2010_2020_dmvw, 
   block = GeoBlk2010,
   block_pop_ds = Work.Census_pl_2010_dmvw (where=(sumlev='750')),
@@ -101,14 +86,14 @@ run;
   block_pop_year = 2010
 )
 
-** Wt_bg10_tr10: 2020 block groups to 2010 tracts **;
+** Wt_bg20_tr10: 2020 block groups to 2010 tracts **;
 
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2020, 
   geo2 = Geo2010,
   geo1check=n,
   geo2check=n,
-  out_ds = Wt_bg10_tr10,
+  out_ds = Wt_bg20_tr10,
   block_corr_ds = Work.blk_xwalk_2010_2020_dmvw, 
   block = GeoBlk2020,
   block_pop_ds = Work.Census_pl_2020_dmvw (where=(sumlev='750')),
@@ -116,14 +101,14 @@ run;
   block_pop_year = 2020
 )
 
-** Wt_bg10_tr20: 2020 block groups to 2020 tracts **;
+** Wt_bg20_tr20: 2020 block groups to 2020 tracts **;
 
 %Calc_weights_from_blocks( 
   geo1 = GeoBg2020, 
   geo2 = Geo2020,
   geo1check=n,
   geo2check=n,
-  out_ds = Wt_bg10_tr20,
+  out_ds = Wt_bg20_tr20,
   block_corr_ds = Work.blk_xwalk_2010_2020_dmvw, 
   block = GeoBlk2020,
   block_pop_ds = Work.Census_pl_2020_dmvw (where=(sumlev='750')),
