@@ -3,16 +3,14 @@
  Library:  General
  Project:  NeighborhoodInfo DC
  Author:   P. Tatian
- Created:  07/11/11
- Version:  SAS 9.1
+ Created:  07/2/26
+ Version:  SAS 9.4
  Environment:  Windows
  
- Description:  Create weighting files to convert DC Census 2010 and 2020
- block groups and tracts.
+ Description:  Create weighting files to convert between 
+ DC Census 2010 and 2020 block groups and tracts.
 
  Modifications:
-   07/21/12 PAT Use new %Calc_weights_from_blocks macro, add Popwt_prop.
-   12/27/17 RP Updated for weighting the entire region. 
 **************************************************************************/
 
 %include "\\sas1\DCdata\SAS\Inc\StdLocal.sas";
@@ -101,19 +99,5 @@ run;
   block_pop_year = 2020
 )
 
-** Wt_bg20_tr20: 2020 block groups to 2020 tracts **;
-
-%Calc_weights_from_blocks( 
-  geo1 = GeoBg2020, 
-  geo2 = Geo2020,
-  geo1check=n,
-  geo2check=n,
-  out_ds = Wt_bg20_tr20,
-  block_corr_ds = Work.blk_xwalk_2010_2020_dmvw, 
-  block = GeoBlk2020,
-  block_pop_ds = Work.Census_pl_2020_dmvw (where=(sumlev='750')),
-  block_pop_var = p0010001, 
-  block_pop_year = 2020
-)
 
 
