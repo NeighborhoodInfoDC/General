@@ -21,6 +21,7 @@
 
 %macro Create_summary_from_tracts( 
   geo=, 
+  state_filter=,
   lib=,
   outlib=,
   data_pre=,
@@ -57,6 +58,13 @@
   %else %do;
     %err_mput( macro=Create_summary_from_tracts, 
                msg=Must specify source tract year as 2000 or 2010 or 2020: TRACT_YR=&tract_yr.. )
+    %note_mput( macro=Create_summary_from_tracts, msg=Macro exiting. )
+    %goto exit_macro;
+  %end;
+  
+  %if %length( &wtfile ) = 0 %then %do;
+    %warn_mput( macro=Create_summary_from_tracts, 
+               msg=Weighting file from &tractid to &geo not registered. Summary file will not be created. )
     %note_mput( macro=Create_summary_from_tracts, msg=Macro exiting. )
     %goto exit_macro;
   %end;
@@ -101,7 +109,22 @@
       mprint=&mprint
     )
   
-	%if &register = Y %then %do;
+  %if %length( &state_filter ) > 0 and 
+       ( %lowcase( &geo ) = geo2000 or %lowcase( &geo ) = geo2010 or %lowcase( &geo ) = geo2020 ) %then %do;
+      
+    ** Filter output by state **;
+    
+    data &data_pre.&geosuf;
+    
+      set &data_pre.&geosuf;
+      
+      where &geo in: ( &state_filter );
+      
+    run;
+    
+  %end;
+  
+	%if %mparam_is_yes( &register ) %then %do;
 	    %Finalize_data_set(
 	    data=&data_pre.&geosuf,
 	    out=&data_pre.&geosuf,
