@@ -33,7 +33,7 @@ run;
     data=Block20_eor,
     out=Block20_eor,
     outlib=general,
-    label=label="Census 2020 blocks (GeoBlk2020) to East of the River (EOR) correspondence file",
+    label="Census 2020 blocks (GeoBlk2020) to East of the River (EOR) correspondence file",
     sortby=GeoBlk2020,
     /** Metadata parameters **/
     revisions=New file.,
