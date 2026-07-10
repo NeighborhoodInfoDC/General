@@ -1,0 +1,7 @@
+{
+  "bundle": "t007_macro_octo_quad",
+  "source_file": "Macros/Octo_Quad.sas",
+  "source_blob_sha": "102a3f4f9b8b27a4fe10a0d75b27ad6f815b5a13",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "The %Octo_Quad macro (upcase + left-align an OCTO quadrant string, then blank anything not in NW/NE/SW/SE) verbatim from the repo, plus a caller exercising clean, lowercase, leading-space, and invalid input via PROC PRINT."
+}

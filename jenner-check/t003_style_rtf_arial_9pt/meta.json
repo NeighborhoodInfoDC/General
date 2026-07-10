@@ -1,0 +1,7 @@
+{
+  "bundle": "t003_style_rtf_arial_9pt",
+  "source_file": "Prog/Style_rtf_arial_9pt.sas",
+  "source_blob_sha": "43c4d52bd0757c4aaad6f9cc73161ed7b18c555d",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "PROC TEMPLATE defining the Styles.Rtf_arial_9pt ODS style (parent styles.rtf, Arial 9pt fonts, table/header/body element overrides) verbatim from the repo. Only the leading %include StdLocal (site library paths) was dropped; the style stores with 7 elements."
+}

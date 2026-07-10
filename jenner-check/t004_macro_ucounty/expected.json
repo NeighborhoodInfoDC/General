@@ -1,0 +1,12 @@
+{
+  "_captured_at": "2026-07-10T15:14:00Z",
+  "_captured_run_id": "r_a0cdabad0a854cf19ab06cc5462c98dd",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote counties (7 rows, 3 columns).",
+    "NOTE: PROC PRINT completed: 7 observations printed, 3 variables"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

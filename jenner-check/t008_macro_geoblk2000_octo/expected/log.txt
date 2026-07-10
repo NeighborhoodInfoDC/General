@@ -1,0 +1,14 @@
+
+NOTE: Option OBS changed to 100.
+NOTE: DATA blocks
+
+NOTE: Processing inline DATALINES (3 lines)
+
+NOTE: Read 3 rows from DATALINES.
+NOTE: Wrote blocks (3 rows, 2 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=blocks
+
+NOTE: PROC PRINT completed: 3 observations printed, 2 variables

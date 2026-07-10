@@ -1,0 +1,7 @@
+{
+  "bundle": "t004_macro_ucounty",
+  "source_file": "Macros/ucounty.sas",
+  "source_blob_sha": "1fab0a8ed0fbc7fbbab4a61564d64ecb25cc72ce",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "The %ucounty macro (concatenate FIPS state + county into a unique 5-char county ID) verbatim from the repo, plus a small caller with a datalines mock of DC/MD/VA/WV state+county codes so the run self-checks via PROC PRINT."
+}

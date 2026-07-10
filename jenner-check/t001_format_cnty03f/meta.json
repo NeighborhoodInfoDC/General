@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_format_cnty03f",
+  "source_file": "Prog/Format_cnty03f.sas",
+  "source_blob_sha": "ed0c90241c56857bfeb287d781377d986cb628af",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "PROC FORMAT building the $cnty03f county-label format (22 DC/MD/VA/WV counties, verbatim from the repo). Retargeted from library=General to library=work and the surrounding %include Stdhead + proc catalog framework calls dropped; a PROC FORMAT fmtlib select=$cnty03f prints the built format so the run self-checks."
+}

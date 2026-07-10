@@ -1,0 +1,7 @@
+{
+  "bundle": "t005_macro_msapma",
+  "source_file": "Macros/msapma.sas",
+  "source_blob_sha": "70863eb8689d16d932078f5eb588d9f15c167103",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "The %msapma macro (use PMSA code when present, else fall back to MSA/CMSA) verbatim from the repo, plus a caller whose datalines mock exercises the present, 9999, and blank PMSA branches via PROC PRINT."
+}

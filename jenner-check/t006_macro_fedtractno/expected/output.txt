@@ -1,0 +1,8 @@
+                                  Fedtractno: Geo2000 tract ID to OCTO tract match key                                  
+
+  Obs      Geo2000  Census tract ID (2000) for matching with OCTO shape file
+    1  11001000100  100
+    2  11001007301  7301
+    3  11001009907  9907
+    4  11001008410  84.01
+

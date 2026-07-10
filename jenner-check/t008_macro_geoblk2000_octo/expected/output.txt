@@ -1,0 +1,7 @@
+                                 GeoBlk2000_Octo: standard block ID to OCTO cjrTractBl                                  
+
+  Obs       GeoBlk2000  OCTO census block ID (2000)
+    1  110010073011000  7301 1000
+    2  110010099072005  9907 2005
+    3  110010001001001  100 1001
+

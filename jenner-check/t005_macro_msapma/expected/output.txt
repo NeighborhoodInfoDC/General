@@ -1,0 +1,9 @@
+                                     MSAPMA: PMSA when present, else MSA/CMSA code                                      
+
+  Obs  msacma  pmsa  MSA/PMSA (1999)
+    1  8872    8840  8840
+    2  8872    9999  8872
+    3  8872          8872
+    4  7040    6740  6740
+    5  1122    1123  1123
+

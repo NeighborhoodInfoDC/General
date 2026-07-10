@@ -1,0 +1,25 @@
+The FORMAT Procedure
+Format Name: $CNTY03F
+    Start            End    Label
+    11001          11001    District of Columbia, DC
+    24009          24009    Calvert County, MD
+    24017          24017    Charles County, MD
+    24021          24021    Frederick County, MD
+    24031          24031    Montgomery County, MD
+    24033          24033    Prince George's County, MD
+    51013          51013    Arlington County, VA
+    51043          51043    Clarke County, VA
+    51059          51059    Fairfax County, VA
+    51061          51061    Fauquier County, VA
+    51107          51107    Loudoun County, VA
+    51153          51153    Prince William County, VA
+    51177          51177    Spotsylvania County, VA
+    51179          51179    Stafford County, VA
+    51187          51187    Warren County, VA
+    51510          51510    Alexandria city, VA
+    51600          51600    Fairfax city, VA
+    51610          51610    Falls Church city, VA
+    51630          51630    Fredericksburg city, VA
+    51683          51683    Manassas city, VA
+    51685          51685    Manassas Park city, VA
+    54037          54037    Jefferson County, WV

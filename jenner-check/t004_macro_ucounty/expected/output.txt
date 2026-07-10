@@ -1,0 +1,11 @@
+                                   UCOUNTY: unique county ID from state + county FIPS                                   
+
+  Obs  statecd  countycd  Unique FIPS County ID:  ssccc
+    1  11       001       11001
+    2  24       031       24031
+    3  24       033       24033
+    4  51       013       51013
+    5  51       059       51059
+    6  51       510       51510
+    7  54       037       54037
+

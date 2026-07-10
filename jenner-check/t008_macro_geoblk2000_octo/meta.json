@@ -1,0 +1,7 @@
+{
+  "bundle": "t008_macro_geoblk2000_octo",
+  "source_file": "Macros/GeoBlk2000_Octo.sas",
+  "source_blob_sha": "04df4c477332fbff9f1c6015ba82f7a00e4c8638",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "The %GeoBlk2000_Octo macro (substr arithmetic to strip leading zeros off the tract portion of a 15-char block ID and append the 4-char block portion, forming the OCTO cjrTractBl) verbatim from the repo, plus a caller with sample block IDs via PROC PRINT."
+}

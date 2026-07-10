@@ -1,0 +1,7 @@
+{
+  "bundle": "t009_macro_uplace",
+  "source_file": "Macros/uplace.sas",
+  "source_blob_sha": "fb3e8773bff8cec0af40684e51fef62445b47af6",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "The %uplace macro (concatenate FIPS state + place into a unique 7-char place ID, guarding against blanks) verbatim from the repo, plus a caller whose datalines mock includes a blank-place row so the guard is exercised via PROC PRINT."
+}

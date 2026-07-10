@@ -1,0 +1,9 @@
+                                     Octo_Quad: normalize and validate DC quadrant                                      
+
+  Obs  Quadrant  DC quadrant
+    1  NW        NW
+    2  ne        NE
+    3  sw        SW
+    4  SE        SE
+    5  XX
+
