@@ -1,0 +1,7 @@
+{
+  "bundle": "t006_macro_fedtractno",
+  "source_file": "Macros/Fedtractno.sas",
+  "source_blob_sha": "b740560b6b30c51eeb396f866c4e60f714d740eb",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "The %Fedtractno macro (SELECT/WHEN on the Geo2000 tract ID, reformatting the tract portion with a 6.2 informat, plus the empty and special-tract-84.10 branches) verbatim from the repo, plus a caller exercising all three branches via PROC PRINT."
+}

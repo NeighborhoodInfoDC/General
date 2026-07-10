@@ -1,0 +1,12 @@
+{
+  "_captured_at": "2026-07-10T15:10:00Z",
+  "_captured_run_id": "r_5fc9fd1387714d7db2156f3b891aa019",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: FORMAT $cnty03f defined (22 ranges).",
+    "NOTE: PROC FORMAT library=WORK"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

@@ -1,0 +1,12 @@
+{
+  "_captured_at": "2026-07-10T15:12:00Z",
+  "_captured_run_id": "r_129fade306af48a189f63e10843db6b7",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: FORMAT $longusr defined (22 ranges).",
+    "NOTE: PROC FORMAT library=WORK"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

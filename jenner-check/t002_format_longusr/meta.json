@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_format_longusr",
+  "source_file": "Prog/Format_longusr.sas",
+  "source_blob_sha": "72fb7ee6b84354d3ad994d6bb07446996559f2f8",
+  "source_commit": "34e5fb3ac5e5a8704840cad15e94f3ab84dc0fc3",
+  "notes": "PROC FORMAT building the $longusr username-translation format (verbatim value block from the repo: 8-char short names and dcdata_* SAS1 server usernames mapped to full usernames). Retargeted from library=Genera_r to library=work and the %include StdLocal dropped; a PROC FORMAT fmtlib select=$longusr prints the built format so the run self-checks."
+}

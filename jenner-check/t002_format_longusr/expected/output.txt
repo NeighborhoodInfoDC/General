@@ -1,0 +1,25 @@
+The FORMAT Procedure
+Format Name: $LONGUSR
+    Start            End    Label
+ awilliam       awilliam    awilliams
+ cnarducc       cnarducc    cnarducci
+ lgetsing       lgetsing    lgetsinger
+ rpitingo       rpitingo    rpitingolo
+ slitschw       slitschw    slitschwartz
+ gmacdona       gmacdona    gmacdonald
+ mwoluche       mwoluche    mwoluchem
+ kabazaji       kabazaji    kabazajian
+dcdata_ksp     dcdata_ksp    kpettit
+dcdata_pat     dcdata_pat    ptatian
+dcdata_dsd     dcdata_dsd    ddorio
+dcdata_lh      dcdata_lh    lhendey
+dcdata_zm      dcdata_zm    zmcdade
+dcdata_rag     dcdata_rag    rgrace
+dcdata_rmp     dcdata_rmp    rpitingolo
+dcdata_rp      dcdata_rp    rpitingolo
+dcdata_gm      dcdata_gm    gmacdonald
+dcdata_bl      dcdata_bl    blosoya
+dcdata_bjl     dcdata_bjl    blosoya
+dcdata_msw     dcdata_msw    mwoluchem
+dcdata_eno     dcdata_eno    eoo
+dcdata_kaa     dcdata_kaa    kabazajian

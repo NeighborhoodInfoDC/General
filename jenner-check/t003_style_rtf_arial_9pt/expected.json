@@ -1,0 +1,12 @@
+{
+  "_captured_at": "2026-07-10T15:12:30Z",
+  "_captured_run_id": "r_fabbcd707ea642bcbf84cdddfdc17a5b",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: STYLE template 'styles.rtf_arial_9pt' has been stored (7 elements).",
+    "NOTE:   Parent: styles.rtf"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}
